@@ -20,10 +20,10 @@ so it may not be accurate.
 drwxrwxr-x  5 utter users    58 Oct  8  2021 builds
 -rw-rw-r--  1 utter utter  1452 Aug 29  2021 config.json
 drwxrwxr-x  5 utter users    75 Oct  8  2021 deploys
-drwxrwxr-x 10 jrego users  4096 Aug 29  2021 jobs   --> https://github.com/crucial-algorithm/utter-jobs (does not look like it's being used)  
+drwxrwxr-x 10 jrego users  4096 Aug 29  2021 jobs    --> https://github.com/crucial-algorithm/utter-jobs (does not look like it's being used)  
 drwxrwxr-x  2 utter users 53248 Dec 25 00:00 logs
-drwxrwxr-x 12 utter users  4096 Aug 29  2021 repo   --> https://github.com/crucial-algorithm/uttercoach
-drwxrwxr-x  5 utter users   145 Oct  8  2021 scripts
+drwxrwxr-x 12 utter users  4096 Aug 29  2021 repo    --> https://github.com/crucial-algorithm/uttercoach
+drwxrwxr-x  5 utter users   145 Oct  8  2021 scripts --> check infrastructure folder for contents 
 -rw-rw-r--  1 utter utter  2059 Aug 29  2021 uttercoach.service
 
 
@@ -157,7 +157,7 @@ drwxrwxr-x 2 jrego jrego 32 Oct  8  2021 3.1.3
 
 
 ## Configuration of HTTP server ## 
-Check http server for contents of these files.
+Check [this folder](https://github.com/crucial-algorithm/uttercoach/tree/main/infrastructure/nginx) for contents of these files.
 ```bash
 root@utter:/etc/nginx/conf.d# ls -ltr
 total 28
