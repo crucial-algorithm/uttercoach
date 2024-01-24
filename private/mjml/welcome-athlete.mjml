@@ -1,0 +1,41 @@
+<mjml>
+    {{>head }}
+  <mj-body background-color="#d6d6d5">
+    {{> logo }}
+
+    <mj-section background-color="#ffffff" padding="60px 0">
+      <mj-column width="600px">
+        <mj-text padding-bottom="40px" mj-class="h1" align="left" color="#999999">
+          Hi {{athlete}},
+        </mj-text>
+        <mj-text mj-class="h3" align="left" color="#999999">
+          Thank you for choosing GoPaddler: you are about to take your training sessions to a whole new level
+        </mj-text>
+
+        <mj-text mj-class="h2" align="left" color="#999999">
+          Before you start, you need to calibrate the app for stroke rate accuracy. Check out our video bellow.
+        </mj-text>
+
+        <mj-image href="https://youtu.be/7mR5-VjB_xE" align="center" width="200px" src="https://static.gopaddler.com/1/images/welcome-mail-calibration-image.png?v=1" />
+
+        <mj-text mj-class="p" align="left" color="#999999">
+          If you need a safe way to to the phone to the water, checkout out our <a href="https://gopaddler.com/waterproof-smartphone-mount/?utm_source=welcome-mail">phone mount.</a>
+        </mj-text>
+
+        <mj-text mj-class="h1" align="left" color="#999999" padding-top="40px">
+          GoPaddler is better with your coach
+        </mj-text>
+
+        <mj-text mj-class="h3" align="left" color="#999999">
+          Once you are on your coach team, GoPaddler will upload all your sessions directly into your coach dashboard, it will allow him to follow you in real time and to plan your sessions directly into the system. Click on the image bellow for details.
+        </mj-text>
+
+        <mj-image href="https://gopaddler.com/for-coaches" align="left" src="https://static.gopaddler.com/1/images/footer.jpg" />
+      </mj-column>
+    </mj-section>
+
+
+
+    {{> footer }}
+  </mj-body>
+</mjml>

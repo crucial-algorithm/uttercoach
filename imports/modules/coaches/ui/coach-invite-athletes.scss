@@ -1,0 +1,81 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.coach-invite-athletes-container, .coach-choose-sport-container {
+  padding: 8px;
+  width: 100%;
+  height: 60vh;
+  color: $primary-color;
+
+  textarea:focus {
+    outline: none;
+    background-color: $light-grey;
+  }
+}
+
+.coach-invite-athletes-header, .coach-choose-sport-header {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.coach-invite-athletes-description, .coach-invite-athletes-welcome-message-header {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.coach-invite-athletes-invites-list {
+  height: 240px;
+  overflow: auto;
+  margin-top: 20px;
+}
+
+.coach-invite-athletes-invites-list-entry {
+  height: 40px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input:focus {
+    outline: none;
+    background-color: $light-grey;
+  }
+}
+
+.coach-invite-athletes-invite-icon {
+  color: $dark-grey;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+}
+
+.coach-invite-athletes-invite-email, .coach-invite-athletes-invite-name {
+  border: 0;
+  border-bottom: 1px dashed $dark-grey;
+  color: $dark-grey;
+  font-size: 12px;
+  min-width: 200px;
+  border-radius: 0;
+
+  &.error {
+    border-bottom: 1px dashed $new-red;
+  }
+}
+
+.coach-invite-athletes-invite-email {
+  margin-right: 12px;
+}
+
+.coach-invite-athletes-welcome-message-textarea {
+  margin-top: 10px;
+  border: 1px dashed $dark-grey;
+  width: 100%;
+  text-align: left;
+  min-height: 100px;
+  color: $dark-grey;
+  font-size: 14px;
+  font-weight: 500;
+}

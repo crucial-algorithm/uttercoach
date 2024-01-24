@@ -1,0 +1,260 @@
+<template name="main">
+
+    <!-- Header -->
+    <div id="header" data-page="{{routeName}}">
+
+        <a class="header-logo" href="{{pathFor route='home'}}">
+            <img src="/images/logo-utter.png?v=hjWnPbMKmpc9KNYLP" width="120px" height="auto" alt="Utter Coach">
+        </a>
+
+        <div class="header-content">
+            <div class="header-page-title">
+                <ol class="breadcrumb">
+                    {{#each Breadcrumb}}
+                        <li class="{{cssClasses}} breadcrumb-item">
+                            {{#if showLink}}
+                                <a href="{{url}}">{{title}}</a>
+                            {{else}}
+                                {{title}}
+                            {{/if}}
+                        </li>
+                    {{/each}}
+                </ol>
+            </div>
+
+            <div class="header-highlight">
+                {{#if showPromotion}}
+                <a href="{{pathFor route="coach-billing"}}">
+                    <span class="header-highlight-primary"><b>{{daysLeftInTrial}}</b> {{translate "header_x_days_in_trial"}}</span>
+                    <span class="header-highlight-secondary">{{translate "header_upgrade_for_discount"}}</span>
+                </a>
+                {{/if}}
+            </div>
+
+            <div class="header-user">
+                <div class="header-lang">
+                    <div class="btn-group">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                            {{getLanguage}}
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" data-lang="en" href="javascript:;">EN</a>
+                            <!--a class="dropdown-item" data-lang="es" href="javascript:;">ES</a-->
+                            <a class="dropdown-item" data-lang="pt" href="javascript:;">PT</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-user-name">
+                    {{currentUser.profile.name}}
+                </div>
+                <div class="header-user-avatar">{{> avatar user=currentUser shape="circle"}}</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="layout-mobile-header" data-page="{{routeName}}">
+        {{> yield "back-action"}}
+        <div class="layout-mobile-header-logo">
+            <a href="{{pathFor route='home'}}" data-selector="logo">&nbsp;</a>
+        </div>
+
+        <button type="button" class="gopaddler-mobile-menu-button" data-toggle="modal" data-target="#menu-modal">⌛</button>
+    </div>
+
+    <!-- Navigation Sidebar -->
+    <div id="sidebar">
+        <ul class="nav-list">
+            {{> actions }}
+        </ul>
+
+        <div class="nav-footer">copyright <b>Utter Coach</b> &copy; {{currentYear}}</div>
+    </div>
+
+    <!-- Secondary navigation (mobile) -->
+    <div class="layout-header-top-bar" data-page="{{routeName}}">{{> yield "top-menu"}}</div>
+
+    <!-- Main Content  -->
+    <div id="page" data-page="{{routeName}}">
+        {{> yield}}
+    </div>
+
+    <!-- Footer / action bar -->
+    <div id="footer" data-page="{{routeName}}">{{> yield "footer"}}</div>
+
+    <div class="modal" id="menu-modal" tabindex="-1" role="dialog" aria-labelledby="modal-menu" aria-hidden="true">
+        <div class="gopaddler-mobile-menu modal-dialog" role="document">
+            <div class="gopaddler-mobile-menu modal-content">
+                <div class="modal-header">
+                    <button type="button" class="gopaddler-mobile-menu-close-button close" data-dismiss="modal" aria-label="Close">
+                        ⌋
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav-list nav navbar-nav">
+                        {{> actions }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-message-overlay" id="no-internet-connection">
+        <span class="primary">{{translate "lost_connection"}}</span>
+        <span class="secondary">&nbsp;</span>
+    </div>
+
+
+    <script src="https://js.stripe.com/v3/"></script>
+    {{#if isProduction }}
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-73212702-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    {{/if}}
+
+</template>
+
+<template name="actions">
+
+    {{#if isInRole 'coach'}}
+
+        <li>
+            <a href="{{pathFor route='dashboard'}}">
+                <div class="nav-list-entry {{#if isRoute 'dashboard'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-home"></i><span class="action-label">{{translate "main_sidebar_menu_dashboard"}}</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{pathFor route='coach-schedule'}}">
+                <div class="nav-list-entry {{#if isRoute 'coach-schedule'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-calendar"></i><span class="action-label">{{translate "main_sidebar_menu_schedule"}}</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{pathFor route='coach-team'}}">
+                <div class="nav-list-entry {{#if isRoute 'coach-team' 'athlete'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-users"></i><span class="action-label">{{translate "main_sidebar_menu_team"}}</span>
+                    {{#if coachHasRequests}}
+                        <div class="coach-requests">{{currentUser.numRequests}}</div>
+                    {{/if}}
+                </div>
+            </a>
+
+        </li>
+
+        {{#if isInRole 'x-live-sessions'}}
+        <li class="menu-live-session">
+            <a href="{{pathFor route='coachLive'}}">
+                <div class="nav-list-entry {{#if isRoute 'coachLive' 'coachLiveActiveSessions' 'coachLiveSession' 'coachLiveSplits'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-feed"></i><span class="action-label">{{translate "main_sidebar_menu_live"}}</span>
+                </div>
+            </a>
+
+        </li>
+
+        <li class="menu-live-session-desktop">
+            <a href="{{pathFor route='coachLiveDesktop'}}">
+                <div class="nav-list-entry {{#if isRoute 'coachLiveDesktop'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-feed"></i><span class="action-label">{{translate "main_sidebar_menu_live"}}</span>
+                </div>
+            </a>
+
+        </li>
+        {{/if}}
+
+        {{#if showBilling}}
+        <li>
+            <a href="{{pathFor route='coach-billing'}}">
+                <div class="nav-list-entry  {{#if isRoute 'coach-billing'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-money"></i>{{translate "main_top_bar_billing_btn"}}
+                </div>
+            </a>
+        </li>
+        {{/if}}
+
+    {{else}}
+
+        <li>
+            <a href="{{pathFor route='training-sessions'}}">
+                <div class="nav-list-entry {{#if isRoute 'training-sessions' 'training-session'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-calendar"></i><span class="action-label">{{translate "main_sidebar_menu_athlete_training_sessions"}}</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{pathFor route='athlete' _id=currentUser._id}}">
+                <div class="nav-list-entry {{#if isRoute 'athlete'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-bar-chart"></i><span class="action-label">{{translate "main_sidebar_menu_athlete_progress"}}</span>
+                </div>
+            </a>
+        </li>
+
+    {{/if}}
+
+    {{#if isInRole 'admin'}}
+        <li>
+            <a href="{{pathFor route='administration-users'}}">
+                <div class="nav-list-entry {{#if isRoute 'administration-users'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-user"></i><span class="action-label">{{translate "main_sidebar_menu_admin_users"}}</span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{pathFor route='administration-reporting'}}">
+                <div class="nav-list-entry {{#if isRoute 'administration-reporting'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-area-chart"></i><span class="action-label">{{translate "main_sidebar_menu_admin_reports"}}</span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{pathFor route='administration-debug-live-sessions'}}">
+                <div class="nav-list-entry {{#if isRoute 'administration-debug-live-sessions'}}selected{{/if}}">
+                    <i class="nav-icon fa fa-code"></i><span class="action-label">Debug live</span>
+                </div>
+            </a>
+        </li>
+    {{/if}}
+
+    <li class="logout-side-bar">
+        <a href="#" class="logout">
+            <div class="nav-list-entry">
+                <i class="nav-icon fa fa-sign-out"></i>{{translate "main_top_bar_logout_btn"}}
+            </div>
+        </a>
+        <select name="language">
+            <option value="pt">PT</option>
+            <option value="en">EN</option>
+        </select>
+    </li>
+
+    {{#if isImpersonating}}
+        <li>
+            <a href="#" data-unimpersonate>
+                <div class="nav-list-entry">{{translate "main_top_bar_uninpersonate_btn"}}</div>
+            </a>
+        </li>
+    {{/if}}
+
+
+</template>

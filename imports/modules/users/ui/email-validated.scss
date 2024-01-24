@@ -1,0 +1,17 @@
+.email-validated-body {
+  display: flex;
+  width: 100vw;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+p {
+  color: rgba(0, 0, 0, .3)
+}
+
+p.small {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 1)
+}

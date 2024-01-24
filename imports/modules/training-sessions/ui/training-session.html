@@ -1,0 +1,272 @@
+<template name="trainingSession">
+    <div class="loading hide">
+        <div class="lds-hourglass"></div>
+    </div>
+
+    <div class="system-modal-container" id="no-data-found">
+        <p class="training-session-session-not-found ">
+            {{translate "training_session_no_data_found"}}
+        </p>
+    </div>
+
+
+    <div class="system-modal-container" id="split-into-intervals-modal">
+
+        <div class="training-session-split-session-chart-type">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="chart-options" data-option="speed" autocomplete="off" checked> Speed
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="chart-options" data-option="spm" autocomplete="off"> Spm
+                </label>
+            </div>
+        </div>
+        <div class="training-session-split-session-chart" id="split-session-chart"></div>
+        <div class="training-session-split-session-chart-tip">{{translate "training_session_split_free_session_chart_click_tip"}}</div>
+
+        <div class="training-session-split-session-expression-container">
+            <div class="input-group mb-3">
+                <input class="form-control form-control-lg" type="text" placeholder="" value="00:00" id="split-session-input">
+            </div>
+            <div class="training-session-split-session-expression-input-group input-group mb-3">
+                <input type="text" id="new-expression" placeholder="{{translate ""}}">
+                <div id="new-expression-error" class="error-text"><i class="fa fa-warning"></i>{{translate "schedule_invalid_expression"}}</div>
+                <p class="help-block" style="font-size: 12px">{{translate "schedule_expression_help_units"}} <br/> {{translate "schedule_expression_help_sample"}}</p>
+            </div>
+        </div>
+
+        <div class="training-session-split-session-table">
+            <table class="table header-table">
+                <thead class="training-session-desktop-head">
+                <tr>
+                    <th width="06%">#</th>
+                    <th width="14%">{{translate "training_session_intervals_start"}}</th>
+                    <th width="14%">{{translate "training_session_intervals_stop"}}</th>
+                    <th width="10%">{{translate "training_session_intervals_duration"}}</th>
+                    <th width="10%">{{translate "training_session_intervals_distance"}}</th>
+                    <th width="14%">{{translate "training_session_intervals_speed"}}</th>
+                    <th width="10%">{{translate "training_session_intervals_spm"}}</th>
+                    <th width="14%">{{translate "training_session_intervals_length"}}</th>
+                    <th width="08%">{{translate "training_session_intervals_heart_rate"}}</th>
+                </tr>
+                </thead>
+            </table>
+            <div class="split-free-session-splits">
+                <table class="table">
+                    <tbody id="split-free-session-splits"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="training-session-split-session-review-chart"></div>
+
+    </div>
+
+    <div id="session-details" class="training-session-details-header">
+        <div class="training-session-details-header-hour">{{getSessionHour}}</div>
+        <div class="training-session-details-header-day">{{getSessionDate}}</div>
+        <div class="training-session-details-header-expression">
+            {{#if isFreeSession}} {{translate "training_session_free_session"}} {{else}} {{getSessionExpression}} {{/if}}
+        </div>
+        <div class="dropdown">
+            <button class="button-icon training-session-details-header-actions" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="export">{{translate "training_session_export"}}</a>
+                {{#if isOwnedSession}}<div class="dropdown-divider"></div>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#confirm" id="delete">{{translate "training_session_delete_session"}}</a>
+                {{/if}}
+                {{#if isInRole 'x-coach-split-session'}}
+                    {{#if isSessionEditable}}
+                        <a class="dropdown-item" id="split-free-session">{{translate "training_session_split_free_session"}}</a>
+                    {{/if}}
+                    {{#if isSessionResetable}}
+                        <a class="dropdown-item" id="reset-into-free-session">{{translate "training_session_reset_to_free_session"}}</a>
+                    {{/if}}
+
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="training-session-summary-desktop" data-session-sport="{{sport}}">
+        {{#with getSessionStats}}
+            <div class="training-session-highlight-box">
+                <label class="stat">{{translate "training_session_duration"}}</label>
+                <label class="value">{{duration.value}} {{#if fullDuration}} <span class="total">({{fullDuration}})</span> {{/if}}</label>
+                <label class="weekly-comparison">
+                    <b class="stat-{{duration.weekComparison}}"><i class="icon fa fa-caret-{{duration.weekComparison}}"></i> {{duration.weekPercentage}}%</b> from last week
+                </label>
+            </div>
+            <div class="training-session-highlight-box">
+                <label class="stat">{{translate "training_session_distance"}}</label>
+                <label class="value">{{distance.value}} {{translate "training_session_distance_unit"}} {{#if fullDistance}} <span class="total">({{fullDistance}} {{translate "training_session_distance_unit"}})</span> {{/if}}</label>
+                <label class="weekly-comparison">
+                    <b class="stat-{{distance.weekComparison}}"><i class="icon fa fa-caret-{{duration.weekComparison}}"></i> {{duration.weekPercentage}}%</b> from last week
+                </label>
+            </div>
+            <div class="training-session-highlight-box">
+                <label class="stat">{{translate "training_session_speed"}}</label>
+                <label class="value">{{avgSpeed.value}} {{translate "training_session_speed_unit"}}</label>
+                <label class="weekly-comparison">
+                    <b class="stat-{{avgSpeed.weekComparison}}"><i class="icon fa fa-caret-{{avgSpeed.weekComparison}}"></i> {{avgSpeed.weekPercentage}}%</b> from last week
+                </label>
+            </div>
+            <div class="training-session-highlight-box">
+                <label class="stat">{{translate "training_session_spm"}}</label>
+                <label class="value">{{avgSpm.value}}</label>
+                <label class="weekly-comparison">
+                    <b class="stat-{{avgSpm.weekComparison}}"><i class="icon fa fa-caret-{{avgSpm.weekComparison}}"></i> {{avgSpm.weekPercentage}}%</b> from last week
+                </label>
+            </div>
+            <div class="training-session-highlight-box" data-sport="canoeing">
+                <label class="stat">{{translate "training_session_length"}}</label>
+                <label class="value">{{averageDPS.value}} {{translate "training_session_length_unit"}}</label>
+                <label class="weekly-comparison">
+                    <b class="stat-{{averageDPS.weekComparison}}"><i class="icon fa fa-caret-{{averageDPS.weekComparison}}"></i> {{averageDPS.weekPercentage}}%</b> from last week
+                </label>
+            </div>
+            <div class="training-session-highlight-box">
+                <label class="stat">{{translate "training_session_heart_rate"}}</label>
+                <label class="value">{{averageHR.value}} {{translate "training_session_heart_rate_unit"}}</label>
+            </div>
+        {{/with}}
+    </div>
+
+    <div class="col-sm-12" data-session-sport="{{sport}}">
+
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+
+        {{#with getSessionStats}}
+            {{>genericPerformanceSummary session=sessionUI include=fieldsList css="training-session-summary-mobile unboxed"}}
+        {{/with}}
+
+        <div class="row training-session-details">
+            <div class="{{#if noSplitsDefined}} hide {{else}} content-box training-session-details-splits-table section {{/if}}" >
+
+                <table class="table header-table">
+                    <thead class="training-session-desktop-head">
+                    <tr>
+                        <th width="06%">#</th>
+                        <th width="14%">{{translate "training_session_intervals_duration"}}</th>
+                        <th width="14%">{{translate "training_session_intervals_distance"}}</th>
+                        <th width="18%">{{translate "training_session_intervals_speed"}}</th>
+                        <th width="14%">{{translate "training_session_intervals_spm"}}</th>
+                        <th width="18%">{{translate "training_session_intervals_length"}}</th>
+                        <th width="16%">{{translate "training_session_intervals_heart_rate"}}</th>
+                    </tr>
+                    </thead>
+                    <thead class="training-session-mobile-head">
+                    <tr>
+                        <th width="06%">#</th>
+                        <th width="14%">{{translate "training_session_intervals_mobile_duration"}}</th>
+                        <th width="14%">{{translate "training_session_intervals_mobile_distance"}}</th>
+                        <th width="18%">{{translate "training_session_intervals_mobile_speed"}}</th>
+                        <th width="14%">{{translate "training_session_intervals_mobile_spm"}}</th>
+                        <th width="18%">{{translate "training_session_intervals_mobile_length"}}</th>
+                        <th width="16%">{{translate "training_session_intervals_mobile_heart_rate"}}</th>
+                    </tr>
+                    </thead>
+                </table>
+                <div id="session-splits">
+                    <table class="table" id="session-splits-body">
+                        <tbody>
+                        {{#each getSessionSplits}}
+                            <tr data-split="{{split}}">
+                                <td width="06%">{{position}}</td>
+                                <td width="14%">{{duration}}</td>
+                                <td width="14%">{{distance}}</td>
+                                <td width="18%">{{avgSpeed}}</td>
+                                <td width="14%">{{avgSpm}}</td>
+                                <td width="18%">{{avgSpmEfficiency}}</td>
+                                <td width="16%">{{avgHeartRate}}</td>
+                            </tr>
+                        {{else}}
+                            {{translate "training_session_free_session"}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+            <div class="training-session-details-charts-header section col-xl-12">
+                <div class="training-session-x-axis-type-toggle-container">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="x-axis-dimension" data-option="duration" autocomplete="off" checked> Duration
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="x-axis-dimension" data-option="distance" autocomplete="off"> Distance
+                        </label>
+                    </div>
+                </div>
+                <div class="training-session-tooltip"></div>
+            </div>
+
+            <div class="training-session-details-container section col-xl-12" id="charts-container">
+
+                <div class="section" data-sport="cycling">
+                    <canvas id="altitude-chart" class="stat-chart"></canvas>
+                </div>
+
+                <div class="section">
+                    <canvas id="speed-chart" class="stat-chart"></canvas>
+                </div>
+
+                <div class="section">
+                    <canvas id="spm-chart" class="stat-chart"></canvas>
+                </div>
+
+                <div class="section" data-sport="canoeing">
+                    <canvas id="dps-chart" class="stat-chart"></canvas>
+                </div>
+
+                <div class="section">
+                    <canvas id="hr-chart" class="stat-chart"></canvas>
+                </div>
+
+                <div class="section" data-sport="canoeing">
+                    <canvas id="leftToRight-chart" class="stat-chart"></canvas>
+                </div>
+
+                <!--div class="section">
+                    <div id="frontToBack-chart" class="stat-chart"></div>
+                </div-->
+
+            </div>
+
+            <div class="training-session-zone-charts">
+                <canvas id="spm-zones-chart"></canvas>
+                <canvas id="speed-zones-chart"></canvas>
+                <canvas id="hr-zones-chart"></canvas>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirm-delete">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{translate "training_session_delete_session"}}?</h4>
+                </div>
+                <div class="modal-body">
+                    {{translate "training_session_delete_session_warning"}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn secondary" data-dismiss="modal">{{translate "training_session_discard_delete"}}</button>
+                    <button type="button" class="btn primary">{{translate "training_session_delete_session"}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

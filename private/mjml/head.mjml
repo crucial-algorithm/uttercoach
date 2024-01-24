@@ -1,0 +1,18 @@
+<mj-head>
+    <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" />
+    <mj-attributes>
+        <mj-all font-family="Montserrat, Arial" />
+        <mj-class name="h1" color="#000000" font-size="30px" font-weight="800" line-height="34px" />
+        <mj-class name="h2" color="#000000" font-size="20px" font-weight="700" line-height="24px" text-transform="uppercase" />
+        <mj-class name="h3" color="#000000" font-size="16px" font-weight="600" line-height="18px" />
+        <mj-class name="h3-post" color="#000000" font-size="16px" font-weight="800" line-height="18px" />
+        <mj-class name="p" color="#444444" font-size="14px" font-weight="400" line-height="18px" />
+        <mj-class name="p-mini" color="#666666" font-size="10px" font-weight="400" line-height="12px" />
+        <mj-button background-color="#000000" color="#ffffff" font-size="12px" font-weight="700" line-height="12px" border-radius="6px" />
+    </mj-attributes>
+    <mj-style inline="inline">
+        .links { color: #ef6155; text-decoration: underline; font-size:14px; font-weight:700; line-height:18px;}
+        .links-social { color: #333333; text-decoration: underline; font-size:14px; font-weight:700; line-height:18px;}
+        .links-footer { color: #666666; text-decoration: none; font-size:12px; font-weight:700; line-height:14px;}
+    </mj-style>
+</mj-head>

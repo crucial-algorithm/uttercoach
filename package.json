@@ -1,0 +1,58 @@
+{
+  "name": "gopaddler",
+  "private": true,
+  "scripts": {
+    "start": "meteor --port 3002 --inspect=127.0.0.1:9229 --settings development.json > server.log",
+    "debug": "meteor run --inspect",
+    "test": "meteor test --driver-package=meteortesting:mocha --port 8080 --settings development.json --extra-packages lmieulet:meteor-coverage",
+    "coverage:watch": "BABEL_ENV=COVERAGE COVERAGE=1 COVERAGE_VERBOSE=1 COVERAGE_OUT_HTML=1 COVERAGE_APP_FOLDER=$PWD/ TEST_WATCH=1 meteor test --port 3005 --settings development.json --driver-package meteortesting:mocha --extra-packages lmieulet:meteor-coverage",
+  },
+  "babel": {
+    "env": {
+      "COVERAGE": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-runtime": "^6.22.0",
+    "bcrypt": "^4.0.1",
+    "bootstrap-daterangepicker": "^3.0.5",
+    "bootstrap-select": "^1.13.3",
+    "chai": "^3.5.0",
+    "chart.js": "^2.9.3",
+    "chartjs-plugin-datalabels": "^0.7.0",
+    "font-awesome": "^4.6.3",
+    "gpx-builder": "^3.3.0",
+    "hammerjs": "^2.0.8",
+    "handlebars": "^4.7.6",
+    "highcharts": "^8.1.2",
+    "html5sortable": "^0.4.2",
+    "jquery": "^3.3.1",
+    "jquery-ui": "1.12.1",
+    "kalmanjs": "^1.1.0",
+    "meteor-node-stubs": "^0.4.1",
+    "mjml": "^4.6.3",
+    "mocha": "^5.2.0",
+    "nosleep.js": "^0.9.0",
+    "nouislider": "^13.1.4",
+    "numbro": "^1.9.3",
+    "progressbar.js": "1.0.1",
+    "simpl-schema": "^1.5.7",
+    "sortablejs": "^1.4.2",
+    "strava_api_v3": "github:kimile/strava_api_v3",
+    "stripe": "^7.9.1",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-plugin-istanbul": "^6.0.0",
+    "gm": "^1.23.1",
+    "puppeteer": "^5.2.1"
+  }
+}

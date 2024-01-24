@@ -1,0 +1,18 @@
+<mj-section background-color="{{footerBackgroundColor}}" padding="40px 0">
+    <mj-column>
+
+        <mj-text mj-class="h1" color="#999999">{{followUs}}!</mj-text>
+        <mj-text mj-class="p">
+            {{social}}
+        </mj-text>
+
+    </mj-column>
+</mj-section>
+
+<mj-section>
+    <mj-column>
+        <mj-text mj-class="p-mini">
+            UtterCoach © {{year}} - {{copyright}}.
+        </mj-text>
+    </mj-column>
+</mj-section>

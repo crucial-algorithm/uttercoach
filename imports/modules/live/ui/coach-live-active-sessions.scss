@@ -1,0 +1,109 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.coach-live-active-sessions-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coach-live-active-sessions-top-bar-label {
+    text-transform: uppercase;
+    color: $white;
+    padding-left: 2vw;
+    font-weight: 500;
+    margin-left: 4vw;
+}
+
+.coach-live-active-sessions-entry {
+    background: white;
+    height: 110px;
+    color: $primary-color;
+    font-weight: 800;
+    border-radius: 6px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.16);
+    margin: 10px 2vw;
+    width: 96vw;
+}
+
+.coach-live-active-sessions-entry-athletes {
+    display: flex;
+    width: 86vw;
+    align-items: center;
+    align-content: center;
+    margin: 0 3vw 0 3vw;
+    height: 78px;
+
+    & > .avatar {
+        margin-right: 1vw;
+    }
+
+}
+
+.coach-live-active-sessions-entry-footer {
+    background-color: #EFEFEF;
+    height: 32px;
+    border-radius: 0 0 6px 6px;
+}
+
+.coach-live-active-sessions-entry-footer-timer {
+    display: flex;
+    justify-content: flex-end;
+    height: 32px;
+    line-height: 32px;
+}
+
+.coach-live-active-sessions-entry-footer-timer-label {
+    text-transform: uppercase;
+    color: #A7A7A7;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.coach-live-active-sessions-entry-footer-timer-value, .coach-live-active-sessions-entry-footer-duration {
+    width: 100px;
+    background-color: $dark-blue;
+    border-radius: 16px 0 6px 16px;
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 900;
+}
+
+.coach-live-active-sessions-devices {
+    width: 20%;
+    background-color: $accent-color;
+    color: $white;
+    text-align: center;
+}
+
+.coach-live-active-sessions-empty {
+    display: flex;
+    height: 40vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.coach-live-active-sessions-day-divider, .coach-live-active-sessions-section-title {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    color: $dark-grey;
+    font-weight: 500;
+    margin: 0;
+}
+
+.coach-live-active-sessions-section-title {
+    color: $new-blue;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+

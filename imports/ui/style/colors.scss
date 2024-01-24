@@ -1,0 +1,105 @@
+$white: #FFFFFF;
+$black: #000000;
+$blackish: #212121;
+$shadow: rgba(0, 0, 0, .175);
+$default-text-color: #333333;
+
+
+$background-color: #F6F7F7;
+$content-box-color: #F3F3F3;
+$border-color: #D9D9D9;
+$text-color: #B3B3B3;
+
+$primary-color: #3B3D62;
+$primary-color-light: #3D3F67;
+$primary-color-lighter: #505284;
+$primary-color-dark: #353758;
+$primary-color-light-text: #BEC0E8;
+$primary-color-dark-text: #666AAB;
+$primary-color-lighter-hover: #3A4784;
+
+$accent-color: #F05E46;
+$accent-color-light: #FF644B;
+$accent-color-dark: #E45942;
+$accent-color-dark-text: #BF4B38;
+$yellow: #F59146;
+$blue: #5650EF;
+$red: #EF6156;
+$dark-blue: #3b3d62;
+$progress-bar-color: #E45942;
+$grey: #e6e6e6;
+$secondary-button-color: #B3B3B3;
+$disabled-button-color: #CCCCD3;
+
+$new-red: #EF6155;
+$new-blue: #505284;
+$light-grey: #E8E8E8;
+$light2-grey: #CCCCD3;
+$light3-grey: #F8F8F8;
+$medium-grey: #A7A7A7;
+$dark-grey: #848484;
+$primary-orange: #F05E46;
+$primary-orange-hover: #F03B07;
+$primary-orange-disabled: #f09581;
+$grey-disabled: #787184;
+$red-invalid: #EF6155;
+
+$table-header-background-color: $light-grey;
+$table-header-text-color: $dark-grey;
+$table-background-color: $light3-grey;
+$green: #71B57B;
+
+
+$yellow: #f7ce3e;
+$yellow-highlight: rgba(247, 206, 62, 0.5);
+
+
+/* -------- */
+$ncs-black: #1A1A1A;
+$ncs-light-black: #313131;
+
+$ncs-grey: #808080;
+$ncs-grey-90: rgba(128, 128, 128, .9);
+$ncs-grey-80: rgba(128, 128, 128, .8);
+$ncs-grey-70: rgba(128, 128, 128, .7);
+$ncs-grey-60: rgba(128, 128, 128, .6);
+$ncs-grey-50: rgba(128, 128, 128, .5);
+$ncs-grey-40: rgba(128, 128, 128, .4);
+$ncs-grey-30: rgba(128, 128, 128, .3);
+$ncs-grey-20: rgba(128, 128, 128, .2);
+$ncs-grey-10: rgba(128, 128, 128, .1);
+
+$ncs-light-grey: #cccccc;
+
+$ncs-red: #EF6155;
+$ncs-red-90: rgba(239, 97, 85, .9);
+$ncs-red-80: rgba(239, 97, 85, .8);
+$ncs-red-70: rgba(239, 97, 85, .7);
+$ncs-red-60: rgba(239, 97, 85, .6);
+$ncs-red-50: rgba(239, 97, 85, .5);
+$ncs-red-40: rgba(239, 97, 85, .4);
+$ncs-red-30: rgba(239, 97, 85, .3);
+$ncs-red-20: rgba(239, 97, 85, .2);
+$ncs-red-10: rgba(239, 97, 85, .1);
+
+
+$ncs-purple: #505390;
+
+$ncs-light-purple: #666AAB;
+$ncs-light-purple-90: rgba(102, 106, 171, .9);
+$ncs-light-purple-80: rgba(102, 106, 171, .8);
+$ncs-light-purple-70: rgba(102, 106, 171, .7);
+$ncs-light-purple-60: rgba(102, 106, 171, .6);
+$ncs-light-purple-50: rgba(102, 106, 171, .5);
+$ncs-light-purple-40: rgba(102, 106, 171, .4);
+$ncs-light-purple-30: rgba(102, 106, 171, .3);
+$ncs-light-purple-20: rgba(102, 106, 171, .2);
+$ncs-light-purple-10: rgba(102, 106, 171, .1);
+
+
+
+$ncs-primary: $ncs-purple;
+$ncs-light-primary: $ncs-light-purple;
+$ncs-light-primary-negative: $white;
+$ncs-selected-background: $ncs-light-purple;
+$ncs-selected-foreground: $white;

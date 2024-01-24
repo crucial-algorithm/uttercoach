@@ -1,0 +1,68 @@
+<template name="coachLive">
+
+    {{#contentFor "top-menu" }}
+        <a href="javascript:;" data-selector="option" data-type="scheduled" class="selected">{{translate "coach_live_interval_session"}}</a>
+        <a href="javascript:;" data-selector="option" data-type="free">{{translate "coach_live_free_session"}}</a>
+
+        <a class="coach-live-menu-running{{#if showRunning}}-active{{/if}}" href="{{pathFor route="coachLiveActiveSessions"}}">
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </a>
+
+    {{/contentFor}}
+
+    <div class="coach-live-scheduled-session">
+        {{translate "coach_live_select_session_label"}}
+    </div>
+    <div class="secondary-navigation">
+        <div class="secondary-navigation-menu {{#if isShowAvailable}} active {{/if}}" data-action="available">
+            {{translate "coach_live_show_available_devices"}} ({{nbrOfAvailableDevices}})
+        </div>
+        <div class="secondary-navigation-menu {{#if isShowAll}} active {{/if}}" data-action="all">
+            {{translate "coach_live_show_all_devices"}} ({{nbrOfDevices}})
+        </div>
+    </div>
+    <div class="coach-live-devices {{#if isShowAll}} coach-live-devices-all {{/if}}">
+        {{#each devices}}
+            <div class="coach-live-device {{#if isOffline}}coach-live-device-offline{{/if}} {{#if isRunning}}coach-live-device-running{{/if}}" data-id="{{id}}">
+                <div class="coach-live-device-avatar">{{> picture id=id}}</div>
+                <div class="coach-live-device-name">{{athleteName id}}</div>
+                <div class="coach-live-device-status {{#if isOffline}}offline{{/if}} {{#if isReady}}ready{{/if}} {{#if isRunning}}running{{/if}}">
+                    {{#if isOffline}}
+                        {{translate "coach_live_device_offline"}}
+                    {{/if}}
+                    {{#if isReady}}
+                        {{translate "coach_live_device_ready"}}
+                    {{/if}}
+                    {{#if isRunning}}
+                        {{translate "coach_live_device_running"}}
+                    {{/if}}
+                </div>
+            </div>
+        {{else}}
+            <div class="coach-live-device-sonar"></div>
+        {{/each}}
+    </div>
+
+
+    <div class="system-modal-container" id="select-session">
+        <div class="live-select-session-type">
+            <ul>
+                {{#each expressions}}
+                    <li class="live-select-option" value="{{_id}}">{{text}}</li>
+                {{else}}
+                    <li class="live-select-option" value="-1">"2 x 1000m/5' + 2 x 750m/5'"</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+
+    {{#contentFor "footer" }}
+        <div class="button live-sessions-full-button disabled" id="start" role="button">{{translate "coach_live_device_start_button"}}</div>
+    {{/contentFor}}
+
+</template>
+
+<template name="CoachLiveBackButton">
+    <div data-selector="back" class="gopaddler-mobile-header-back-button icon-chevron-left"></div>
+</template>

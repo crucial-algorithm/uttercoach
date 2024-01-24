@@ -1,0 +1,383 @@
+@import '{}/imports/ui/style/colors.scss';
+
+#calendar {
+    overflow: hidden;
+}
+
+#session-list-wrapper {
+    height: 240px;
+    margin-top: 34px;
+}
+
+#coach-schedule-session-container {
+    margin: 0 10px;
+}
+
+.coach-schedule-day-label {
+    color: $primary-color;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.button.coach-schedule-remove-session {
+    position: relative;
+    display: none;
+    margin-top: 60px;
+}
+
+.coach-schedule-session-container-edit .button.coach-schedule-remove-session {
+    display: block;
+}
+
+.coach-schedule-new-session-container {
+    position: relative;
+    padding-top: 8px;
+
+    & button {
+        float: right
+    }
+
+    input {
+        width: 100%
+    }
+}
+
+#session-list {
+    height: 120px;
+    margin-top: 20px;
+    overflow: auto;
+    display: flex;
+
+}
+
+.content-label {
+    display: block;
+    margin: 4px 0 0;
+    color: $text-color;
+    font-size: 10px;
+    cursor: inherit;
+}
+
+.coach-schedule-session-tip, .coach-schedule-session-tap-to-copy-message {
+    font-size: 12px
+}
+
+.coach-schedule-session-tap-to-copy-message {
+    display: none;
+}
+.coach-schedule-session-container-edit {
+
+    .coach-schedule-session-tap-to-copy-message {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 8px;
+        color: $white;
+        font-weight: 700;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: right;
+        height: 36px;
+        line-height: 36px;
+        padding-right: 20px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .coach-schedule-session-tip {
+        display: none;
+    }
+
+    .coach-schedule-error-text {
+        display: none;
+    }
+
+    #new-expression {
+        margin-bottom: 20px;
+    }
+}
+
+.training-expression {
+    position: relative;
+    padding: 2px 4px;
+    padding-left: 30px;
+    margin-bottom: 4px;
+    color: $primary-color;
+    width: 340px;
+    min-width: 220px;
+    margin-left: 10px;
+
+    .draggable-border {
+        padding-top: 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 20px;
+        color: $accent-color-dark-text;
+        background-color: $accent-color;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    &.draggable {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: move;
+    }
+
+    &.ui-draggable-dragging {
+        width: 18%;
+        color: $white;
+        background-color: $accent-color;
+        border: 0;
+
+        .content-label {
+            color: $accent-color-dark-text;
+        }
+
+        .draggable-border,
+        .expression-actions {
+            display: none;
+        }
+    }
+}
+
+#visual-session-representation {
+    overflow: auto;
+
+    .summary {
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+
+    .portion {
+        display: inline-block;
+        height: 100%;
+        background-color: $primary-color;
+        vertical-align: top;
+        float:left;
+        color: $white;
+        text-align: center;
+        margin-right: 2px;
+        border-radius: 4px;
+    }
+
+    .recovery {
+        float:left;
+        background-color: $border-color;
+        text-align: center;
+        margin-right: 2px;
+        border-radius: 4px;
+    }
+}
+
+.expression-actions,
+.session-actions {
+    margin-top: 4px;
+    color: $text-color;
+    border-top: 1px solid $content-box-color;
+    text-align: right;
+    font-size: 18px;
+
+    .icon:hover {
+        color: $accent-color;
+        cursor: pointer;
+    }
+}
+
+.coach-schedule-error-text {
+    padding: 6px 0 0;
+    color: $accent-color;
+    font-size: 10px;
+    visibility: hidden;
+}
+
+.coach-schedule-group-select {
+    width: 100%;
+    margin-bottom: 10px;
+
+    & button.btn.dropdown-toggle.btn-default.bs-placeholder {
+        background-color: $white;
+        border-color: #grey;
+        box-shadow: none;
+        outline: none!important;
+    }
+
+    &.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 100%;
+    }
+
+    &.bootstrap-select .dropdown-toggle .filter-option {
+        color: $dark-grey;
+        font-family: Roboto, 'sans-serif';
+        background-color: $content-box-color;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+    }
+}
+
+.coach-schedule-session-one-liner {
+    min-height: 60px;
+    color: $dark-grey;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    padding: 8px;
+
+    &:last-child {
+        margin-bottom: 20px;
+    }
+
+    > span.coach-schedule-session-one-liner-session {
+        background-color: $yellow-highlight;
+        border-radius: 22px;
+        padding: 0 10px;
+    }
+}
+
+.coach-schedule-add-session {
+    display: flex;
+    min-height: 40px;
+    color: $primary-color;
+    background-color: rgba(255, 255, 255, .5);
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 13px;
+    margin-bottom: 8px;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.week-in-the-past .coach-schedule-add-session {
+    visibility: hidden;
+}
+
+.no-expressions {
+    width: 280px;
+    margin: 0 auto;
+    margin-top: 116px;
+    color: $border-color;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+
+    .icon {
+        display: block;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+}
+
+/* BOOTSTRAP SELECT */
+
+.fc-event-header.coach-schedule-group-select {
+    .bootstrap-select,
+    .bootstrap-select.open
+    {
+        width: 100%;
+
+        button.dropdown-toggle {
+            color: $white !important;
+            background: 0 !important;
+            border: 0;
+            outline: 0 !important;
+            box-shadow: none !important;
+            font-weight: bold;
+            height: auto;
+            padding: 6px 30px 6px 10px;
+
+            &.bs-placeholder,
+            &.bs-placeholder:active,
+            &.bs-placeholder:focus,
+            &.bs-placeholder:hover {
+                color: $white;
+                text-transform: none;
+                font-weight: normal;
+            }
+
+            &:focus {
+                outline: 0 !important;
+            }
+
+            .filter-option {
+                white-space: normal;
+                text-overflow: ellipsis;
+                font-size: 10px;
+            }
+        }
+
+        .span.check-mark {
+            color: $primary-color-dark-text;
+        }
+
+        .dropdown-item {
+            width: inherit;
+            font-size: 14px;
+
+            > .bs-ok-default.check-mark {
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+.coach-edit-scheduled-session-session {
+    width: 100%;
+
+
+    & button, button:hover {
+        background-color: $grey !important;
+        border: 0 !important;
+        outline: none !important;
+        box-shadow: none !important;
+        color: $primary-color!important;
+    }
+
+    & button.btn.dropdown-toggle.btn-default.bs-placeholder {
+        background-color: $white;
+        border-color: #grey;
+        box-shadow: none;
+        outline: none!important;
+    }
+
+    &.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 100%;
+    }
+
+}
+
+
+
+.checkbox-inline.new-session {
+    font-size: 12px;
+}
+
+#create-new-expression-mobile {
+    display: none;
+}
+
+.session-list-header {
+    font-size: 16px;
+    color: $primary-color;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .coach-schedule-day-label {
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

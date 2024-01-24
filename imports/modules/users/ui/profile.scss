@@ -1,0 +1,81 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.profile-athlete-group {
+  display: flex;
+  margin: 0px 41px;
+}
+
+.nav-profile {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 40px;
+  list-style: none;
+
+  .nav > li > a {
+    display: inline;
+    padding: 10px 0 10px 0;
+  }
+
+  a.nav-link {
+    color: $dark-grey;
+  }
+}
+
+label.profile-details-label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  margin-left: 18px;
+  font-size: 15px;
+}
+
+.profile-save-button {
+   margin-right: -2px;
+   margin-top: 10px;
+   float: right;
+ }
+
+.profile-discard-button {
+  margin-right: 9px;
+  margin-top: 10px;
+  float: right;
+}
+
+@media (max-width: 800px) {
+  .nav-profile.nav > li > a {
+    display: block;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-row.profile-form-row {
+    display: block;
+  }
+
+  .profile-form-row {
+    > .col {
+      margin-bottom: 20px;
+    }
+  }
+
+  .col-md.profile-athlete-details {
+    margin-bottom: 32px;
+  }
+
+  .profile-save-button {
+    margin-top: 22px;
+  }
+
+  .profile-discard-button {
+    margin-top: 22px;
+  }
+
+  .profile-athlete-heart-rate {
+     > .row > .col {
+       padding: 0
+     }
+  }
+}
+

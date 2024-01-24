@@ -1,0 +1,35 @@
+<template name="debugLiveSession">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <select name="coach" class="debug-live-sessions-select-coach">
+                    <option value="">&nbsp;</option>
+                    {{#each coach}}
+                        <option value="{{id}}"> {{name}} </option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class='debug-live-sessions-device-history'>&nbsp;</div>
+    <div class='btn btn-danger debug-live-sessions-device-hard-reset'>Reset</div>
+
+    <div class="debug-live-sessions-devices">
+        {{#each devices}}
+            <div class="debug-live-sessions-device" data-id="{{id}}">
+                <div class="debug-live-sessions-device-name">
+                {{athleteName id}}
+                </div>
+                <div class="debug-live-sessions-device-visible-info">
+                    {{info}}
+                </div>
+                <div class="debug-live-sessions-device-under-the-hood">
+                    {{extra}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</template>

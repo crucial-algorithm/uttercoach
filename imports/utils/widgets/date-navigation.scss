@@ -1,0 +1,55 @@
+@import '{}/imports/ui/style/colors.scss';
+
+
+.date-navigation {
+  overflow: hidden;
+
+  ul {
+    margin: 1rem 0;
+    padding-inline-start: 0;
+  }
+}
+
+.date-nav-list {
+  display: flex;
+  list-style: none;
+
+  li {
+    min-width: 75px;
+    height: 75px;
+    min-height: 75px;
+    border-radius: 10px;
+    background-color: $dark-grey;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+
+    &.selected {
+      background-color: $ncs-light-primary;
+    }
+
+
+  }
+}
+
+.date-nav-label-secondary {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.date-nav-label-primary {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 500;
+}

@@ -1,0 +1,233 @@
+<template name="athlete">
+
+
+    <div class="athlete-container">
+
+        <div class="athlete-filters">
+            <select class="form-control athlete-session-type-filter" data-selector="session-types">
+                <option value="all" {{selected typeOfSessionsFilter  "all"}}>{{translate "athlete_filters_type_all"}}</option>
+                <option value="int" {{selected typeOfSessionsFilter  "int"}}>{{translate "athlete_filters_type_interval"}}</option>
+            </select>
+            <input name="dates" type="text" class="athlete-date-interval-filter">
+            <div class="btn-group btn-group-toggle athlete-date-interval-group" data-toggle="buttons">
+                <label class="btn btn-secondary {{active groupBy "week"}}">
+                    <input type="radio" name="aggregation" value="week" autocomplete="off" {{checked groupBy "week"}}> {{translate
+                        "athlete_filters_aggregator_week"}}
+                </label>
+                <label class="btn btn-secondary {{active groupBy "month"}}">
+                    <input type="radio" name="aggregation" value="month" autocomplete="off" {{checked groupBy "month"}}> {{translate
+                        "athlete_filters_aggregator_month"}}
+                </label>
+                <label class="btn btn-secondary {{active groupBy "year"}}">
+                    <input type="radio" name="aggregation" value="year" autocomplete="off" {{checked groupBy "year"}}> {{translate
+                        "athlete_filters_aggregator_year"}}
+                </label>
+            </div>
+            <button class="button athlete-filters-apply-button disabled" id="apply-filters">{{translate "athlete_filters_apply"}}</button>
+        </div>
+
+        <a class="button profile-link" href="{{pathFor route='profile.measurements' id=athleteId}}">{{translate "main_top_bar_profile_btn"}}</a>
+
+        <div class="athlete-filters-mobile">
+            {{period}} &nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
+        </div>
+
+        <div class="section athlete-summary-desktop">
+            {{#with summary}}
+            <div>
+                <div class="athlete-highlight-box">
+                    <label class="stat">{{translate "athlete_stats_highlight_duration"}}</label>
+                    <label class="value">{{formatDurationInTimeShort duration}}</label>
+                </div>
+            </div>
+            <div>
+                <div class="athlete-highlight-box">
+                    <label class="stat">{{translate "athlete_stats_highlight_distance"}}</label>
+                    <label class="value">{{number distance}}</label>
+                </div>
+            </div>
+            <div>
+                <div class="athlete-highlight-box">
+                    <label class="stat">{{translate "athlete_stats_highlight_avg_speed"}}</label>
+                    <label class="value">{{number speed}}</label>
+                </div>
+            </div>
+            <div>
+                <div class="athlete-highlight-box">
+                    <label class="stat">{{translate "athlete_stats_highlight_avg_spm"}}</label>
+                    <label class="value">{{number spm}}</label>
+                </div>
+            </div>
+            <div>
+                <div class="athlete-highlight-box">
+                    <label class="stat">{{translate "athlete_stats_highlight_avg_length"}}</label>
+                    <label class="value">{{number length}}</label>
+                </div>
+            </div>
+            {{/with}}
+        </div>
+
+        <div class="row section athlete-summary-mobile">
+            {{#with summary}}
+                {{>genericPerformanceSummary session=sessionUI include=summaryFieldsList css="unboxed athlete-performance-summary"}}
+            {{/with}}
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="title small">{{translate "athlete_stats_sessions_title"}}</h1>
+            </div>
+        </div>
+        <div class="athletes-sessions-list">
+            {{#each sessions}}
+                {{>genericPerformanceSummary session=this include=fieldsList showSessionHourOnly=false dateFormat="dddd, DD MMMM"}}
+            {{else}}
+                <p>{{translate "dashboard_empty"}}</p>
+            {{/each}}
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="title small">{{translate "athlete_stats_charts_title"}}</h1>
+            </div>
+        </div>
+
+        <div class="row section athlete-trends-row-container">
+            <span class="athlete-stats-header">{{translate "athlete_stats_charts_volume"}}</span>
+            <div class="athlete-trends-charts-container">
+                <div class="athlete-trends-charts-box">
+                    <div id="distance-chart" class="athlete-trends-chart-smaller"></div>
+                    <div class="athlete-trends-chart-label">{{translate "athlete_stats_charts_volume_distance"}}</div>
+                </div>
+                <div class="athlete-trends-charts-box">
+                    <div id="hours-chart" class="athlete-trends-chart-smaller"></div>
+                    <div id="distance-chart" class="athlete-trends-chart-label">{{translate "athlete_stats_charts_volume_hours"}}</div>
+                </div>
+                <div class="athlete-trends-charts-box">
+                    <div id="sessions-chart" class="athlete-trends-chart-smaller"></div>
+                    <div id="distance-chart" class="athlete-trends-chart-label">{{translate "athlete_stats_charts_volume_sessions"}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row section athlete-trends-row-container">
+            <span class="athlete-stats-header">{{translate "athlete_stats_charts_performance"}}</span>
+            <div class="athlete-trends-charts-container">
+
+                <div class="athlete-trends-charts-box">
+                    <div id="speed-chart" class="athlete-trends-chart-smaller"></div>
+                    <div class="athlete-trends-chart-label">{{translate "athlete_stats_charts_performance_speed"}}</div>
+                </div>
+                <div class="athlete-trends-charts-box">
+                    <div id="spm-chart" class="athlete-trends-chart-smaller"></div>
+                    <div id="distance-chart" class="athlete-trends-chart-label">{{translate "athlete_stats_charts_performance_spm"}}</div>
+                </div>
+                <div class="athlete-trends-charts-box">
+                    <div id="dps-chart" class="athlete-trends-chart-smaller"></div>
+                    <div id="distance-chart" class="athlete-trends-chart-label">{{translate "athlete_stats_charts_performance_length"}}</div>
+                </div>
+
+            </div>
+            <div class="athlete-trends-charts-container">
+                <div class="athlete-trends-charts-box athlete-trends-charts-box-one-third">
+                    <div id="hr-chart" class="athlete-trends-chart-smaller"></div>
+                    <div class="athlete-trends-chart-label">{{translate "athlete_stats_charts_performance_heart_rate"}}</div>
+                </div>
+
+                <div class="athlete-trends-charts-box"  style="width: 66.67%">
+                    <div id="speed-vs-spm-chart" class="athlete-trends-chart-smaller"></div>
+                    <!--div class="athlete-trends-chart-label">SPM vs Speed</div-->
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row section athlete-trends-row-container">
+            <span class="athlete-stats-header">{{translate "athlete_stats_charts_intensity"}}</span>
+            <div class="athlete-trends-charts-container" id="performance-charts">
+
+                <div class="athlete-trends-charts-box">
+                    <div id="spm-zones-chart" class="athlete-trends-chart"></div>
+                    <div class="athlete-trends-chart-label">{{translate "athlete_stats_charts_intensity_spm_zones"}}</div>
+                </div>
+                <div class="athlete-trends-charts-box">
+                    <div id="speed-zones-chart" class="athlete-trends-chart"></div>
+                    <div id="distance-chart" class="athlete-trends-chart-label">{{translate "athlete_stats_charts_intensity_speed_zones"}}</div>
+                </div>
+                <div class="athlete-trends-charts-box">
+                    <div id="hr-zones-chart" class="athlete-trends-chart"></div>
+                    <div id="distance-chart" class="athlete-trends-chart-label">{{translate "athlete_stats_charts_intensity_hr_zones"}}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row section athlete-trends-row-container">
+            <span class="athlete-stats-header">{{translate "athlete_stats_charts_spm_zones_to_speed"}}</span>
+            <div class="athlete-spm-to-speed-container">
+                <table class="table">
+                    <tbody class="athlete-spm-to-speed-tbody" id="stroke-to-speed-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Modal to show filters in mobile -->
+    <div class="system-modal-container" id="mobile-filters-modal">
+        <form class="athlete-modal-filters">
+            <div class="form-group">
+                <label for="start-date">{{translate "athlete_filters_start_date"}}</label>
+                <input type="text" class="form-control" id="start-date">
+            </div>
+            <div class="form-group">
+                <label for="end-date">{{translate "athlete_filters_end_date"}}</label>
+                <input type="text" class="form-control" id="end-date">
+            </div>
+
+            <div class="form-group">
+                <label for="session-type">{{translate "athlete_filters_type"}}</label>
+                <select class="form-control athlete-session-type-filter" data-selector="session-types" id="session-type">
+                    <option value="all">{{translate "athlete_filters_type_all_mobile"}}</option>
+                    <option value="int">{{translate "athlete_filters_type_interval"}}</option>
+                </select>
+            </div>
+
+            <div class="btn-group btn-group-toggle athlete-date-interval-group" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="aggregation-modal" value="week" autocomplete="off" checked> {{translate
+                        "athlete_filters_aggregator_week"}}
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="aggregation-modal" value="month" autocomplete="off"> {{translate
+                        "athlete_filters_aggregator_month"}}
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="aggregation-modal" value="year" autocomplete="off"> {{translate
+                        "athlete_filters_aggregator_year"}}
+                </label>
+            </div>
+
+        </form>
+    </div>
+
+
+    <div class="system-modal-container" id="show-sessions-in-column">
+        <div class="athletes-sessions-list" id="modal-blame-sessions-list" ></div>
+    </div>
+
+</template>
+
+
+<template name="blameModelSessionListEntry">
+    <div class="athletes-sessions-list-entry">
+        <div class="athletes-sessions-list-entry-date">{{ formatDate date "dddd, DD MMMM" }}</div>
+        <div class="athletes-sessions-list-entry-count">{{percentage}}</div>
+        <a href="{{pathFor route="training-session" _id=sessionRouteId type=sessionType}}">
+            <div class="button athletes-sessions-list-entry-button" data-id="{{id}}" data-c-session-id="{{coachTrainingSessionId}}">
+                {{translate "link_to_session_label"}}
+            </div>
+        </a>
+    </div>
+</template>

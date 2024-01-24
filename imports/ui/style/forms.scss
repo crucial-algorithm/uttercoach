@@ -1,0 +1,218 @@
+@import '../style/colors.scss';
+
+
+/* "progress" for button actions */
+span.progress-bar {
+  width: 100%;
+  height: 100%;
+  border-radius: 13px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+  transition: width 0.5s, height 0.5s;
+  background-color: $yellow-highlight;
+}
+
+button, .button {
+  display: inline-block;
+  padding: 10px;
+  color: $white;
+  background-color: $ncs-light-purple-90;
+  border: 0;
+  border-radius: 13px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  min-width: 100px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+
+  &:hover, &:focus, &:active {
+    background-color: $ncs-light-purple;
+    color: $white;
+    outline: none;
+    text-decoration: none;
+  }
+
+  &.disabled, &:disabled {
+    background-color: $ncs-light-purple-50;
+    color: $white;
+
+    &:hover, &:focus, &:active {
+      background-color: $ncs-light-purple-60;
+    }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    color: $ncs-grey-90;
+    border: 1px solid $ncs-grey-50;
+
+    &:hover, &:focus, &:active {
+      background-color: $ncs-grey-10;
+    }
+
+    &.disabled, &:disabled {
+      background-color: transparent;
+      color: $ncs-grey-40;
+      border: 1px solid $ncs-grey-40;
+
+      &:hover, &:focus, &:active {
+        background-color: $ncs-grey-10;
+        border: 1px solid $ncs-grey-50;
+        color: $ncs-grey-50;
+      }
+    }
+
+    &.confirm-running span.progress-bar {
+      background-color: $ncs-grey;
+    }
+  }
+
+  &.tertiary {
+    background-color: transparent;
+    color: $ncs-grey-90;
+    text-decoration: underline;
+    border: 1px solid transparent;
+
+    &:hover, &:focus, &:active {
+      background-color: $ncs-grey-10;
+      border: 1px solid $ncs-grey-40;
+    }
+
+    &.disabled, &:disabled {
+      color: $ncs-grey-50;
+
+      &:hover, &:focus, &:active {
+        color: $ncs-grey-60;
+      }
+    }
+  }
+
+  &.button-icon {
+    min-width: 30px;
+    width: 30px;
+    border-radius: 30px;
+    height: 30px;
+    padding: 0;
+    background-color: $ncs-grey-20;
+    font-size: 16px;
+    color: $ncs-grey-60;
+    border: none;
+    outline: 0;
+    text-decoration: none;
+
+    &:hover, &:active, &:focus, &:visited {
+      border: none;
+      background-color: $ncs-grey-30;
+      color: $ncs-grey;
+      text-decoration: none;
+      outline: 0;
+    }
+  }
+
+  &.expand {
+    width: 100%;
+  }
+
+  &.small {
+    min-width: auto;
+  }
+
+  &.inline {
+    min-width: 80px;
+    border-radius: 15px;
+    padding: 0 10px;
+    font-size: 10px;
+    line-height: 30px;
+  }
+
+
+  /* confirm mode */
+  span.progress-bar {
+    display: none;
+  }
+
+  &.confirm-running {
+    color: transparent;
+    span.progress-bar {
+      color: $white;
+      display: block;
+    }
+  }
+
+  &.confirm-running::after {
+    content: attr(data-cancel);
+  }
+
+  &.confirm-running:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    color: #fff !important;
+  }
+}
+
+input {
+  padding: 5px;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+
+  &:disabled {
+    background-color: $ncs-grey-70;
+    border: 1px solid $ncs-grey-90;
+    color: $white;
+    font-weight: 700;
+  }
+}
+
+.title {
+  margin: 0 0 20px;
+  color: $ncs-light-purple;
+  font-size: 20px;
+
+  &.small {
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+}
+
+.section {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.section-actions {
+  text-align: right;
+  margin-top: 10px;
+}
+
+
+@media (max-width: 767px) {
+
+  .button {
+    min-height: 40px;
+    min-width: 120px;
+    line-height: 28px;
+    background-color: $ncs-light-purple;
+
+    &.button-icon {
+      min-height: 40px;
+      min-width: 40px;
+    }
+  }
+}

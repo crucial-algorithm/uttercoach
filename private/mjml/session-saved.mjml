@@ -1,0 +1,23 @@
+<mjml>
+    {{>head }}
+  <mj-body background-color="#d6d6d5">
+    {{> logo }}
+
+    <mj-section background-color="#ffffff" padding="60px 0">
+      <mj-column width="600px">
+        <mj-text padding-bottom="40px" mj-class="h1" align="left" color="#999999">
+          {{greeting}},
+        </mj-text>
+        <mj-text mj-class="h3" align="left" color="#999999">
+          {{message}}
+        </mj-text>
+
+        <mj-text mj-class="h3" align="left" color="#999999">
+          <a class="links" href="{{link}}">{{link}}</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    {{> footer }}
+  </mj-body>
+</mjml>

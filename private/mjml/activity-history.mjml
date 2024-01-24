@@ -1,0 +1,31 @@
+<mjml>
+    {{>head }}
+
+    <mj-body background-color="#d6d6d5" width="1200px">
+    {{> logo }}
+
+
+    <mj-section background-color="#ef6155">
+        <mj-group>
+            <mj-column><mj-text>ID</mj-text></mj-column>
+            <mj-column><mj-text>Name</mj-text></mj-column>
+            <mj-column><mj-text>Last Seen At</mj-text></mj-column>
+            <mj-column><mj-text>Distance</mj-text></mj-column>
+            <mj-column><mj-text mj-class="text header">Country</mj-text></mj-column>
+        </mj-group>
+    </mj-section>
+
+    {{#each athletes}}
+        <mj-section background-color="#fff">
+          <mj-column><mj-text>{{id}}</mj-text></mj-column>
+          <mj-column><mj-text>{{name}}</mj-text></mj-column>
+          <mj-column><mj-text>{{lastSessionAt}} day ago</mj-text></mj-column>
+          <mj-column><mj-text>{{distance}}</mj-text></mj-column>
+          <mj-column><mj-text>{{country}}</mj-text></mj-column>
+        </mj-section>
+    {{/each}}
+
+
+    {{> footer }}
+  </mj-body>
+</mjml>

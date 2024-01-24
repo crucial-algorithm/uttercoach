@@ -1,0 +1,12 @@
+<template name="trainingSessions">
+
+    <div id="date-navigation"></div>
+    <div class="training-sessions">
+        {{#each sessions}}
+            {{>genericPerformanceSummary session=this include=fieldsList showSessionHourOnly=true}}
+        {{else}}
+            <p>{{translate "dashboard_empty"}}</p>
+        {{/each}}
+    </div>
+
+</template>

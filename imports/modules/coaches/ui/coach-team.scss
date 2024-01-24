@@ -1,0 +1,492 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.coach-team-empty-group {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: #848484;
+    font-style: italic;
+    display: none;
+    line-height: 60px;
+
+    &:only-child {
+        display: inline;
+    }
+}
+
+
+.athlete-group.content-box.athlete-group-drag-highlight {
+    background-color: $new-blue;
+    opacity: 0.25;
+
+    > .coach-team-empty-group {
+        display: none;
+    }
+}
+
+.athlete-group {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    min-height: 100px;
+
+    &.closed {
+        display: none;
+    }
+
+    .athlete-avatar {
+        padding: 0 0 0 20px;
+        height: 40px;
+    }
+
+    .athlete {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: 50px;
+        padding: 5px 0 0 20px;
+        margin: 0 0 6px 0;
+        background: $white;
+        border-radius: 25px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.draggable {
+            cursor: move;
+        }
+
+        .athlete-actions {
+            padding: 5px 8px 8px 8px;
+            text-align: right;
+            height: 40px;
+
+            .dropdown-menu {
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: 500;
+            }
+            .dropdown-item {
+                cursor: pointer;
+                line-height: 30px;
+                height: 30px;
+                text-align: center;
+                z-index: 2000;
+
+                &:active, &:focus {
+                    background-color: $white;
+                    color: $dark-grey
+                }
+            }
+        }
+
+        .athlete-name {
+            margin-left: 10px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 14px;
+            vertical-align: middle;
+            color: $ncs-light-black
+        }
+
+        .athlete-status {
+            display: none;
+        }
+    }
+
+    &.small {
+        padding: 0;
+        margin-bottom: 20px;
+        background: none;
+        border: 0;
+
+        &:last-child {
+            margin: 0;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+
+            .avatar-initials {
+                font-size: 16px;
+                line-height: 32px;
+            }
+        }
+
+        .draggable-border {
+            padding-top: 10px;
+        }
+
+        .athlete {
+            height: 42px;
+
+            .athlete-name {
+                margin-left: 4px;
+                font-size: 14px;
+            }
+
+            .athlete-actions {
+                display: none;
+            }
+
+            .athlete-status {
+                display: block;
+                padding: 0;
+                padding-top: 2px;
+                color: $primary-color;
+                line-height: 24px;
+
+                .section-button {
+                    position: absolute;
+                    right: 4px;
+                    top: 2px;
+                    padding: 0;
+                    font-size: 18px;
+
+                    .icon {
+                        margin: 0;
+                    }
+                }
+            }
+
+            .pending {
+                color: $accent-color;
+            }
+        }
+    }
+}
+
+.coach-remove-athlete-from-team {
+    margin-right: 10px;
+}
+
+.athlete-group.content-box {
+    background: $white;
+    border: unset;
+    border-radius: 0 0 15px 15px;
+}
+
+.group-title {
+    width: 100%;
+    padding: 10px 10px 10px 20px;;
+    margin-top: 20px;
+    color: #5F5F5F;
+    background-color: $ncs-light-grey;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all .2s ease-in-out;
+    z-index: 20;
+    border-radius: 15px 15px 0 0;
+
+    &:first-child {
+        margin: 0;
+    }
+
+    &.pending-requests {
+        background-color: $accent-color;
+    }
+
+    .icon {
+        float: right;
+        width: 30px;
+        height: 30px;
+        padding-top: 8px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .collapse-icon {
+        transform: rotate(0);
+        transition: all .2s ease-in-out;
+    }
+
+    &.closed .collapse-icon {
+        transform: rotate(180deg);
+    }
+
+    input {
+        width: 225px;
+        background: none;
+        border: 0;
+        border-radius: 0;
+        border-bottom: 2px solid #a9a9a9;
+        outline: none;
+        transition: all .3s ease-in-out;
+        color: $ncs-primary;
+        font-weight: 700;
+
+        &:focus {
+            border-bottom: 2px solid $accent-color;
+        }
+    }
+}
+
+#new-group {
+    padding: 10px;
+    margin-top: 20px;
+    color: $ncs-light-black;
+    border-style: dashed;
+    border-width: 2px;
+    cursor: pointer;
+    border-color: $ncs-light-black;
+    border-radius: 20px;
+    border-spacing: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #F3F3F3;
+}
+
+.draggable-border {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    padding-top: 0;
+    color: $ncs-light-grey;
+    border-radius: 0;
+    text-align: center;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+
+    .icon:first-child {
+        padding-right: 2px;
+    }
+}
+
+.invite-athletes {
+    margin-top: 20px;
+    background-color: $ncs-light-grey;
+    color: $ncs-light-black;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+    padding: 40px 20px;
+    border-radius: 6px;
+
+    .invite-code {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin-bottom: 20px;
+        color: $ncs-black;
+        background-color: $white;
+        border-radius: 20px;
+        letter-spacing: 4px;
+        font-size: 20px;
+
+        p {
+            color: #495164;
+            margin: 0;
+        }
+
+        label {
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+    }
+
+    .additional-info {
+        font-size: 14px;
+        font-weight: initial;
+    }
+
+}
+
+.athletes-pending-header, .current-athletes-header {
+    background-color: $green;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 10px;
+    height: 40px;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.athletes-pending {
+    background-color: $light3-grey;
+    min-height: 60px;
+    padding: 20px 10px;
+    position: relative;
+
+    .athlete-details-btn {
+        display: none;
+    }
+
+}
+
+.athletes-pending-empty {
+    color: $dark-grey;
+    font-style: italic;
+    font-size: 12px;
+    display: none;
+
+    &:only-child {
+        display: inline;
+    }
+}
+
+.athlete-name.mobile {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+.athlete-mobile {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px auto;
+    width: 90vw;
+    border-bottom: 1px solid $light2-grey;
+    padding-bottom: 10px;
+
+    .athlete-avatar {
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .athlete-name-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+    }
+
+    .athlete-name {
+        text-align: left;
+    }
+    .athlete-team {
+        display: block;
+        font-size: 12px;
+        color: $green;
+    }
+
+    .dropdown-menu {
+        cursor: pointer;
+
+        i {
+            display: none
+        }
+
+        i.current-group {
+            display: initial;
+        }
+    }
+
+}
+
+.athletes-list {
+    margin-bottom: 60px;
+
+}
+
+.coach-team-modal-warning {
+    font-size: 18px;
+    text-align: center;
+}
+
+.coach-team-modal-warning-info {
+    font-size: 14px;
+    text-align: center;
+}
+
+.coach-team-invite-athletes-button {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1180px) {
+    .athletes-pending {
+
+        .athlete-avatar {
+            width: 184px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+
+    .invite-athletes {
+        margin: 0;
+        padding: 20px 20px;
+    }
+
+    .athlete-group .athlete .athlete-name {
+        margin-left: 10px;
+        text-align: left;
+        font-size: 14px;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+        max-width: 160px;
+        white-space: nowrap;
+    }
+
+    .athlete-group {
+
+        & .athlete.draggable {
+            display: table;
+            vertical-align: middle;
+            padding-left: 5px;
+            width: 100%;
+
+            & .athlete-avatar {
+                vertical-align: middle;
+                display: table-cell;
+                width: 80%;
+            }
+
+            & .athlete-actions {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+
+
+         & .athlete {
+             position: static;
+             padding: 0;
+
+
+             & > .draggable-border {
+                 display: none;
+             }
+
+         }
+
+
+    }
+
+    .athlete-actions {
+        & .button {
+            & > span {
+                display: none;
+            }
+        }
+    }
+}

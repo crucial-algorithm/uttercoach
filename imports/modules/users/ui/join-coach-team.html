@@ -1,0 +1,79 @@
+<template name="appLinkJoinCoachTeam">
+    {{#with coach}}
+    <div class="join-coach-team-body">
+
+        <div class="join-coach-team-row">
+            <div class="join-coach-team-column">
+                <div class="join-coach-team-page-title">Join {{name}} team</div>
+            </div>
+        </div>
+
+
+        <div class="join-coach-team-row">
+            <div class="join-coach-team-column">
+                <div class="join-coach-team-section-title">Download and install {{appName}}</div>
+                <div class="join-coach-team-description">{{appName}} will be used during your session to record all your data and share it with your coach. Download now, it's free</div>
+                <div class="join-coach-team-store-container">
+                    <a href="{{androidLink}}">
+                        <img alt="download from play store" width="160px" src="/images/google-play-red.png?v=hjWnPbMKmpc9KNYLP">
+                    </a>
+                    <a href="{{iOSLink}}">
+                        <img alt="download from app store" width="160px" src="/images/app-store-red.png?v=hjWnPbMKmpc9KNYLP">
+                    </a>
+
+                </div>
+            </div>
+            <div class="join-coach-team-column">
+                <div class="join-coach-team-img">
+                    <img src="/images/{{appImagePreview}}?v=hjWnPbMKmpc9KNYLP">
+                </div>
+            </div>
+        </div>
+        <div class="join-coach-team-row join-coach-team-row-middle-row">
+            <div class="join-coach-team-column">
+                <div class="join-coach-team-img">
+                    <img src="/images/accept-coach-request.png">
+
+                </div>
+            </div>
+            <div class="join-coach-team-column">
+                <div class="join-coach-team-section-title">Join your coach team</div>
+                <div class="join-coach-team-description">
+                    <p>Once install finishes, <span class="important"><b>go back to your email</b>, and tap the link again to join your coach team automatically.</span></p>
+                    <p>Important: If asked to open with {{appName}} or browser, choose {{appName}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="join-coach-team-row">
+            <div class="join-coach-team-column">
+                <div class="join-coach-team-section-title">I could not join the team clicking the link</div>
+                <div class="join-coach-team-description">
+                    <p>Don't worry, we've got you covered</p>
+                    <p>Go to SETTINGS > COACH and send an invite to your coach from there, using either his email or his invitation code</p>
+                </div>
+                <div class="join-coach-team-coach-id">
+                    <label>Email</label>
+                    <div class="code">{{email}}</div>
+                    <div class="copy-instruction">tap to copy</div>
+                </div>
+                <div class="join-coach-team-coach-id">
+                    <label>Invitation Code</label>
+                    <div class="code invitation-code">{{invitationCode}}</div>
+                    <div class="copy-instruction">tap to copy</div>
+                </div>
+            </div>
+            <div class="join-coach-team-column">
+                <div class="join-coach-team-img">
+                    <img src="/images/manage-coach.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{else}}
+        <div class="join-coach-team-loading">
+            <div class="lds-hourglass light-background"></div>
+        </div>
+    {{/with}}
+</template>

@@ -1,0 +1,133 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.join-coach-team-body {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $light-grey;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.join-coach-team-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: $light-grey;
+}
+
+.join-coach-team-store-container {
+  display: flex;
+  margin-top: 20px;
+
+  > a:first-child {
+    margin-right: 20px;
+  }
+}
+
+.join-coach-team-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin-top: 40px;
+}
+
+.join-coach-team-column {
+  padding-left: 40px;
+}
+
+.join-coach-team-page-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: $new-red;
+  text-align: center;
+}
+
+.join-coach-team-section-title {
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $primary-color
+}
+
+.join-coach-team-description {
+  color: $dark-grey;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 20px;
+
+  p {
+    color: $dark-grey;
+  }
+
+  .important {
+    color: $new-red
+  }
+}
+
+.join-coach-team-coach-id {
+  background-color: $primary-color;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 8px;
+
+  .code {
+    margin-top: 10px;
+  }
+
+  .invitation-code {
+    letter-spacing: 6px;
+  }
+
+  label {
+    color: $dark-grey;
+    margin: 0;
+
+  }
+
+  .copy-instruction {
+    font-size: 80%;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .join-coach-team-row {
+    flex-direction: column;
+  }
+
+  .join-coach-team-column {
+    padding-left: 0;
+  }
+
+  .join-coach-team-row-middle-row {
+    flex-direction: column-reverse;
+  }
+
+  .join-coach-team-img > img {
+    margin-top: 20px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+p {
+  color: rgba(0, 0, 0, .3)
+}
+
+p.small {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 1)
+}

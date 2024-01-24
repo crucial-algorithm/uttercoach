@@ -1,0 +1,48 @@
+{
+  "stripe": {
+    "plan": "plan_EMizdLiaZQUBto",
+    "coupon": "two-months-free",
+    "secret_key": "sk_test_9lTYPfyISxB2FurMLZdlUpOm",
+    "webhook_signing_secret": "whsec_w4ztVed22Za8gpP3Z5auWz8hBAo62wC6"
+  },
+  "aggregate_batch_size": 250,
+  "create_stripe_customer_batch_size": 0,
+  "strava": {
+    "gopaddler": {
+      "secret": "7d72f0e6627f88867cefcf9f546237cb27393f25",
+      "client_id": 51861
+    },
+    "uttercycling": {
+      "secret": "cd0e8080b5c6d311d34b835f4344a224dbc4363b",
+      "client_id": 51859
+    }
+  },
+  "maps": {
+    "key": "pk.a132373e26e109e5a67e27e259fc234c",
+    "batch_size": 0
+  },
+  "activity_report": {
+    "schedule": "every 1 month",
+    "address": "reports@gopaddler.com"
+  },
+  "dont_run_batch": false,
+  "public": {
+    "stripe": {
+      "publishable_key": "pk_test_JF5fomYBt1ANUGRSOh7bFxfN"
+    },
+    "sports": {
+      "canoeing": {
+        "app_name": "GoPaddler",
+        "app_preview": "canoeing.gif",
+        "app_link_android": "https://play.google.com/store/apps/details?id=com.gopaddler.app",
+        "app_link_ios": "itms-apps://itunes.apple.com/pt/app/gopaddler/id1149602167?l=en&mt=8"
+      },
+      "cycling": {
+        "app_name": "Utter Cycling",
+        "app_preview": "cycling.png",
+        "app_link_android": "https://play.google.com/store/apps/details?id=com.uttercoach.cycling",
+        "app_link_ios": "itms-apps://itunes.apple.com/pt/app/?l=en&mt=8"
+      }
+    }
+  }
+}

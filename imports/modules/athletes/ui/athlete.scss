@@ -1,0 +1,548 @@
+@import '{}/imports/ui/style/colors.scss';
+
+[data-page="athlete"] > #content {
+    background-color: $white;
+}
+
+.athlete-container {
+    position: relative;
+}
+
+.athlete-info {
+    padding: 11px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .athlete-avatar {
+        display: block;
+        margin-right: 4px;
+        vertical-align: top;
+    }
+
+    .athlete {
+        display: inline-block;
+        height: 54px;
+        padding-top: 6px;
+        vertical-align: top;
+        text-align: center;
+
+        .athlete-group {
+            display: block;
+            margin-top: 2px;
+            color: #EF6155;
+            border-top: 1px solid #E6E6E6;
+            font-weight: 500;
+            font-size: 12px;
+            text-align: center;
+        }
+    }
+}
+
+.athlete-summary-desktop {
+    background-color: $table-background-color;
+    height: 154px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.athlete-filters {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.athlete-session-type-filter {
+    max-width: 200px;
+    margin-right: 10px;
+}
+
+.athlete-date-interval-filter {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    height: 40px;
+    width: 230px;
+    text-align: center;
+}
+
+.athlete-date-interval-group {
+    margin-left: 10px;
+    text-transform: capitalize;
+}
+
+.athlete-filters-apply-button {
+    margin-left: 10px;
+}
+
+.athletes-sessions-list {
+    display: flex;
+    flex-wrap: wrap;
+    height: 800px;
+    overflow: auto;
+    margin-bottom: 40px;
+    background-color: $light3-grey;
+    border-radius: 4px;
+    padding: 10px;
+
+    .session-summary-title {
+        display: none;
+    }
+}
+
+.modal-body  .athletes-sessions-list {
+    height: auto;
+    margin: 0;
+}
+
+.athletes-sessions-list-body {
+    height: 400px;
+    overflow: auto;
+}
+
+.athletes-sessions-list-entry, .athletes-sessions-list-header {
+    position: relative;
+    height: 60px;
+    padding: 5px 0 0 20px;
+    margin: 0 0 6px 0;
+    background: $white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    & > div {
+        margin-right: 10px;
+    }
+}
+
+.athletes-sessions-list-entry:last-child {
+    margin-bottom: 80px;
+}
+
+.athletes-sessions-list-header {
+    height: 60px;
+    background-color: $light3-grey;
+    border-radius: 4px;
+
+    & > div {
+        color: $primary-color;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .athletes-sessions-list-entry-duration {
+        text-align: left;
+    }
+
+    .athletes-sessions-list-entry-distance {
+        text-align: left;
+    }
+}
+
+
+.athletes-sessions-list-entry-date {
+    min-width: 210px;
+    width: 210px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: capitalize;
+}
+
+.athletes-sessions-list-entry-duration {
+    width: 80px;
+    text-align: center;
+}
+
+.athletes-sessions-list-entry-distance {
+    width: 80px;
+    text-align: center;
+}
+
+.athletes-sessions-list-entry-count {
+    width: 80px;
+    text-align: right;
+}
+
+.athletes-sessions-list-entry-expression {
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    width: 60%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.athletes-sessions-list-entry-button {
+    border-radius: 13px;
+    font-size: 10px;
+    padding: 6px 16px;
+    margin-right: 30px;
+}
+
+.athlete-name {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: $dark-grey;
+}
+
+.athlete-highlight-box {
+    padding: 10px;
+    height: 131px;
+    border: 0;
+    background: $white;
+    border-radius: 4px;
+    margin-top: 11px;
+    min-width: 168px;
+
+    .stat {
+        display: inline-block;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        color: #3B3D62;
+        font-size: 12px;
+        text-align: center;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .value {
+        display: block;
+        color: $new-red;
+        font-size: 26px;
+        font-weight: 300;
+        line-height: 60px;
+        text-align: center;
+    }
+}
+
+.fc-athlete-session {
+    display: table;
+    width: 100%;
+    height: 60px;
+
+    .highlight {
+        display: table-cell;
+        padding: 0;
+        background-color: $accent-color;
+        vertical-align: middle;
+        width: 40px;
+        text-align: center;
+
+        label {
+            font-size: 10px;
+            text-align: center;
+            color: $white;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: 20px;
+            color: $white;
+            text-align: center;
+        }
+
+    }
+
+    .main {
+        display: table-cell;
+        height: 100%;
+        padding-left: 4px;
+        vertical-align: middle;
+
+        span {
+            display: block;
+            font-weight: bold;
+            font-size: 16px;
+            padding-bottom: 4px;
+        }
+    }
+}
+
+.fc-event {
+    cursor: pointer;
+}
+
+.athlete-stats-header {
+    width: 100%;
+    height: 34px;
+    color: $dark-blue;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 34px;
+}
+
+.athlete-summary-mobile {
+    display: none;
+}
+
+.athlete-trends-row-container {
+    background: #F8F8F8;
+    border-radius: 6px;
+}
+
+.athlete-trends-charts-container {
+    display: flex;
+    width: 100%;
+}
+
+.athlete-trends-charts-box {
+    width: 100%;
+}
+
+.athlete-trends-charts-box.athlete-trends-charts-box-one-third {
+    width: 33.33%;
+}
+
+.athlete-spm-to-speed-container {
+    overflow: auto;
+}
+
+.athlete-trends-chart {
+    width: 100%;
+    height: 400px;
+}
+
+.athlete-trends-chart-smaller {
+    width: 100%;
+    height: 240px;
+}
+
+.athlete-trends-chart-label {
+    border-radius: 15px;
+    background: $white;
+    text-align: center;
+    text-transform: uppercase;
+    height: 24px;
+    line-height: 24px;
+    font-size: 10px;
+    font-weight: 900;
+    color: $new-red;
+    margin: 8px;
+}
+
+.athlete-button.profile {
+    background: #505284;
+    text-shadow: none;
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: flex;
+    padding: 0.3em 1.4em;
+
+    > a:hover {
+        text-decoration: none;
+    }
+}
+
+.profile-link {
+    position: absolute;
+    top: 0;
+}
+
+.modal.modal-fullscreen .modal-dialog .modal-content .modal-footer.athlete-physical-modal-footer {
+    background-color: $white;
+}
+
+.athlete-filters-mobile {
+    display: none;
+}
+
+.athlete-spm-to-speed-tbody {
+    text-align: center;
+
+    th, td:not(:last-child) {
+        width: 100px;
+    }
+
+    td:last-child {
+        text-align: left;
+    }
+}
+
+.athlete-spm-to-speed-x-label {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.athlete-modal-filters {
+    margin: 0 10px;
+}
+
+@media (max-width: 767px) {
+    .athlete-container > .button.profile-link {
+        display: none;
+    }
+
+    #latest-activity-container {
+        display: none;
+    }
+
+    .athlete-info {
+        padding: 8px 0;
+        text-align: center;
+        background-color: $white;
+        margin-bottom: 16px;
+        border: 1px solid $border-color;
+    }
+
+    .athlete-summary-desktop {
+        display: none;
+    }
+
+    .athlete-summary-mobile {
+        display: block;
+    }
+
+    .summary-table {
+        display: table;
+        width: 100%;
+
+        & .row {
+            display: table-row;
+            width: 100%;
+            height: 50px;
+
+            & > div {
+                width: 50%;
+                display: table-cell;
+            }
+        }
+
+        & .summary-value {
+            display: table-cell;
+            line-height: 100%;
+            vertical-align: middle;
+            padding-left: 6px;
+            font-size: 22px;
+
+            & > span.unit {
+                font-size: 10px;
+            }
+        }
+
+        & .summary-icon {
+            display: table-cell;
+            font-size: 30px;
+            text-align: center;
+            width: 30%;
+            color: $accent-color;
+        }
+    }
+
+    #volume-charts, #performance-charts {
+        margin-bottom: 10px;
+    }
+
+
+    .athlete-filters {
+        display: none;
+    }
+
+    .athlete-filters-mobile {
+        display: flex;
+        height: 40px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .athlete-date-interval-group {
+        margin-left: 0;
+
+        label {
+            width: 30vw;
+        }
+    }
+
+    .athletes-sessions-list {
+        height: 600px;
+    }
+
+    .athletes-sessions-list-header {
+        display: none;
+    }
+
+    .athletes-sessions-list-body {
+        margin-top: 30px;
+        height: 540px;
+
+        .session-summary {
+            margin-bottom: 10px;
+        }
+
+        .session-summary:last-child {
+            margin-bottom: 40px;
+        }
+
+        .session-summary-header {
+            min-height: 60px;
+
+            .session-summary-title {
+                display: none;
+            }
+        }
+    }
+
+    .modal.modal-fullscreen .modal-dialog .modal-content .modal-footer.athlete-physical-modal-footer {
+        background-color: $primary-color;
+        border: 0;
+
+        button.btn.secondary {
+            display: none;
+        }
+    }
+
+    .modal.modal-fullscreen .modal-dialog .modal-content .modal-footer.zone-replicate-footer {
+        background-color: $primary-color;
+        border: 0;
+
+        button.btn.secondary {
+            display: none;
+        }
+    }
+
+
+    .athletes-sessions-list-entry-expression {
+        display: none;
+    }
+
+    .athletes-sessions-list-entry-duration {
+        display: none;
+    }
+
+    .athletes-sessions-list-entry-distance {
+        display: none;
+    }
+
+    .athlete-performance-summary {
+        .session-summary-header {
+            min-height: 50px;
+        }
+    }
+
+    .athlete-trends-charts-container {
+        flex-direction: column;
+    }
+
+    .athlete-trends-charts-box.athlete-trends-charts-box-one-third {
+        width: 100%
+    }
+
+}

@@ -1,0 +1,327 @@
+@import '{}/imports/ui/style/colors.scss';
+[data-page="training-sessions"] > #content {
+    background-color: $white;
+}
+
+.training-session-title {
+
+}
+
+.training-sessions-summary-desktop {
+    margin-bottom: 60px;
+    background: #F8F8F8;
+    height: 120px;
+    padding-top: 11px;
+    border-radius: 6px;
+}
+
+.training-sessions-summary-mobile {
+    display: none;
+}
+
+
+.dashboard-mobile-athlete-list {
+    display: none;
+}
+
+.training-sessions-highlight-box {
+    padding: 10px;
+    height: 98px;
+    border: 0;
+    background: $white;
+    border-radius: 4px;
+
+    .stat-icon {
+        float: right;
+        height: 0;
+        color: $border-color;
+        font-size: 24px;
+    }
+
+    .stat {
+        display: inline-block;
+        width: 100%;
+        height: 30px;
+        padding-right: 28px;
+        color: $text-color;
+        font-size: 12px;
+        text-transform: capitalize;
+    }
+
+    .value {
+        display: block;
+        color: $accent-color;
+        font-size: 24px;
+        font-weight: 100;
+        line-height: 24px;
+        border-top: 1px solid $content-box-color;
+        padding: 0 0 4px;
+    }
+
+    .total {
+
+        font-size: 16px;
+    }
+
+    .weekly-comparison {
+        display: none;
+        margin: 0;
+        font-size: 10px;
+        font-weight: normal;
+
+        b {
+            font-size: 12px;
+        }
+
+        .icon {
+            font-size: 14px;
+        }
+    }
+
+    .stat-up {
+        color: $primary-color-dark-text;
+    }
+
+    .stat-down {
+        color: $accent-color;
+    }
+}
+
+.training-sessions-active-athletes {
+    background: #F8F8F8;
+    padding-top: 11px;
+    border-radius: 6px;
+}
+
+.training-sessions-athlete-list {
+    border: 6px;
+    background-color: $table-background-color;
+    text-align: center;
+
+
+    .header {
+        color: $medium-grey;
+        font-size: 10px;
+        text-align: center;
+        font-weight: 400;
+        height: 14px;
+        line-height: 14px;
+    }
+    .athlete {
+        color: $new-blue;
+        border-bottom: 1px solid $white;
+        text-align: center;
+        height: 60px;
+
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+            border: 0;
+        }
+
+        .athlete-actions {
+            padding-top: 13px;
+            text-align: right;
+
+            .round-button {
+                width: 30px;
+                border-radius: 15px;
+                background-color: $light2-grey;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                color: $white;
+                float: right;
+            }
+        }
+
+        .athlete-avatar {
+            padding-top: 10px;
+            text-align: left;
+            font-size: 14px;
+            color: $dark-grey;
+        }
+
+        .athlete-name {
+            margin-left: 10px;
+            font-size: 16px;
+            font-weight: 100;
+            vertical-align: middle;
+        }
+
+        .athlete-stats {
+            text-align: center;
+            line-height: 60px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .athlete-performance {
+            background-color: $content-box-color;
+        }
+    }
+}
+
+.training-sessions-athlete-list-no-rows {
+    font-size: 18px;
+    height: 80px;
+    line-height: 80px;
+    color: $primary-color-lighter;
+    font-weight: 900;
+}
+
+
+@media (max-width: 800px) {
+    .training-session-title {
+        display: none
+    }
+
+    .training-sessions-athlete-list {
+        display: none;
+    }
+
+    .dashboard-mobile-athlete-list {
+        display: block;
+    }
+
+    .dashboard-athlete-list {
+        display: none;
+    }
+
+    .training-sessions-summary-desktop {
+        display: none;
+    }
+
+    .training-sessions-summary-mobile {
+        display: block;
+        width: 100%;
+
+        .summary-table {
+            display: table;
+            width: 100%;
+
+            & .row {
+                display: table-row;
+                width: 100%;
+                height: 50px;
+
+                & > div {
+                    width: 50%;
+                    display: table-cell;
+                }
+            }
+
+            & .summary-value {
+                display: table-cell;
+                line-height: 100%;
+                vertical-align: middle;
+                padding-left: 6px;
+                font-size: 22px;
+
+                & > span.unit {
+                    font-size: 10px;
+                }
+            }
+
+            & .summary-icon {
+                display: table-cell;
+                font-size: 30px;
+                text-align: center;
+                width: 30%;
+                color: $accent-color;
+            }
+        }
+    }
+
+
+    #training-sessions-calendar {
+        .fc .fc-toolbar > * > * {
+            margin: auto;
+        }
+
+        .fc-toolbar .fc-right {
+            float: none;
+        }
+
+        .fc .fc-toolbar h2 {
+            text-align: center;
+            line-height: 40px;
+            width: 100%;
+        }
+
+        .fc-unthemed .fc-divider, .fc-unthemed .fc-popover .fc-header, .fc-unthemed .fc-list-heading td {
+            background-color: $primary-color;
+            color: $white;
+        }
+
+        .fc .fc-button {
+            background-color: $grey;
+            color: $primary-color;
+        }
+
+        .fc-button-group {
+            height: 20px;
+            width: 98vw;
+            margin-left: 1vw;
+
+
+            & > button.fc-prev-button {
+                height: 40px;
+                width: 60px;
+            }
+            & > button.fc-next-button {
+                height: 40px;
+                width: 60px;
+                float: right;
+            }
+        }
+        .fc-toolbar.fc-header-toolbar {
+            height: 45px;
+            width: 98vw;
+        }
+
+
+        .fc-today-button {
+            display: none;
+        }
+
+        .fc-list-view {
+            border: 0;
+            width: 98vw;
+        }
+
+        .fc-list-table {
+            background-color: $white;
+        }
+
+        /*  END customize calendar layout */
+
+
+        /* START customize calendar event  */
+
+        .fc-event-header {
+            padding: 0 4px;
+            color: $white;
+            background-color: $accent-color;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            font-weight: bolder;
+        }
+
+        .fc-content {
+            display: block;
+            padding: 2px 6px 4px;
+            color: $default-text-color;
+            border: 1px solid $border-color;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+
+
+
+}

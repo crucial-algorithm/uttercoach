@@ -1,0 +1,542 @@
+@import '{}/imports/ui/style/colors.scss';
+
+/* ---------- Layout ---------- */
+.coach-live-menu {
+    color: #a7a7a7;
+
+}
+
+.coach-live-devices {
+    height: calc(var(--vh, 1vh) * 100 - 56px - 44px - 80px - 50px - 40px);
+    overflow: auto;
+}
+
+
+/* Start of duplicate of mobile header */
+
+.navbar-nav > li {
+
+}
+
+/* end of duplicate of mobile header */
+
+.coach-live-scheduled-session {
+
+    background-color: $ncs-grey-20;
+    width: 96vw;
+    height: 40px;
+    color: $ncs-grey;
+    font-size: 12px;
+    padding-left: 10px;
+    line-height: 40px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &.disabled {
+        opacity: 0;
+    }
+}
+
+.live-sessions-dialog {
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    height: 70vh;
+    font-family: 'Roboto', sans-serif;
+
+    .modal-content {
+        border: 0;
+        border-radius: 0;
+        box-shadow: inherit;
+        height: 100vh;
+    }
+
+    .modal-body {
+        padding: 0 2vw 0 2vw;
+    }
+}
+
+.live-select-session-type {
+    ul {
+        height: calc(100vh - 50px);
+        overflow: auto;
+        list-style-type: none;
+        width: 100vw;
+        padding: 0;
+
+        li {
+            padding: 0 6px;
+            height: 50px;
+            line-height: 50px;
+            color: #68686A;
+            width: 100vw;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+.live-sessions-half-button, .live-sessions-full-button {
+    display: flex;
+    width: 50%;
+    height: 82px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4vh;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.live-sessions-full-button .slick-initialized .slick-slide {
+    display: flex;
+}
+
+.live-sessions-full-button, .live-sessions-full-button-interval {
+    width: 96vw;
+    margin: 0 2vw;
+    border-radius: 6px 6px 0 0;
+    font-size: 20px;
+}
+
+.live-sessions-full-button-interval {
+    padding-bottom: 40px;
+
+    > div {
+        width: 40vw;
+        position: fixed;
+        bottom: 0;
+        left: 30vw;
+        height: 26px;
+        line-height: 26px;
+        font-size: 14px;
+        border-radius: 10px 10px 0 0;
+        background-color: rgba(0, 0, 0, 0.16);
+        color: #6B6DA7;
+    }
+
+    &.stop {
+        background-color: #EF6155;
+        display: flex;
+
+
+        > label {
+            height: 8vh;
+            margin: 0;
+            font-weight: 700;
+            line-height: 8vh;
+        }
+
+        > div {
+            color: #EF6155;
+            //width: 40vw;
+            //height: 4vh;
+            //line-height: 4vh;
+            //font-size: 14px;
+            //border-radius: 10px 10px 0 0;
+            //background-color: rgba(0, 0, 0, 0.16);
+            //margin-left: 28vw;
+        }
+    }
+}
+
+.live-sessions-full-button-split {
+    background-color: #EF6155;
+
+    > label {
+        height: 12vh;
+        line-height: 12vh;
+    }
+}
+
+.coach-live-device-sonar {
+    width: 40vw;
+    height: 40vw;
+    margin: 100px auto;
+    background-color: $primary-color-light;
+
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+    animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0)
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+.coach-live-device {
+    display: flex;
+    background: white;
+    position: relative;
+    border: 1px solid $border-color;
+    height: 14vh;
+    text-align: center;
+    text-transform: UPPERCASE;
+    color: $primary-color;
+    font-weight: 800;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+    margin-bottom: 8px;
+}
+
+.coach-live-device-offline {
+    display: none;
+}
+
+.coach-live-device-running {
+    display: none;
+}
+
+.coach-live-devices.coach-live-devices-all {
+
+    .coach-live-device-offline {
+        display: flex;
+    }
+
+    .coach-live-device-running {
+        display: flex;
+    }
+}
+
+.coach-live-device-avatar {
+    width: 20%
+}
+
+.coach-live-device-name {
+    font-size: 14px;
+    color: #848484;
+    width: 60%;
+    text-align: left;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.coach-live-device-status {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: $ncs-grey-60;
+    width: 20%;
+
+    &.selected {
+        background-color: $ncs-light-primary;
+        background-size: 0;
+        height: 8vh;
+        line-height: 8vh;
+        width: 20vw;
+        border-radius: 20vh 0 0 20vh;
+
+        &.ready {
+            color: $ncs-light-primary-negative;
+        }
+    }
+
+    &.ready {
+        color: $ncs-primary;
+    }
+
+    &.running {
+        color: $ncs-light-black;
+    }
+}
+
+/* not sure if bellow css are used */
+
+.live-device {
+    background-color: $white;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    height: 180px;
+    color: $white;
+    width: 96vw;
+    margin-left: 2vw;
+    float: left;
+    position: relative;
+
+    &.selected {
+        box-shadow: 0 19px 38px rgba(59, 61, 98, 0.30), 0 15px 12px rgba(59, 61, 98, 0.22);
+    }
+}
+
+.live-device-header {
+    background-color: $primary-color;
+    color: $text-color;
+    padding: 6px;
+}
+
+.live-device-avatar {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+
+    & > .avatar {
+        width: 30px;
+        height: 30px;
+
+        & > .avatar-initials {
+            font-size: 18px;
+            line-height: 30px;
+        }
+    }
+
+    & > .avatar.avatar-initials {
+        font-size: 18px;
+        line-height: 30px;
+    }
+}
+
+.live-athlete-name {
+    color: $white;
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.live-spm {
+    font-size: 60px;
+    height: 70px;
+    line-height: 70px;
+
+    & > span {
+        font-size: 14px;
+    }
+}
+
+.live-speed {
+    font-size: 30px;
+    height: 70px;
+    line-height: 70px;
+    vertical-align: bottom;
+    text-align: right;
+    padding-right: 12px;
+    padding-top: 12px;
+
+    & > span {
+        font-size: 14px;
+    }
+}
+
+.live-measure-big-label {
+    position: relative;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.live-measure-big {
+    height: 180px;
+    line-height: 180px;
+    font-size: 6vw;
+    text-align: center;
+    vertical-align: middle;
+    top: -15px;
+    position: relative;
+}
+
+.live-measure-small {
+    width: 100%;
+    text-align: right;
+    font-size: 30px;
+    height: 60px;
+    vertical-align: middle;
+    top: -2px;
+    position: relative;
+    right: 10px;
+}
+
+.live-measure-small-label {
+    position: relative;
+    font-size: 10px;
+    text-transform: uppercase;
+    top: 6px;
+    left: 6px;
+}
+
+@keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+.live-device-body {
+    width: 100%;
+}
+
+.live-device-body-running {
+    display: flex;
+    width: 100%;
+}
+
+.live-device-left {
+    background-color: $dark-blue;
+    width: 50%;
+    height: 180px;
+}
+
+.live-device-right {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    width: 50%;
+
+    & > div {
+        width: 100%;
+        height: 60px;
+    }
+}
+
+.live-device-ready-layout {
+    display: table;
+    width: 100%;
+    color: #666AAB;
+
+    & > .fa {
+        font-size: 100px;
+        text-align: right;
+        height: 135px;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+    & > span {
+        line-height: 100px;
+        font-size: 34px;
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: 600;
+        padding-left: 10px;
+    }
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.btn-circle.btn-xl {
+    width: 10vh;
+    height: 10vh;
+    padding: 0px 10px;
+    font-size: 20px;
+    line-height: 1.33;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.live-select-option {
+    font-size: 24px;
+}
+
+.yellow {
+    background-color: $yellow;
+}
+
+.blue {
+    background-color: $blue;
+}
+
+.red {
+    background-color: $red;
+}
+
+.dark-blue {
+    background-color: $dark-blue;
+}
+
+@keyframes highlight {
+    0% {
+        background: $red;
+        color: $white;
+    }
+    100% {
+        background: #E2E2E2;
+    }
+}
+
+.highlight {
+    animation: highlight 2s;
+}
+
+
+
+@media (max-width: 767px) {
+
+    #footer[data-page="coach-live"], #footer[data-page="realtime"] {
+        background-color: #e8e8ec;
+        left: 0;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .live-select-option {
+        font-size: 18px;
+        height: 36px;
+    }
+
+    .live-device {
+        position: relative;
+    }
+
+    .live-measure-big {
+        font-size: 20vw;
+    }
+}

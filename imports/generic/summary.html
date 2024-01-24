@@ -1,0 +1,74 @@
+<template name="genericPerformanceSummary">
+    <div class="session-summary {{css}}">
+        {{#if showField "header"}}
+        <div class="session-summary-header">
+
+            <div class="session-summary-title">
+                <a href="{{pathFor route='athlete' _id=athleteId}}">{{athleteName athleteId}}</a>
+            </div>
+            {{#if showField "date"}}
+            <div class="session-summary-date">
+                {{formatSessionDate date showSessionHourOnly momentDateFormat}}
+            </div>
+            {{/if}}
+            <div class="session-summary-expression">{{expression}}</div>
+        </div>
+        {{/if}}
+        <div class="session-summary-body">
+            {{#if showField "distance"}}
+            <div class="session-summary-row">
+                <div class="session-summary-value">{{formatDistance fullDistance}}</div>
+                <div class="session-summary-label">{{translate "generic_session_label_distance"}}</div>
+            </div>
+            {{/if}}
+            {{#if showField "duration"}}
+            <div class="session-summary-row">
+                <div class="session-summary-value">{{formatDurationInTimeShort fullDuration}}</div>
+                <div class="session-summary-label">{{translate "generic_session_label_duration"}}</div>
+            </div>
+            {{/if}}
+            {{#if showField "speed"}}
+            <div class="session-summary-row">
+                <div class="session-summary-value">{{calcAvgSpeed session}}</div>
+                <div class="session-summary-label">{{translate "generic_session_label_speed"}}</div>
+            </div>
+            {{/if}}
+            {{#if showField "spm"}}
+            <div class="session-summary-row">
+                <div class="session-summary-value">{{formatAvgSpm avgSpm}}</div>
+                <div class="session-summary-label">{{translate "generic_session_label_spm"}}</div>
+            </div>
+            {{/if}}
+            {{#if showField "dps"}}
+                <div class="session-summary-row">
+                    <div class="session-summary-value">{{calcAvgDPS session}}</div>
+                    <div class="session-summary-label">{{translate "generic_session_label_dps"}}</div>
+                </div>
+            {{/if}}
+            {{#if showField "hr"}}
+                <div class="session-summary-row">
+                    <div class="session-summary-value">{{formatAvgHeartRate avgHeartRate}}</div>
+                    <div class="session-summary-label">{{translate "generic_session_label_hr"}}</div>
+                </div>
+            {{/if}}
+            {{#if showField "count"}}
+                <div class="session-summary-row">
+                    <div class="session-summary-value">{{count}}</div>
+                    <div class="session-summary-label">{{translate "generic_session_label_sessions"}}</div>
+                </div>
+            {{/if}}
+            <div class="session-summary-tags"></div>
+        </div>
+        {{#if showField "footer"}}
+            <div class="session-summary-footer">
+                <div class="button secondary" data-action="delete" data-id="{{sessionId}}" data-cancel="{{translate "cancel"}}">
+                    {{translate "generic_session_label_delete"}}
+                    <span class="progress-bar"></span>
+                </div>
+                <a href="{{pathFor route="training-session" _id=sessionId type="f"}}">
+                    <div class="button">{{translate "generic_session_label_view"}}</div>
+                </a>
+            </div>
+        {{/if}}
+    </div>
+</template>

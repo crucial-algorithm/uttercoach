@@ -1,0 +1,178 @@
+@import '../style/colors.scss';
+
+@media (max-width: 767px) {
+  #page {
+    width: 100vw;
+    margin: 56px 0 0 0;
+    padding: 4px;
+    z-index: 0;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  }
+
+  #page[data-page="coachLive"] {
+    top: 106px;
+    height: calc(100vh - 106px);
+  }
+
+  #page[data-page="coachLiveSession"] {
+    top: 100px;
+    height: calc(100vh - 100px);
+    padding: 0;
+  }
+
+  #page[data-page="coachLiveSplits"] {
+    top: 100px;
+    height: calc(100vh - 100px);
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .header-page-title {
+    font-size: 16px;
+  }
+
+  #sidebar, #header {
+    display: none;
+  }
+
+  .mobile-top-bar {
+    display: block;
+    height: 58px;
+
+    & .header-logo {
+      height: 40px;
+      padding-left: 44px;
+      margin-top: 10px;
+      line-height: 40px;
+      font-size: 20px;
+    }
+  }
+
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+
+  #mobile-toggle-button {
+    position: absolute;
+    appearance: none;
+    cursor: pointer;
+    left: -100%;
+    top: -100%;
+  }
+
+  #mobile-toggle-button + label {
+    position: absolute;
+    color: $primary-color;
+    line-height: 58px;
+    font-size: 30px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    transition: all 500ms ease;
+    right: 16px;
+  }
+  #mobile-toggle-button + label:after {
+    content: "\231b";
+    font-family: gopaddler;
+    font-size: 6.2vh;
+  }
+
+  #mobile-toggle-button + label.coach-live-menu {
+    color: #A7A7A7;
+    width: 12vw;
+    height: 8vh;
+    line-height: 8vh;
+    position: initial;
+    font-size: 4.4vh;
+  }
+
+  .mobile-header-container {
+    transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  }
+
+  #mobile-toggle-button:checked ~ .mobile-header-actions {
+    top: 0;
+  }
+
+  #mobile-toggle-button:checked ~ .mobile-header-container {
+    margin-top: 380px;
+  }
+
+  #mobile-toggle-button:checked + label {
+    top: 0;
+    z-index: 30;
+    color: $white;
+  }
+
+  #mobile-toggle-button:checked + label:after {
+    content: "\f00d";
+    font-family: FontAwesome;
+  }
+
+  .nav > li > a {
+    display: inline;
+    padding: 10px 0 10px 0;
+  }
+
+  .logout-side-bar {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+  }
+
+  .nav-list-entry {
+    font-size: 16px;
+  }
+
+  a.logout {
+    width: calc(100vw - 80px);
+    padding: 0;
+  }
+
+  select[name="language"] {
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+  }
+  select[name="language"]:focus {
+    border: 0;
+    outline: none;
+  }
+
+
+  .modal.modal-fullscreen.coach-live .modal-dialog .modal-content .modal-body, .bootstrap-fs-modal .modal .modal-dialog .modal-content .modal-body {
+    padding: 0;
+  }
+
+  .modal.modal-fullscreen.coach-live .modal-dialog .modal-content .modal-footer {
+    display: none
+  }
+
+  .modal-warning-message {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 20px;
+  }
+}

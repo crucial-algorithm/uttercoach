@@ -1,0 +1,39 @@
+<template name="administrationUsers">
+
+    <nav>
+        <ul class="pagination" id="navigation">
+            <li class="page-item" data-tab="latest"><a class="page-link" href="javascript:;">Latest users</a>
+            </li>
+            <li class="page-item" data-tab="coaches"><a class="page-link" href="javascript:;">Coaches</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="active">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{translate "users_name"}}</th>
+                <th>{{translate "users_email"}}</th>
+                <th>Created At</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each users}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <th>{{createdAt}}</th>
+                    <td>
+                        <button type="button" data-impersonate="{{id}}">{{translate "users_impersonate"}}</button>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</template>

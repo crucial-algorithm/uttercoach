@@ -1,0 +1,69 @@
+<mjml>
+    {{>head }}
+  <mj-body background-color="#d6d6d5">
+    {{> logo }}
+
+       <mj-section background-color="#ffffff" padding="60px 0">
+          <mj-column width="600px">
+            <mj-text padding-bottom="40px" mj-class="h3" align="left" color="#999999">
+              Hello,
+            </mj-text>
+            <mj-text mj-class="h3" align="left" color="#999999">
+              {{athlete}} wants you to monitor his progress using UtterCoach!
+            </mj-text>
+
+            <mj-text mj-class="h3" align="left" color="#999999">
+              UtterCoach is a complete tracking technology created specifically for canoeing that is already helping many Olympic level athletes reaching their goals, by offering better control over the execution of their training plan.
+            </mj-text>
+
+            <mj-text mj-class="h3" align="left" color="#999999">
+              <a class="links" href="{{link}}">Click to create your account</a> and experience why many coaches can't go without UtterCoach anymore.
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-section background-color="#ffffff" padding="60px 0">
+          <mj-column width="300px">
+            <mj-text padding-bottom="40px" mj-class="h2" align="left" color="#999999">
+              We can track stroke rate and length
+            </mj-text>
+            <mj-text mj-class="h3" align="left" color="#999999">
+             UtterCoach tracks your athlete stroke rate for you, using only your athletes' smartphone. We combine that with speed, distance, heart rate, and stroke length, giving you a full picture of your athlete's performance.
+            </mj-text>
+          </mj-column>
+          <mj-column width="300px">
+            <mj-image href="https://uttercoach.com/" align="left" src="https://static.uttercoach.com/images/session-top-spm.png" />
+          </mj-column>
+        </mj-section>
+
+        <mj-section background-color="#ffffff" padding="60px 0">
+          <mj-column width="300px">
+            <mj-image href="https://uttercoach.com/" align="left" src="https://static.uttercoach.com/images/dashboard.png" />
+          </mj-column>
+          <mj-column width="300px">
+            <mj-text padding-bottom="40px" mj-class="h2" align="left" color="#999999">
+              We keep data for all your team in a single place
+            </mj-text>
+            <mj-text mj-class="h3" align="left" color="#999999">
+              Every session performed by all your athletes gets automatically synchronized into UtterCoach at the end of each session. Track your athletes’ progress throughout the season and keep a historic record of every session performed
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-section background-color="#ffffff" padding="60px 0">
+          <mj-column width="300px">
+            <mj-text padding-bottom="40px" mj-class="h2" align="left" color="#999999">
+              And we can give you all those metrics in real-time
+            </mj-text>
+            <mj-text mj-class="h3" align="left" color="#999999">
+              Don’t wait for the end of the session – give more precise feedback to your athletes while sessions are running, by getting access to all the metrics directly in your smartphone.
+            </mj-text>
+          </mj-column>
+          <mj-column width="300px">
+            <mj-image href="https://uttercoach.com/" align="left" src="https://static.uttercoach.com/images/animated-live-session.gif" />
+          </mj-column>
+        </mj-section>
+
+    {{> footer }}
+  </mj-body>
+</mjml>

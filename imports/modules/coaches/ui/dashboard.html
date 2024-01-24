@@ -1,0 +1,104 @@
+<template name="dashboard">
+
+    <div class="dashboard-mount-help-button">
+        {{translate "dashboard_need_help_with_mount"}}
+    </div>
+
+    {{#if showOnBoardingSteps}}
+    <div class="container-fluid" id="coach-onboard-tutorial">
+        <div class="dashboard-tutorial-welcome-coach">
+            {{translate "dashboard_tutorial_salut"}} {{currentUser.profile.name}}!
+            <span class="dashboard-tutorial-welcome-coach-highlight">{{translate "dashboard_tutorial_welcome"}}</span>
+        </div>
+
+        <div class="dashboard-tutorial-section">
+            <div class="dashboard-tutorial-header">
+                <div class="dashboard-tutorial-title-message">
+                    {{translate "dashboard_tutorial_howto"}}
+                </div>
+                <div class="dashboard-tutorial-dont-show-again">
+                    {{translate "dashboard_tutorial_dont_show_again"}}
+                </div>
+            </div>
+            <div class="dashboard-tutorial-actions-container">
+                <div class="dashboard-tutorial-actions-step">
+                    <div class="dashboard-tutorial-actions-step-number-container">
+                        <div class="dashboard-tutorial-actions-step-number">1</div>
+                    </div>
+
+                    <div class="dashboard-tutorial-actions-step-content">
+                        <div class="dashboard-tutorial-actions-step-content-header">{{translate "dashboard_tutorial_step1_header"}}</div>
+                        <div class="dashboard-tutorial-actions-step-content-body">{{translate "dashboard_tutorial_step1_body"}}</div>
+                    </div>
+                </div>
+                <div class="dashboard-tutorial-actions-step">
+                    <div class="dashboard-tutorial-actions-step-number-container">
+                        <div class="dashboard-tutorial-actions-step-number">2</div>
+                    </div>
+                    <div class="dashboard-tutorial-actions-step-content">
+                        <div class="dashboard-tutorial-actions-step-content-header">{{translate "dashboard_tutorial_step2_header"}}</div>
+                        <div class="dashboard-tutorial-actions-step-content-body">{{translate "dashboard_tutorial_step2_body"}}</div>
+                    </div>
+                </div>
+                <div class="dashboard-tutorial-actions-step">
+                    <div class="dashboard-tutorial-actions-step-number-container">
+                        <div class="dashboard-tutorial-actions-step-number">3</div>
+                    </div>
+                    <div class="dashboard-tutorial-actions-step-content">
+                        <div class="dashboard-tutorial-actions-step-content-header">{{translate "dashboard_tutorial_step3_header"}}</div>
+                        <div class="dashboard-tutorial-actions-step-content-body">{{translate "dashboard_tutorial_step3_body"}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-tutorial-code-container">
+            <div class="dashboard-tutorial-code-label">{{translate "dashboard_tutorial_code_label"}}</div>
+            <div class="dashboard-tutorial-code">{{coachInvitationCode}}</div>
+        </div>
+
+        <div class="dashboard-tutorial-footer-message">
+            {{translate "dashboard_tutorial_athletes_message" appName}}
+        </div>
+
+        <div class="dashboard-quick-actions">
+            <div class="dashboard-quick-actions-button-container">
+                <a href="{{pathFor route='coach-schedule'}}">
+                    <div class="dashboard-quick-actions-button">{{translate "dashboard_quick_action_new_session"}}</div>
+                </a>
+            </div>
+            <div class="dashboard-quick-actions-button-container">
+                <a href="{{pathFor route='coach-team'}}">
+                    <div class="dashboard-quick-actions-button">{{translate "dashboard_quick_action_new_group"}}</div>
+                </a>
+            </div>
+            <div class="dashboard-quick-actions-button-container mobile">
+                <a href="{{pathFor route='coachLive'}}">
+                    <div class="dashboard-quick-actions-button">{{translate "dashboard_quick_action_new_live_session"}}</div>
+                </a>
+            </div>
+            <div class="dashboard-quick-actions-button-container desktop">
+                <a href="{{pathFor route='coachLiveDesktop'}}">
+                    <div class="dashboard-quick-actions-button">{{translate "dashboard_quick_action_new_live_session"}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+
+    <div id="choose-period" class="coach-dashboard secondary-navigation">
+        <div class="secondary-navigation-menu active" data-action="day">{{translate "dashboard_period_label_daily"}}</div>
+        <div class="secondary-navigation-menu" data-action="week">{{translate "dashboard_period_label_weekly"}}</div>
+    </div>
+    <div id="date-navigation"></div>
+
+    <div class="dashboard-sessions">
+        {{#each sessions}}
+            {{>genericPerformanceSummary session=this include=fieldsList showSessionHourOnly=true}}
+        {{else}}
+            <p>{{translate "dashboard_empty"}}</p>
+        {{/each}}
+    </div>
+
+</template>

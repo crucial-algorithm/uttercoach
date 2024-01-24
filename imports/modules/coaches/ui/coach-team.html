@@ -1,0 +1,183 @@
+<template name="coachTeam">
+
+    <div class="container-fluid desktop">
+        <div class="row section">
+
+            <div class="col-sm-8" id="groups">
+                {{#each groups}}
+                    <div class="group-title">
+                        <input type="text" class="group-name" value="{{ name }}" data-group-id="{{id}}" placeholder="{{translate "team_new_placeholder"}}">
+
+                        <i class="delete-icon icon fa fa-trash-o {{#if athletes.length}}hide{{/if}}" data-group-id="{{id}}"></i>
+                        <i class="collapse-icon icon fa fa-chevron-up"></i>
+                    </div>
+                    <div class="athlete-group content-box sortable-group not-yet-sortable" data-group-id="{{id}}">
+                        <span class="coach-team-empty-group">{{translate "team_empty_group_message"}}</span>
+                        {{#each athletes}}
+                            {{>coachTeamAthlete}}
+                        {{/each}}
+                    </div>
+                {{/each}}
+
+                <div id="new-group" class="content-box">
+                    <i class="fa fa-plus"></i> {{translate "team_create_new_group"}}
+                </div>
+            </div>
+
+            <!-- REQUESTS -->
+            <div class="col-sm-4">
+                <button id="coach-team-invite-athletes-button" class="expand">{{translate "team_invite_new_athlete"}}</button>
+
+                <div class="athletes-pending-header">
+                    {{translate "team_athletes_pending_header"}}
+                </div>
+                <div class="athletes-pending sortable-group athlete-group">
+                    <div class="athletes-pending-empty">{{translate "team_no_pending_requests"}}</div>
+                    {{#each pendingAthletes}}
+                        {{>coachTeamAthlete id}}
+                    {{/each}}
+                </div>
+                {{>coachInviteAthletesInfo}}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mobile">
+        {{>coachInviteAthletesInfo}}
+
+        <div class="athletes-pending-header">
+            {{translate "team_athletes_pending_header"}}
+        </div>
+        <div class="athletes-pending">
+            <div class="athletes-pending-empty">{{translate "team_no_pending_requests"}}</div>
+            {{#each pendingAthletes}}
+                {{>coachTeamAthleteMobile id}}
+            {{/each}}
+        </div>
+
+        <div class="current-athletes-header">
+            {{translate "team_athletes_list"}}
+        </div>
+        <div class="athletes-list">
+            {{#each groups}}
+                {{#each athletes}}
+                    {{>coachTeamAthleteMobile}}
+                {{/each}}
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="confirm-delete-athlete">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{translate "team_delete_confirm_title"}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">&nbsp;</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn secondary" data-dismiss="modal">{{translate "team_delete_confirm_discard"}}</button>
+                    <button type="button" class="btn primary" id="delete-athlete">{{translate "team_delete_confirm_button"}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="system-modal-container" id="account-limited-modal">
+        <p class="coach-team-modal-warning">{{translate "team_account_limited_message" 5}}</p>
+        <p class="coach-team-modal-warning-info">
+            <a href="mailto:support@uttercoach.com?subject=Please remove restriction on account {{userId}}&body=Thank you">
+                {{translate "contact"}}
+            </a>
+            {{translate "team_account_limited_action"}}
+        </p>
+    </div>
+
+    <div class="system-modal-container" id="remove-athlete-failed-modal">
+        <p class="coach-team-modal-warning">{{translate "team_remove_athlete_failed_message"}}</p>
+        <p class="coach-team-modal-warning-info">
+            {{translate "team_remove_athlete_failed_action"}}
+        </p>
+    </div>
+
+    <div class="system-modal-container" id="increased-charges">
+        <p class="coach-team-modal-warning">{{translate "team_modal_increase_costs_warning_message"}}</p>
+        <p class="coach-team-modal-warning-info">
+            {{translate "team_modal_increase_costs_warning_message_secondary" amountIncrease}}
+        </p>
+    </div>
+
+</template>
+
+<template name="emptyAthleteGroup">
+
+    <div class="group-title">
+        <input type="text" class="name" value="" placeholder="{{translate "team_new_placeholder"}}">
+        <i class="collapse-icon fa fa-chevron-up"></i>
+    </div>
+    <div class="athlete-group content-box sortable-group">
+    </div>
+
+</template>
+
+<template name="coachTeamAthlete">
+    <div class="row athlete draggable" data-id="{{this}}">
+        <div class="draggable-border">
+            <i class="icon fa fa-ellipsis-v"></i><i class="icon fa fa-ellipsis-v"></i>
+        </div>
+        <div class="athlete-avatar">
+            {{> picture id=this type="athlete" shape="circle"}}
+            <span class="athlete-name">{{athleteName this}}</span>
+        </div>
+        <div class="athlete-actions">
+            {{#if isNotMe}}
+            <button data-user="{{this}}"
+                    class="button button-icon coach-remove-athlete-from-team"
+                    type="button" title="{{translate "team_remove_athlete" }}">
+                <i class="fa fa-trash"></i>
+            </button>
+            {{/if}}
+            <a class="button inline athlete-details-btn" href="{{pathFor route='athlete' _id=this}}">
+                {{translate "team_athlete_details"}}
+            </a>
+        </div>
+    </div>
+</template>
+
+<template name="coachTeamAthleteMobile">
+    <div class="athlete-mobile" data-id="{{this}}">
+        <div class="athlete-avatar">
+            {{> picture id=this type="athlete" shape="circle"}}
+            <div class="athlete-name-container">
+                <span class="athlete-name">{{athleteName this}}</span>
+                <span class="athlete-team">{{athleteTeam this}}</span>
+            </div>
+        </div>
+        <div class="athlete-actions">
+            <button class="athlete-actions-drop-down button button-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="athlete-dropdown-actions" data-athlete="{{this}}">
+                {{#with athlete}}
+                    {{#each groups}}
+                        <a class="dropdown-item swap-to-group" data-group="{{_id}}"> <i class="fa fa-check {{#if athleteInGroup}} current-group {{/if}}" aria-hidden="true"></i> {{ name }}</a>
+                    {{/each}}
+                {{/with}}
+                {{#if isNotMe}}<div class="dropdown-divider"></div>
+                <a class="dropdown-item menu-remove-athlete" data-group="{{athleteTeamId}}" data-athlete="{{this}}">{{translate "team_remove_athlete" }}</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="coachInviteAthletesInfo">
+    <div class="invite-athletes">
+        <div class="invite-code">
+            <p>{{coachInvitationCode}}</p>
+            <label>{{translate "team_invite_athletes_code_label"}}</label>
+        </div>
+    </div>
+</template>

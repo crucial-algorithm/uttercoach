@@ -1,0 +1,107 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.session-summary {
+  width: 340px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.session-summary-header {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-summary-date {
+  font-size: 14px;
+  color: $ncs-light-black;
+  font-weight: 400;
+  margin: -10px 0 4px 0;
+}
+
+.session-summary-title {
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  color: $ncs-primary;
+  a {
+    color: $ncs-primary;
+  }
+}
+
+.session-summary-expression {
+  font-size: 12px;
+  color: $ncs-grey;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90%;
+  text-align: center;
+}
+
+.session-summary-body {
+  width: 100%;
+}
+
+.session-summary-row {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #E5E5E5;
+  border-bottom: 1px solid #fff;
+  padding: 0 20px
+}
+
+.session-summary-value {
+  font-size: 20px;
+  color: $ncs-light-black;
+  font-weight: 600;
+}
+
+.session-summary-label {
+  font-size: 18px;
+  color: $ncs-primary;
+}
+
+.session-summary-tags {}
+
+.session-summary-footer {
+  background-color: $ncs-light-grey;
+  height: 60px;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+
+  .button {
+    margin-right: 10px;
+    position: relative;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.unboxed.session-summary {
+  display: block;
+  width: 100%;
+  background-color: $white;
+  margin: 0 0 30px 0;
+  box-shadow: none;
+  transition: none;
+  border-radius: 0;
+}

@@ -1,0 +1,236 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.zones-remove-row-btn {
+  float: right;
+}
+
+.zones-reload-btn {
+  margin-right: 10px;
+  margin-top: -44px;
+}
+
+.zones-btn-add-row.button{
+  margin-bottom: 22px;
+  margin-right: 10px;
+  margin-top: -44px;
+}
+
+.zones-save-btn.button{
+  margin-right: 10px;
+  margin-top: -44px;
+}
+
+.zones-table.table {
+  width: 732px;
+}
+
+.zones-tabs.pagination.zones-pagination {
+  margin-bottom: 38px;
+}
+
+.zones-tabs {
+  .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: $medium-grey;
+    border-color: $medium-grey;
+  }
+}
+
+.zones-interval-invalid {
+    background-color: #EF6155;
+}
+
+.btn-zone-desktop {
+  display: block;
+}
+
+.btn-zone-mobile {
+  display: none;
+}
+
+.zone-label {
+  color: $medium-grey;
+  text-align: center;
+}
+
+.input-zone-end {
+  text-align: center;
+  margin-left: 64px;
+}
+
+.input-zone-start {
+  text-align: center;
+  margin-left: 32px;
+}
+
+.th-titles {
+  text-align: center;
+}
+
+.zones-replicate-to-athlete {
+  margin-bottom: 15px;
+
+  .zones-replicate-to-athlete-label{
+    display: none;
+  }
+
+  &.selected {
+    .zones-replicate-to-athlete-label {
+      background-color: $red;
+      background-size: 0;
+      height: 4vh;
+      line-height: 4vh;
+      width: 4vw;
+      border-radius: 20vh 0 0 20vh;
+      color: $white;
+      display: block;
+      float: right;
+      font-weight: 800;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    span.athlete-name-zone-replicate.athlete-name {
+      font-weight: 800;
+    }
+  }
+}
+
+.zones-replicate-content-desktop {
+  right: 36%;
+  bottom: 42%;
+  transform: translate(50%, 48%);
+  position: absolute;
+  height: 482px;
+  overflow: auto;
+}
+
+
+//modal
+.apply-replicate-zones.button {
+  background-color: #F05E46;
+  border-radius: 13px;
+  font-size: 15px;
+  padding: 6px 16px;
+  margin-right: 6px;
+  margin-top: 0px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.apply-replicate-zones.button:disabled {
+  background-color: #f09581;
+}
+
+.discard-replicate-zones.button {
+  background-color: $medium-grey;
+  border-radius: 13px;
+  font-size: 15px;
+  padding: 6px 16px;
+  margin-right: 6px;
+  margin-top: 0px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  width: fit-content;
+}
+
+@media (max-width: 767px) {
+  .zones-table.table {
+    width: 371px;
+  }
+
+  .zones-save-btn.button {
+    margin-right: 10px;
+    margin-top: -5px;
+    float: right;
+  }
+
+  .btn-zone-mobile {
+    display: block;
+  }
+
+  .btn-zone-desktop {
+    display: none;
+  }
+
+  .input-zone-start {
+    width: 50px;
+    text-align: center;
+    margin-left: -9px;
+  }
+
+  .input-zone-end {
+    width: 50px;
+    text-align: center;
+    margin-left: -13px;
+  }
+
+  .zones-remove-row-btn {
+    margin-left: 20px;
+  }
+
+  .th-titles {
+    text-align: left;
+  }
+
+  .zones-replicate-content-desktop {
+    right: inherit;
+    bottom: inherit;
+    transform: none;
+    position: inherit;
+    height: inherit;
+    overflow: inherit;
+  }
+
+  .zones-replicate-to-athlete {
+    margin-bottom: 15px;
+
+    .zones-replicate-to-athlete-label{
+      display: none;
+    }
+
+    &.selected {
+      .zones-replicate-to-athlete-label {
+        background-color: $red;
+        background-size: 0;
+        height: 4vh;
+        line-height: 4vh;
+        width: 24vw;
+        border-radius: 20vh 0 0 20vh;
+        color: $white;
+        display: block;
+        float: right;
+        font-weight: 800;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      span.athlete-name-zone-replicate.athlete-name {
+        font-weight: 800;
+      }
+    }
+  }
+
+  .bootstrap-fs-modal .modal .modal-dialog .modal-content .zones-header.modal-header {
+    justify-content: flex-start;
+    line-height: 50px;
+    min-height: auto;
+    padding: 0;
+    background-color: #f8f8f8;
+  }
+
+  .zones-tabs.pagination.zones-pagination {
+    margin-bottom: 38px;
+    display: list-item;
+  }
+
+}

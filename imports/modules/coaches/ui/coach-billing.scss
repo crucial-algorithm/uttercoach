@@ -1,0 +1,166 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.coach-billing-section {
+  box-sizing: border-box;
+  display: block;
+  font-family: Asap, System, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 40px;
+  text-rendering: optimizelegibility;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+.coach-billing-header {
+  box-sizing: border-box;
+  color: rgb(21, 26, 45);
+  display: block;
+  font-family: Asap, System, sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  height: 25px;
+  line-height: 25px;
+  margin-block-end: 8px;
+  margin-block-start: 0;
+  margin-bottom: 8px;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+  margin-top: 20px;
+  text-rendering: optimizelegibility;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-transform: capitalize;
+}
+
+.coach-billing-subscription-notes {
+  font-size: 14px;
+  margin-left: 30px;
+  padding: 0;
+
+  li {
+    height: unset;
+    line-height: unset;
+    overflow: unset;
+    margin: 10px 0;
+  }
+
+  li:nth-child(even) {
+    background-color: unset;
+  }
+}
+
+.modal-warning-extra-info.coach-billing-subscribe-extra-info {
+  text-align: left;
+  margin: 20px;
+}
+
+.modal-warning-extra-info.coach-billing-subscribe-confirm-lower-cost-hint {
+  text-align: center;
+  margin: 20px;
+}
+
+label[for="card-element"] {
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.coach-billing-invoices-month {
+  min-width: 100px;
+  text-transform: capitalize;
+}
+
+.coach-billing-invoices-year {
+  min-width: 80px;
+  text-align: center;
+}
+
+.coach-billing-invoices-status {
+  min-width: 80px;
+  text-align: center;
+}
+
+.coach-billing-invoices-amount {
+  min-width: 80px;
+  text-align: center;
+}
+
+.coach-billing-invoices-view {
+  min-width: 120px;
+  text-align: center;
+}
+
+.coach-billing-invoices-download {
+  min-width: 120px;
+  text-align: center;
+}
+
+.coach-billing-box {
+  position: relative;
+  min-height: 160px;
+}
+
+.coach-billing-edit {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+
+.coach-billing-edit-payment-button {
+}
+
+.coach-billing-account-label {
+  margin-right: 10px;
+  color: $primary-color;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+
+}
+
+.coach-billing-account-value {
+  text-transform: uppercase;
+}
+
+.coach-billing-address-paragraph {
+  box-sizing: border-box;
+  color: rgb(74, 79, 98);
+  display: block;
+  font-family: Asap, System, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 24px;
+  line-height: 24px;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+  margin: 0 0 0 0;
+  text-rendering: optimizelegibility;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media (max-width: 767px) {
+  .coach-billing-edit {
+    position: absolute;
+    top: auto;
+    bottom: 14px;
+    max-width: 98vw;
+    width: 94%;
+    margin: 0 3%;
+    left: 0;
+    text-align: center;
+  }
+
+  .coach-billing-box {
+    min-height: 400px;
+  }
+}

@@ -1,0 +1,28 @@
+<template name="coachInviteAthletes">
+
+    <div class="system-modal-container" id="invite-athlete">
+        <div class="coach-invite-athletes-container">
+            {{#if showHeader}}
+                <div class="coach-invite-athletes-header">{{header}}</div>
+            {{/if}}
+
+            {{#if customDescription}}
+                <div class="coach-invite-athletes-description">{{description}}</div>
+            {{else}}
+                <div class="coach-invite-athletes-description">{{translate "coach_invite_athletes_modal_description"}}</div>
+            {{/if}}
+            <div class="coach-invite-athletes-invites-list">
+                {{#each invites}}
+                    <div class="coach-invite-athletes-invites-list-entry">
+                        <div class="coach-invite-athletes-invite-icon fa fa-user"></div>
+                        <input class="coach-invite-athletes-invite-email" name="email" type="email" placeholder="{{translate "coach_invite_athletes_modal_input_email_placeholder"}}">
+                        <input class="coach-invite-athletes-invite-name" name="name" type="text" placeholder="{{translate "coach_invite_athletes_modal_input_name_placeholder"}}">
+                    </div>
+                {{/each}}
+            </div>
+            <div class="coach-invite-athletes-welcome-message-header">{{translate "coach_invite_athletes_modal_custom_message_label"}}</div>
+            <textarea class="coach-invite-athletes-welcome-message-textarea">{{translate "coach_invite_athletes_modal_custom_message"}}</textarea>
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,465 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.coach-live-session-splits-box {
+    width: 50vw;
+    padding: 0 0 0 8px;
+    background-color: transparent;
+    min-width: unset;
+    text-align: left;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 14px;
+
+    & > span {
+        background-color: #3B3D62;
+        border-radius: 50%;
+        width: 6vw;
+        height: 6vw;
+        text-align: center;
+        display: inline-block;
+        line-height: 6vw;
+    }
+
+    &:hover, &:focus, &:active {
+        background-color: transparent;
+    }
+}
+
+.coach-live-session-append-device {
+    width: 20vw;
+    min-width: 60px;
+    font-size: 30px;
+    line-height: 44px;
+    text-align: center;
+    color: $white;
+}
+
+.coach-live-session-finish-button {
+    width: 30vw;
+    border-radius: 0;
+}
+
+.coach-live-session-timer {
+    width: 100vw;
+    background-color: $ncs-light-purple-80;
+    height: 72px;
+    line-height: 68px;
+    color: white;
+    text-align: center;
+    clip-path: ellipse(70% 80% at 51% 0%);
+    -webkit-clip-path: ellipse(60% 80% at 50% 20%);
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.coach-live-session-add-notes {
+    position: fixed;
+    top: 180px;
+    left: 46vw;
+    width: 40px;
+    height: 40px;
+    z-index: 20;
+    font-size: 30px;
+    color: $dark-blue;
+}
+
+.coach-live-session-move-previous-session, .coach-live-session-move-next-session {
+    position: fixed;
+    top: 100px;
+    width: 50px;
+    height: 50px;
+    z-index: 20;
+    font-size: 36px;
+    line-height: 50px;
+    color: $white;
+}
+
+.coach-live-session-move-previous-session {
+    left: 2vw;
+    text-align: left;
+}
+
+.coach-live-session-move-next-session {
+    right: 2vw;
+    text-align: right;
+}
+
+.coach-live-session-devices {
+    height: calc(var(--vh, 1vh) * 100 - 270px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 4px;
+}
+
+.coach-live-session-timer-recovery-label {
+    font-size: 12px;
+    line-height: 30px;
+    margin: -20px auto 8px auto;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 120px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #07a3ff;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
+
+.coach-live-session-timer-info-label {
+    font-size: 10px;
+    display: block;
+    margin-top: -6vh;
+}
+
+.coach-live-session-device {
+    display: flex;
+    height: 112px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+}
+
+.coach-live-session-device.offline {
+    .coach-live-session-device-layout-hr {
+        color: rgba(0, 0, 0, 0.10);
+    }
+
+
+    .coach-live-session-device-layout-others {
+        .coach-live-session-device-layout-others-secondary {
+            .coach-live-session-secondary-metric {
+                .coach-live-session-secondary-metric-value {
+                    color: rgba(0, 0, 0, 0.10);
+                }
+            }
+        }
+    }
+
+    .coach-live-session-device-layout-others {
+
+        .coach-live-session-secondary-metric-highlight {
+            .coach-live-session-secondary-metric-value {
+                background-color: #A7A7A7;
+                color: rgba(0, 0, 0, 0.10);
+            }
+        }
+    }
+
+    .coach-live-session-device-layout-others .coach-live-session-device-layout-others-main .coach-live-session-device-highlight-metric {
+        background-color: $new-red;
+
+        .coach-live-session-device-highlight-metric-label, .coach-live-session-device-highlight-metric-value {
+            display: none;
+        }
+    }
+
+    .coach-live-session-device-highlight-metric-if-offline {
+        display: block;
+        text-transform: uppercase;
+        color: white;
+        font-size: 14px
+    }
+
+    .coach-live-session-device-layout-offline {
+        display: none;
+    }
+}
+
+.coach-live-session-device-layout-hr {
+    width: 9vw;
+    color: $white;
+    text-align: center;
+    background-color: #A7A7A7;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+
+    > .coach-live-session-device-hr-value {
+        height: 76%;
+        padding-top: 10%;
+        font-size: 12px;
+    }
+
+    > .coach-live-session-device-hr-icon {
+        color: rgba(0, 0, 0, 0.16);
+    }
+}
+
+.coach-live-session-device-layout-hr-zone-1, .coach-live-session-device-layout-hr-zone-2,
+
+.coach-live-session-device-layout-hr-zone-3 {
+    background-color: #71B57B;
+}
+
+.coach-live-session-device-layout-hr-zone-4 {
+    background-color: #EA9C63;
+}
+.coach-live-session-device-layout-hr-zone-5 {
+    background-color: #DD7962;
+}
+.coach-live-session-device-highlight-metric-if-offline {
+    display: none;
+}
+
+.coach-live-session-device-layout-others {
+    width: 87vw;
+
+    .coach-live-session-device-layout-others-main, .coach-live-session-device-layout-offline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        background-color: $white;
+        border-radius: 0 6px 0 0;
+
+        .coach-live-session-device-athlete {
+            width: 50%;
+            margin: auto;
+            padding-left: 2%;
+        }
+
+        .coach-live-session-device-athlete-name {
+            font-size: 12px;
+            font-weight: 500;
+            text-align: left;
+            padding-left: 10px;
+            color: #505050;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .coach-live-session-device-highlight-metric {
+            background-color: #EFEFEF;
+            border-radius: 24px;
+            width: 128px;
+            height: 48px;
+            text-align: center;
+            margin-right: 4%;
+            line-height: 48px;
+
+            .coach-live-session-device-highlight-metric-label {
+                font-size: 12px;
+                float: left;
+                padding-left: 16px;
+            }
+
+            .coach-live-session-device-highlight-metric-value {
+                font-size: 30px;
+                float: right;
+                padding-right: 16px;
+            }
+        }
+
+        .coach-live-session-device-highlight-metric-double {
+            display: none;
+        }
+    }
+
+    & .distance-based {
+        .coach-live-session-device-highlight-metric {
+            display: none;
+        }
+
+        .coach-live-session-device-highlight-metric-double {
+            display: flex;
+            background-color: #EFEFEF;
+            border-radius: 24px;
+            width: 70%;
+            height: 48px;
+            text-align: center;
+            margin-right: 4%;
+            line-height: 48px;
+            color: #505050;
+
+            .coach-live-session-device-highlight-metric-value {
+                font-size: 26px;
+                float: left;
+                padding: 0 16px 0 16px;
+
+            }
+
+            .coach-live-session-device-highlight-metric-label {
+                font-size: 12px;
+                float: none;
+                padding: 0;
+            }
+        }
+
+        .coach-live-session-device-athlete {
+            width: 30%
+        }
+    }
+
+
+    .coach-live-session-device-layout-others-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        background-color: #EFEFEF;
+
+        .coach-live-session-secondary-metric {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 29vw;
+            height: 32px;
+            line-height: 32px;
+
+            .coach-live-session-secondary-metric-label {
+                font-size: 10px;
+                color: #A7A7A7;
+                width: 30%
+            }
+
+            .coach-live-session-secondary-metric-value {
+                font-size: 16px;
+                font-weight: 600;
+                color: #505050;
+            }
+        }
+
+        .coach-live-session-secondary-metric-highlight {
+
+            .coach-live-session-secondary-metric-label {
+                width: 10vw;
+            }
+
+            .coach-live-session-secondary-metric-value {
+                width: 19vw;
+                background-color: $ncs-primary;
+                color: $white;
+                height: 32px;
+                line-height: 32px;
+                text-align: right;
+                padding-right: 2vw;
+                border-radius: 16px 0 6px 16px;
+            }
+        }
+    }
+}
+
+.coach-live-session-device-layout-tap-4-split {
+    background-color: #717281;
+    color: white;
+    text-orientation: upright;
+    display: none;
+    position: relative;
+    top: -18vh;
+    border-radius: 0 6px 0 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.modal-confirm {
+    & .modal-content {
+        border-radius: 24px;
+        box-shadow: inherit;
+        height: 26vh;
+        width: 80vw;
+        margin: 37vh 0 0 10vw;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+
+        & .modal-confirm-message {
+            text-transform: uppercase;
+            color: #3B3D62;
+            height: 16px;
+            font-size: 1.8vh;
+            line-height: 3vh;
+            padding: 6vh 4vh 10vh 4vh;
+            text-align: center;
+            font-weight: 500;
+        }
+
+
+        & .modal-confirm-actions {
+            display: flex;
+            align-content: center;
+            justify-content: space-around;
+        }
+    }
+
+
+}
+
+
+.coach-live-session-take-notes-dialog {
+    top: 20vh;
+    left: 2vw;
+    width: 96vw;
+    margin: 0;
+    padding: 1vh 2vw;
+    height: 70vh;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 4px;
+
+    .modal-content {
+        border: 0;
+        border-radius: 4px;
+        box-shadow: inherit;
+        height: 70vh;
+    }
+
+    .modal-body {
+        padding: 0 2vw 0 2vw;
+    }
+
+    & .modal-actions {
+        display: flex;
+        align-content: center;
+        justify-content: space-around;
+        height: 60px;
+
+        & > .modal-action-secondary, & > .modal-action-primary {
+            width: 120px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            text-transform: capitalize;
+        }
+
+        & > .modal-action-secondary {
+            background-color: #848484;
+        }
+
+
+        & > .modal-action-primary {
+            background-color: #EF6155;
+        }
+    }
+}
+
+.coach-live-session-take-notes-dialog-textarea {
+    width: 88vw;
+    height: 54vh;
+    margin-top: 2vh;
+    border: 1px solid $dark-grey;
+    color: $dark-grey
+}
+
+
+.live-session-slide-button {
+
+    .slick-prev {
+        left: 4vw;
+        opacity: 0.4;
+    }
+
+    .slick-next {
+        right: 4vw;
+        opacity: 0.4;
+    }
+
+    .slick-prev:before, .slick-next:before {
+        font-size: 16px;
+    }
+}

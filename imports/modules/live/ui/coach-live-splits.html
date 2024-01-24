@@ -1,0 +1,114 @@
+<template name="coachLiveSplits">
+
+
+    {{#contentFor "back-action" }}
+        {{> CoachLiveBackButton}}
+    {{/contentFor}}
+
+    {{#contentFor "top-menu" }}
+        <div class="coach-live-splits-menu" id="coach-live-splits-menu">
+            {{translate "coach_live_splits"}}&nbsp;<i class="icon-chevron-down"></i>
+        </div>
+    {{/contentFor}}
+
+    {{#if showAthletes}}
+        <div class="coach-live-splits-athletes">
+
+            {{#each _id in athletes}}
+                <!-- hack: unable to generate the link dynamically-->
+            <a href="/coach-live-splits/{{sessionId}}/athlete/{{_id}}/split/{{splitId}}">
+                {{#if isActiveAthlete _id}}
+
+                    {{> picture class=_id class="coach-live-splits-athletes-enabled-avatar"
+                            bgColor="#505283"
+                    }}
+                {{else}}
+                    {{> picture id=_id class="coach-live-splits-athletes-disabled-avatar"
+                            bgColor="#d4d4d4" athlete="x"}}
+                {{/if}}
+            </a>
+            {{/each}}
+        </div>
+    {{/if}}
+
+{{#let summary=getSplitSummary}}
+    {{#if summary}}
+    <div class="coach-live-splits-current-split">{{translate "coach_live_splits_metrics_for"}} <b>{{translate "coach_live_split"}} {{splitNumber}}</b></div>
+
+    <div class="coach-live-splits-table">
+        <div class="coach-live-splits-table-header">
+            <div class="coach-live-splits-table-header-metric">
+                <div class="coach-live-splits-table-header-metric-label">{{translate "coach_live_split_time"}}</div>
+                <div class="coach-live-splits-table-header-metric-value">{{formatDuration summary.duration}}</div>
+            </div>
+            <div class="coach-live-splits-table-header-metric">
+                <div class="coach-live-splits-table-header-metric-label">{{translate "coach_live_split_speed"}}</div>
+                <div class="coach-live-splits-table-header-metric-value">{{getAvgSpeed summary.distance summary.duration}}</div>
+            </div>
+            <div class="coach-live-splits-table-header-metric">
+                <div class="coach-live-splits-table-header-metric-label">{{translate "coach_live_split_spm"}}</div>
+                <div class="coach-live-splits-table-header-metric-value">{{formatZeroDecimalPlaces summary.cadence}}</div>
+            </div>
+        </div>
+        <div class="coach-live-splits-table-body">
+            <div class="coach-live-splits-table-body-labels">
+                {{#each partial in partials}}
+                    <div class="coach-live-splits-table-body-labels-distance {{#if isLastPartial partial.distance}} last {{/if}}">
+                        {{formatDistanceLabels partial.distance}}
+                    </div>
+                {{/each}}
+            </div>
+            <div class="coach-live-splits-table-body-metrics">
+                <div class="coach-live-splits-table-body-speed"></div>
+                {{#each partial in partials}}
+                <div class="coach-live-splits-table-body-metrics-partial">
+                    <div class="coach-live-splits-table-body-metrics-partial-highlight-metric">
+                        <div class="coach-live-splits-table-body-metrics-partial-highlight-metric-main">
+                            {{formatDuration partial.duration}}
+                        </div>
+                        <div class="coach-live-splits-table-body-metrics-partial-highlight-metric-label">{{translate "coach_live_split_spm"}}</div>
+                        <div class="coach-live-splits-table-body-metrics-partial-highlight-metric-secondary">
+                            {{formatZeroDecimalPlaces partial.cadence}}
+                        </div>
+                    </div>
+                    <div class="coach-live-splits-table-body-metrics-partial-secondary-metric">
+                        <div class="coach-live-splits-table-body-metrics-partial-secondary-metric-label">{{translate "coach_live_split_heart_rate"}}</div>
+                        <div class="coach-live-splits-table-body-metrics-partial-secondary-metric-value">
+                            {{formatZeroDecimalPlaces partial.hr}}
+                        </div>
+                        <div class="coach-live-splits-table-body-metrics-partial-secondary-metric-label">{{translate "coach_live_split_length"}}</div>
+                        <div class="coach-live-splits-table-body-metrics-partial-secondary-metric-value">
+                            {{formatTwoDecimalPlaces partial.displacement}}
+                        </div>
+                        <div class="coach-live-splits-table-body-metrics-partial-secondary-metric-label">{{translate "coach_live_split_speed_unit"}}</div>
+                        <div class="coach-live-splits-table-body-metrics-partial-secondary-metric-value">
+                            {{getAvgSpeed partial.distance partial.duration}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+    <div class="coach-live-splits-navigation"></div>
+    {{else}}
+        <div class="coach-live-splits-current-split-no-data-found">{{translate "coach_live_split_no_data"}}</div>
+    {{/if}}
+{{/let}}
+
+    <div class="system-modal-container" id="select-split">
+        <div class="coach-live-splits-pick-split">
+            <ul>
+                {{#each splits}}
+                    <li split="{{split}}" data-summary="{{_id}}" class="{{#if isActiveSplit split}} selected {{/if}}">
+                        <label>{{translate "coach_live_split"}}:</label>{{getSplitNumber split}}
+                        <label>{{translate "coach_live_split_distance"}}:</label>{{humanDistance distance}}m
+                        <label>{{translate "coach_live_split_time"}}:</label>{{formatDuration duration}}
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,5 @@
+<mj-section background-color="#000000">
+    <mj-column>
+        <mj-image href="https://uttercoach.com/" align="left" width="160px" src="https://static.uttercoach.com/images/logo-negative.png" />
+    </mj-column>
+</mj-section>

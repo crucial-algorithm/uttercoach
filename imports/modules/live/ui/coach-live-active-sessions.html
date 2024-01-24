@@ -1,0 +1,66 @@
+<template name="coachLiveActiveSessions">
+    {{#contentFor "back-action" }}
+        {{> CoachLiveBackButton}}
+    {{/contentFor}}
+
+    <div class="coach-live-active-sessions-content">
+        {{#if areThereNoSessions}}
+            <div class="coach-live-active-sessions-empty">
+                {{translate "coach_live_active_sessions_no_sessions"}}
+            </div>
+        {{/if}}
+        {{#if areThereRunningSessions}}
+            <div class="coach-live-active-sessions-section-title">{{translate "coach_live_active_sessions_running"}}</div>
+        {{/if}}
+        {{#each runningSessions}}
+            <a href="{{pathFor route="coachLiveSession" sessionId=_id}}">
+                <div class="coach-live-active-sessions-entry">
+                    <div class="coach-live-active-sessions-entry-athletes">
+                        {{#each _id in devices}}
+                            {{> picture id=_id}}
+                        {{/each}}
+                    </div>
+
+                    <div class="coach-live-active-sessions-entry-footer">
+                        <div class="coach-live-active-sessions-entry-footer-timer">
+                            <div class="coach-live-active-sessions-entry-footer-timer-label">{{translate "coach_live_active_sessions_time"}}</div>
+                            <div class="coach-live-active-sessions-entry-footer-timer-value" data-started="{{startedAt}}">
+                                00:00.00
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        {{/each}}
+
+        {{#if areThereFinishedSessions}}
+            <div class="coach-live-active-sessions-section-title">{{translate "coach_live_active_sessions_finished"}}</div>
+        {{/if}}
+        {{#each finishedSessions}}
+
+            {{#if isDifferentDayOfWeek @index}}
+                <div class="coach-live-active-sessions-day-divider">{{dayOfWeek finishedAt}}</div>
+            {{/if}}
+            <a href="{{pathFor route="coachLiveSession" sessionId=_id}}">
+                <div class="coach-live-active-sessions-entry">
+                    <div class="coach-live-active-sessions-entry-athletes">
+                        {{#each _id in devices}}
+                            {{> picture id=_id}}
+                        {{/each}}
+                    </div>
+
+                    <div class="coach-live-active-sessions-entry-footer">
+                        <div class="coach-live-active-sessions-entry-footer-timer">
+                            <div class="coach-live-active-sessions-entry-footer-timer-label">{{translate "coach_live_active_sessions_time"}}</div>
+                            <div class="coach-live-active-sessions-entry-footer-duration">
+                                {{duration startedAt finishedAt}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {{/each}}
+
+    </div>
+</template>

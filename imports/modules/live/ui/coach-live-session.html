@@ -1,0 +1,162 @@
+<template name="coachLiveSession">
+    {{#contentFor "back-action" }}
+        {{> CoachLiveBackButton}}
+    {{/contentFor}}
+
+    {{#contentFor "top-menu" }}
+        <button class="coach-live-session-splits-box" id="intervals">
+            {{translate "coach_live_session_menu_intervals"}} <span>{{totalSplits}}</span>
+        </button>
+        {{#if areThereAvailableAthletes}}
+            <div class="coach-live-session-append-device" id="add-device"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+        {{/if}}
+        <div href="javascript:;" id="finish-session" class="button coach-live-session-finish-button">
+            {{#if isLoaded}}
+                {{translate "coach_live_session_menu_done"}}
+            {{else}}
+                {{translate "coach_live_session_menu_finish"}}
+            {{/if}}
+
+        </div>
+    {{/contentFor}}
+    {{#if isInRole 'platform-tester'}}
+    <div class="coach-live-session-add-notes"><i class="fa fa-pencil-square" aria-hidden="true"></i></div>
+    {{/if}}
+    {{#if hasPreviousSession}}
+    <a href="{{pathFor route="coachLiveSession" sessionId=previousLink}}">
+        <div class="coach-live-session-move-previous-session"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></div>
+    </a>
+    {{/if}}
+    {{#if hasNextSession}}
+    <a href="{{pathFor route="coachLiveSession" sessionId=nextLink}}">
+        <div class="coach-live-session-move-next-session"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>
+    </a>
+    {{/if}}
+    <div class="coach-live-session-timer">00:00:00</div>
+    <div class="coach-live-session-timer-recovery-label">&nbsp;</div>
+    <div class="coach-live-session-devices" id="device-view" ></div>
+
+    {{#contentFor "footer"}}
+        <div data-selector="menu"></div>
+    {{/contentFor}}
+
+
+    <div class="modal" id="modal-confirm" tabindex="-1" role="dialog">
+        <div class="modal-confirm" role="document">
+            <div class="modal-content">
+                <div class="modal-confirm-message">
+                    {{translate "coach_live_session_confirm_finish_warning"}}
+                </div>
+                <div class="modal-confirm-actions">
+                    <div class="button secondary modal-confirm-secondary">{{translate "coach_live_session_cancel_finish"}}</div>
+                    <div class="button modal-confirm-primary">{{translate "coach_live_session_confirm_finish"}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-acknowledge" tabindex="-1" role="dialog">
+        <div class="modal-confirm" role="document">
+            <div class="modal-content">
+                <div class="modal-confirm-message">&nbsp;</div>
+                <div class="modal-confirm-actions">
+                    <div class="button secondary modal-confirm-secondary">{{translate "coach_live_session_acknowledge_finish"}}</div>
+                    <div class="button modal-confirm-primary">{{translate "coach_live_session_acknowledge_continue"}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-force-finish" tabindex="-1" role="dialog">
+        <div class="modal-confirm" role="document">
+            <div class="modal-content">
+                <div class="modal-confirm-message">
+                    {{translate "coach_live_session_force_finish"}}
+                </div>
+                <div class="modal-confirm-actions">
+                    <div class="button secondary modal-confirm-secondary">{{translate "coach_live_session_acknowledge_continue"}}</div>
+                    <div class="button secondary modal-confirm-primary">{{translate "coach_live_session_acknowledge_finish"}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-session-add-note" tabindex="-1" role="dialog">
+        <div class="modal-dialog coach-live-session-take-notes-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <textarea class="coach-live-session-take-notes-dialog-textarea" placeholder="Type something you want to store about the session" cols="30" rows="5">{{notes}}</textarea>
+                </div>
+                <div class="modal-actions">
+                    <div class="button secondary modal-action-secondary">Discard</div>
+                    <div class="button secondary modal-action-primary">Save</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="select-athletes" tabindex="-1" role="dialog">
+        <div class="modal-dialog live-sessions-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">{{translate "coach_live_session_append_athlete_modal_title"}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="live-select-session-type">
+                        <ul>{{translate "coach_live_session_append_athlete_no_athletes_available"}}</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</template>
+
+
+<template name="device">
+    <div class="coach-live-session-device" data-id="{{_id}}">
+
+        <div class="coach-live-session-device-layout-hr">
+            <div class="coach-live-session-device-hr-value" data-selector="hr">0</div>
+            <div class="coach-live-session-device-hr-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+        </div>
+        <div class="coach-live-session-device-layout-others">
+            <div class="coach-live-session-device-layout-others-main">
+                <div class="coach-live-session-device-athlete">
+                    <div class="coach-live-session-device-avatar">{{> picture id=_id}}</div>
+                    <div class="coach-live-session-device-athlete-name">{{athleteName _id}}</div>
+                </div>
+                <div class="coach-live-session-device-highlight-metric">
+                    <div class="coach-live-session-device-highlight-metric-label">{{translate "coach_live_session_metric_spm"}}</div>
+                    <div class="coach-live-session-device-highlight-metric-value" data-selector="spm"></div>
+                    <div class="coach-live-session-device-highlight-metric-if-offline">offline</div>
+                </div>
+
+                <div class="coach-live-session-device-highlight-metric-double">
+                    <div class="coach-live-session-device-highlight-metric-value" data-selector="timer">00:00:00</div>
+                    <div class="coach-live-session-device-highlight-metric-label">{{translate "coach_live_session_metric_spm"}}</div>
+                    <div class="coach-live-session-device-highlight-metric-value" data-selector="spm"></div>
+                </div>
+            </div>
+            <div class="coach-live-session-device-layout-others-secondary">
+                <div class="coach-live-session-secondary-metric">
+                    <div class="coach-live-session-secondary-metric-label">{{translate "coach_live_session_metric_distance"}}</div>
+                    <div class="coach-live-session-secondary-metric-value" data-selector="distance"></div>
+                </div>
+                <div class="coach-live-session-secondary-metric">
+                    <div class="coach-live-session-secondary-metric-label">{{translate "coach_live_session_metric_length"}}</div>
+                    <div class="coach-live-session-secondary-metric-value" data-selector="efficiency"></div>
+                </div>
+                <div class="coach-live-session-secondary-metric coach-live-session-secondary-metric-highlight">
+                    <div class="coach-live-session-secondary-metric-label">{{translate "coach_live_session_metric_speed"}}</div>
+                    <div class="coach-live-session-secondary-metric-value" data-selector="speed"></div>
+                </div>
+            </div>
+            <div class="coach-live-session-device-layout-tap-4-split">{{translate "coach_live_session_metric_split"}}</div>
+
+        </div>
+    </div>
+</template>

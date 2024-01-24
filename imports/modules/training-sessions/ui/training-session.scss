@@ -1,0 +1,743 @@
+@import '{}/imports/ui/style/colors.scss';
+
+[data-page="training-session"] > #content {
+    background-color: $white;
+}
+
+[data-session-sport="canoeing"] [data-sport="cycling"] {
+    display: none;
+}
+
+[data-session-sport="cycling"] [data-sport="canoeing"] {
+    display: none!important;
+}
+
+.training-session-details-header {
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    font-size: 14px;
+    text-align: center;
+    color: $white;
+    margin: 0 0 30px 0;
+
+    .training-session-details-header-hour {
+        width: 80px;
+        border-radius: 15px;
+        background: $ncs-primary;
+        z-index: 1;
+    }
+
+    .training-session-details-header-day {
+        width: 160px;
+        border-radius: 0 15px 15px 0;
+        background: $ncs-grey;
+        margin-left: -20px;
+    }
+
+    .training-session-details-header-expression {
+        color: $ncs-grey;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: left;
+        padding-left: 10px;
+        margin-right: 20px;
+    }
+}
+
+.stat-chart {
+    height: 320px;
+    margin-bottom: 20px;
+}
+
+.session-athlete {
+    position: relative;
+    padding: 0 10px 0 10px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    color: $dark-grey;
+    font-size: 14px;
+    font-weight: 500;
+    height: 60px;
+    border-radius: 30px;
+    margin-top: 4px;
+    line-height: 60px;
+
+    .athlete-name {
+        margin-left: 4px;
+    }
+
+    &.selected {
+        background-color: $primary-color-dark-text;
+        color: $white;
+    }
+}
+
+#session-splits, .split-free-session-splits {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+
+    table tr:first-child td {
+        border-top: 0;
+    }
+
+    td {
+        cursor: pointer
+    }
+
+    tr:hover {
+        font-weight: bold;
+        border-bottom: 2px solid $border-color;
+    }
+
+    .selected {
+        background-color: $white;
+        font-weight: 600;
+        color: $ncs-light-black;
+    }
+}
+
+.split-free-session-splits {
+    height: 300px;
+}
+
+.training-session-mobile-head {
+    display: none;
+}
+
+.training-session-summary-mobile.unboxed.session-summary {
+    display: none;
+}
+
+.training-session-slick-menu {
+    width: 100%;
+    padding: 0;
+
+    & .slick-menu-entry {
+        text-align: center;
+    }
+}
+
+.training-session-base-menu {
+    padding: 0;
+
+    .list-inline-item:not(:last-child) {
+        margin-right: 0;
+    }
+}
+
+.training-session-details-splits-table {
+    width: 100%;
+}
+
+.training-session-summary-desktop {
+    display: flex;
+    margin: 30px 0 30px 0;
+    height: 120px;
+    padding-top: 11px;
+    border-radius: 6px;
+    background: #F8F8F8;
+    justify-content: space-around;
+}
+
+.training-session-details-container, .training-session-details-charts-header {
+    background-color: $table-background-color;
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+
+    .section {
+        width: 100%;
+        padding: 20px 0 20px 0;
+    }
+}
+.training-session-details-container {
+    border-radius: 0 0 4px 4px;
+}
+
+.training-session-details-charts-header {
+    z-index: 1;
+    border-radius: 4px 4px 0 0;
+    padding-bottom: 20px;
+}
+
+.sticky {
+    position: fixed;
+    top: 60px;
+}
+
+.sticky + .training-session-details-container {
+    padding-top: 282px;
+}
+
+.sticky.training-session-details-charts-header {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.training-session-zone-charts {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #f8f8f8;
+
+    canvas:last-child {
+        margin-bottom: 40px;
+    }
+
+
+    .stat-chart {
+        width: 100%;
+        height: 400px;
+        min-width: 456px;
+        flex: 1 0 25%;
+
+
+
+        &.empty {
+            background-color: #F8F8F8;
+            text-align: center;
+            line-height: 400px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.training-session-split-session-chart {
+    width: 100%;
+    height: 400px;
+    min-width: 456px;
+    flex: 1 0 25%;
+}
+
+.training-session-split-session-review-chart {
+    width: 100%;
+    height: 400px;
+    min-width: 456px;
+    flex: 1 0 25%;
+}
+
+.training-session-split-session-chart-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.training-session-split-session-chart-tip {
+    font-size: 12px;
+    color: $dark-grey
+}
+
+.training-session-split-session-expression-input-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.training-session-split-session-expression-container {
+    display: flex;
+
+    div:first-child {
+        width: 180px;
+        height: 30px;
+        margin-top: 20px;
+        margin-right: 20px;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+}
+
+.training-session-details-chart-slider {
+
+    &.noUi-horizontal {
+        width: calc(100% - 60px);
+        margin: 20px 40px 20px 40px;
+        height: 6px;
+        border: 0;
+        background: $medium-grey;
+    }
+
+    .noUi-connect {
+        background-color: $new-red;
+    }
+
+    .noUi-handle {
+
+        &.noUi-handle-lower, &.noUi-handle-upper {
+            height: 28px;
+            width: 28px;
+            border-radius: 14px;
+            top: -11px;
+            background: $new-red;
+            border: 0;
+            box-shadow: none;
+            color: $white;
+
+            &:focus {
+                outline-width: 0;
+            }
+        }
+
+        &:before {
+            content: "\2013";
+            display: block;
+            line-height: 28px;
+            height: 28px;
+            position: initial;
+            text-align: center;
+            width: 28px;
+            background-color: transparent;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        .noUi-tooltip {
+            border: 0;
+            border-radius: initial;
+            background-color: transparent;
+            bottom: -90%;
+            font-size: 11px;
+            color: #666666;
+        }
+    }
+
+}
+
+
+.training-session-x-axis-type-toggle-container {
+    margin-top: 20px;
+    height: 80px;
+    min-height: 80px;
+    text-align: right;
+
+    label.btn {
+        min-width: 120px;
+    }
+}
+
+.training-session-tooltip {
+    display: flex;
+}
+
+.training-session-tooltip-column {
+    width: 50%;
+    padding: 0 10px;
+}
+
+.training-session-tooltip-column-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.training-session-highlight-box {
+    padding: 10px 0 10px 0;
+    height: 98px;
+    border: 0;
+    background: $white;
+    border-radius: 4px;
+    font-size: 12px;
+    width: 16%;
+
+
+    .stat-icon {
+        float: right;
+        height: 0;
+        color: $border-color;
+        font-size: 24px;
+    }
+
+    .stat {
+        text-align: center;
+        width: 100%;
+        height: 30px;
+        color: $ncs-primary;
+        font-weight: 500;
+    }
+
+    .value {
+        color: $ncs-light-black;
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+        text-align: center;
+    }
+
+    .total {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center;
+        color: $ncs-grey;
+    }
+
+    .weekly-comparison {
+        display: none;
+        margin: 0;
+        font-size: 10px;
+        font-weight: normal;
+
+        b {
+            font-size: 12px;
+        }
+
+        .icon {
+            font-size: 14px;
+        }
+    }
+
+    .stat-up {
+        color: $primary-color-dark-text;
+    }
+
+    .stat-down {
+        color: $accent-color;
+    }
+}
+
+.pick-athletes-menu {
+    background: #EFEFEF;
+    border-radius: 34px;
+    height: 68px;
+}
+
+.training-session-session-not-found {
+
+    font-size: 18px;
+    text-align: center;
+}
+
+.training-session-interval-input {
+    max-width: 70px;
+    text-align: center;
+}
+
+.training-session-desktop-head {
+    color: $ncs-light-primary;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+@media (max-width: 767px) {
+    .training-session-details-header {
+        display: none;
+    }
+
+    .training-session-summary-desktop {
+        display: none;
+    }
+
+    .training-session-mobile-head {
+        display: inherit;
+        color: $ncs-light-primary;
+        font-size: 10px;
+    }
+
+    .training-session-desktop-head {
+        display: none;
+    }
+
+    .training-session-details {
+        & > .content-box {
+            padding: 0;
+
+        }
+    }
+
+    #session-splits-body {
+        font-size: 12px;
+        & tr {
+            height: 40px;
+        }
+
+        & td {
+            line-height: 40px;
+            vertical-align: middle;
+            padding: 0 0 0 0.75rem;
+        }
+    }
+
+    .pick-athletes-menu {
+        background-color: $white;
+        height: 110px;
+    }
+
+    #session-details .title {
+        display: none;
+    }
+
+    .session-expression {
+        background-color: $white;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .training-session-summary-desktop {
+        display: none
+    }
+
+    .training-session-summary-mobile.unboxed.session-summary {
+        display: block;
+    }
+
+    .summary-table {
+        display: table;
+        width: 100%;
+
+        & .row {
+            display: table-row;
+            width: 100%;
+            height: 50px;
+
+            & > div {
+                width: 50%;
+                display: table-cell;
+            }
+        }
+
+        & .summary-value {
+            display: table-cell;
+            line-height: 100%;
+            vertical-align: middle;
+            padding-left: 6px;
+            font-size: 22px;
+
+            & > span.unit {
+                font-size: 10px;
+            }
+        }
+
+        & .summary-icon {
+            display: table-cell;
+            font-size: 30px;
+            text-align: center;
+            width: 30%;
+            color: $accent-color;
+        }
+    }
+
+    .training-session-zone-charts {
+        flex-direction: column;
+
+        .stat-chart {
+            height: 90vw;
+            max-height: 90vw;
+            width: 90vw;
+            min-width: 90vw;
+            max-width: 90vw;
+        }
+    }
+}
+
+
+/* Slider */
+.slick-loading .slick-list
+{
+    background: #fff url('./ajax-loader.gif') center center no-repeat;
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    padding: 0;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before
+{
+    opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before
+{
+    opacity: .25;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev
+{
+    left: -25px;
+}
+[dir='rtl'] .slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.slick-prev:before
+{
+    content: '←';
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: '→';
+}
+
+.slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.slick-next:before
+{
+    content: '→';
+}
+[dir='rtl'] .slick-next:before
+{
+    content: '←';
+}
+
+/* Dots */
+.slick-slider
+{
+    margin-bottom: 0;
+}
+
+.slick-dots
+{
+    position: absolute;
+    bottom: -32px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}

@@ -1,0 +1,139 @@
+<template name="coachBilling">
+
+    <section class="coach-billing-section">
+        <div class="coach-billing-header">{{translate "coach_billing_label_billing_info"}}</div>
+        <div class="coach-billing-box white-box">
+            {{#if isThereNoPaymentInfo}}
+                <span class="coach-billing-no-payment-info">{{translate "coach_billing_no_payment_info"}}</span>
+                <a href="{{pathFor route="coachPaymentMethod"}}" class="button coach-billing-edit coach-billing-edit-payment-button">
+                    {{translate "coach_billing_add_payment_info"}}
+                </a>
+            {{else}}
+                <h3>{{paymentInfo.name}}</h3>
+                <p class="coach-billing-address-paragraph">{{paymentInfo.email}}</p>
+                <p class="coach-billing-address-paragraph">{{paymentInfo.address.line1}}</p>
+                <p class="coach-billing-address-paragraph">{{paymentInfo.address.line2}}</p>
+                <p class="coach-billing-address-paragraph">{{paymentInfo.address.postalCode}}</p>
+                <p class="coach-billing-address-paragraph">{{paymentInfo.address.city}}</p>
+                <p class="coach-billing-address-paragraph">&nbsp;</p>
+
+                <h4>{{translate "coach_billing_payment_method"}}</h4>
+                <p class="coach-billing-address-paragraph"><i>xxxx-xxxx-xxxx</i>-{{cartLast4Digits}}  {{cartExpirationMonth}}/{{cartExpirationYear}}</p>
+                <a href="{{pathFor route="coachPaymentMethod"}}" class="button coach-billing-edit coach-billing-edit-payment-button" id="edit-payment-info">
+                    {{translate "coach_billing_edit_payment_info"}}
+                </a>
+            {{/if}}
+        </div>
+
+    </section>
+
+    <section class="coach-billing-section">
+        <div class="coach-billing-header">{{translate "coach_billing_label_account_info"}}</div>
+        <div class="coach-billing-box coach-billing-box-account white-box">
+            <label class="coach-billing-account-label">{{translate "coach_billing_account_status"}}</label>
+            <p class="coach-billing-account-value">{{subscriptStatus}}</p>
+
+            <label class="coach-billing-account-label">{{translate "coach_billing_account_team_size"}}</label>
+            <p class="coach-billing-account-value">{{teamSize}}</p>
+
+            <label class="coach-billing-account-label">{{translate "coach_billing_account_monthly_cost"}}</label>
+            <p class="coach-billing-account-value">€{{monthlyBilling}}</p>
+
+            <label class="coach-billing-account-label">{{translate "coach_billing_account_valid_until"}}</label>
+            <p class="coach-billing-account-value">{{validUntil}}</p>
+
+            <button class="button secondary coach-billing-edit coach-billing-edit-subscription-button" id="subscribe">
+                {{subscriptionAction}}
+            </button>
+        </div>
+    </section>
+
+    <section class="coach-billing-section">
+        <div class="coach-billing-header">{{translate "coach_billing_label_invoices"}}</div>
+        <div class="coach-billing-box white-box">
+            <div class="generic-list">
+                <div class="generic-list-header">
+                    <div class="coach-billing-invoices-month">{{translate "coach_billing_invoices_header_month"}}</div>
+                    <div class="coach-billing-invoices-year">{{translate "coach_billing_invoices_header_year"}}</div>
+                    <div class="coach-billing-invoices-status">{{translate "coach_billing_invoices_header_status"}}</div>
+                    <div class="coach-billing-invoices-amount">{{translate "coach_billing_invoices_header_amount"}}</div>
+                    <div class="coach-billing-invoices-view">&nbsp;</div>
+                    <div class="coach-billing-invoices-download">&nbsp;</div>
+                </div>
+                <div class="generic-list-body">
+                    {{#each invoices}}
+                        <div class="generic-list-entry">
+                            <div class="coach-billing-invoices-month">{{month}}</div>
+                            <div class="coach-billing-invoices-year">{{year}}</div>
+                            <div class="coach-billing-invoices-status">{{status}}</div>
+                            <div class="coach-billing-invoices-amount">{{amount}}</div>
+                            <div class="coach-billing-invoices-view"><a href="{{invoiceUrl}}" target="_blank">{{translate "coach_billing_invoices_action_view"}}</a></div>
+                            <div class="coach-billing-invoices-download"><a href="{{pdfUrl}}">{{translate "coach_billing_invoices_action_download"}}</a></div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="system-modal-container" id="trial-ended-notification">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_trial_ended_message"}}</div>
+        <div class="modal-warning-extra-info">
+            {{#if coachHasPaymentInfo}}
+                {{translate "coach_billing_modal_trial_ended_with_card_action"}}
+            {{else}}
+                {{translate "coach_billing_modal_trial_ended_no_card_action"}}
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="system-modal-container" id="subscribe-notification">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_subscribe_message" monthlyBilling}}</div>
+        <div class="modal-warning-extra-info coach-billing-subscribe-extra-info">{{translate "coach_billing_modal_subscribe_additional_details"}}</div>
+        <ol class="coach-billing-subscription-notes">
+          <li>{{translate "coach_billing_modal_subscribe_disclaimer_1" coachCostPerAthlete}}</li>
+          <li>{{translate "coach_billing_modal_subscribe_disclaimer_2"}}</li>
+          <li>{{translate "coach_billing_modal_subscribe_disclaimer_3"}}</li>
+        </ol>
+        <div class="modal-warning-extra-info">{{translate "coach_billing_modal_subscribe_lower_cost_hint"}}</div>
+        <div class="modal-warning-extra-info"><b>{{translate "coach_billing_modal_subscribe_lower_cost_hint_no_charge"}}</b></div>
+    </div>
+
+    <div class="system-modal-container" id="subscribe-confirm">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_subscribe_confirm_message" monthlyBilling cartLast4Digits}}</div>
+        <div class="modal-warning-extra-info coach-billing-subscribe-confirm-lower-cost-hint">{{translate "coach_billing_modal_subscribe_confirm_message_details"}}</div>
+    </div>
+
+    <div class="system-modal-container" id="subscribe-success">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_subscribe_success_message"}}</div>
+        <div class="modal-warning-extra-info">{{translate "coach_billing_modal_subscribe_success_message_secondary"}}</div>
+    </div>
+
+    <div class="system-modal-container" id="cancel-subscription-confirm">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_cancel_subscription_confirm_message"}}</div>
+        <div class="modal-warning-extra-info">{{translate "coach_billing_modal_cancel_subscription_confirm_message_secondary"}}</div>
+    </div>
+
+    <div class="system-modal-container" id="cancel-subscription-success">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_cancel_subscription_success_message"}}</div>
+        <div class="modal-warning-extra-info">{{translate "coach_billing_modal_cancel_subscription_success_message_secondary"}}</div>
+    </div>
+    
+    <div class="system-modal-container" id="subscribe-with-no-payment-info">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_subscribe_with_no_payment_message"}}</div>
+        <div class="modal-warning-extra-info"><b>{{translate "coach_billing_modal_subscribe_with_no_payment_message_secondary"}}</b></div>
+    </div>
+
+    <div class="system-modal-container" id="payment-processing">
+        <p class="coach-team-modal-warning">{{translate "coach_billing_modal_payment_processing_message"}}</p>
+        <p class="coach-team-modal-warning-info">
+            {{translate "coach_billing_modal_payment_processing_message_secondary"}}
+        </p>
+    </div>
+
+    <div class="system-modal-container" id="redeem-promotion-success">
+        <div class="modal-warning-message">{{translate "coach_billing_modal_redeem_promotion_message"}}</div>
+    </div>
+
+
+</template>

@@ -1,0 +1,82 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.week-view-container {
+  display: flex;
+  overflow: hidden;
+}
+
+.week {
+  list-style: none;
+}
+
+ul.week {
+  margin-left: 4px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+ul.week.current {
+  background-color: #dddddd;
+}
+
+li.week-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $primary-color;
+  background-color: $white;
+}
+
+.day {
+  width: 340px;
+  min-height: 100px;
+  color: #ffffff;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  margin: 4px;
+  height: unset;
+  line-height: unset;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.day[data-even-month="true"] {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.day-date {
+  color: #3B3D62;
+  font-size: 18px;
+  padding: 6px 0;
+}
+.day-date-dom, .day-date-m {
+  font-size: 14px;
+}
+
+.day-date-dom::before {
+  content: '('
+}
+
+.day-date-m::after {
+  content: ')'
+}
+
+@media (max-width: 767px) {
+  .day {
+     width: 96vw
+  }
+}

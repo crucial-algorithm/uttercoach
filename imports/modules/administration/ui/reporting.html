@@ -1,0 +1,45 @@
+<template name="administrationReporting">
+
+    <div class="admin-reporting-row">
+        <div class="admin-reporting-chart">
+            <div class="admin-report-chart-title">{{translate "admin_reporting_new_coaches"}}</div>
+            <div class="admin-report-chart-body" id="new-coaches"></div>
+        </div>
+
+        <div class="admin-reporting-chart">
+            <div class="admin-report-chart-title">{{translate "admin_reporting_new_athletes"}}</div>
+            <div class="admin-report-chart-body" id="new-athletes"></div>
+        </div>
+    </div>
+
+
+    <div class="admin-reporting-row">
+        <div class="admin-reporting-chart three-columns">
+            <div class="admin-report-chart-title">{{translate "admin_reporting_nbr_of_sessions"}}</div>
+            <div class="admin-report-chart-body" id="total-sessions"></div>
+        </div>
+
+        <div class="admin-reporting-chart three-columns">
+            <div class="admin-report-chart-title">{{translate "admin_reporting_nbr_of_hours_paddling"}}</div>
+            <div class="admin-report-chart-body" id="total-hours"></div>
+        </div>
+
+        <div class="admin-reporting-chart three-columns">
+            <div class="admin-report-chart-title">{{translate "admin_reporting_distance_traveled"}}</div>
+            <div class="admin-report-chart-body" id="total-distance"></div>
+        </div>
+    </div>
+
+    <div class="admin-reporting-row">
+        <div class="admin-reporting-chart">
+            <div class="admin-report-chart-title">{{translate "admin_reporting_most_active_users"}}</div>
+            <div class="admin-report-chart-body" id="users-ranking"></div>
+        </div>
+
+        <div class="admin-reporting-chart">
+            <div class="admin-report-chart-title">{{translate "admin_reporting_most_active_countries"}}</div>
+            <div class="admin-report-chart-body" id="countries-ranking"></div>
+        </div>
+    </div>
+
+</template>

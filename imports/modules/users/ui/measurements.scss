@@ -1,0 +1,44 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.athlete-measurements-charts-container {
+  display: flex;
+}
+
+.athlete-measurements-charts-box {
+  width: 33.3%;
+}
+.athlete-measurements-add-button {
+  float: right;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #505284;
+}
+
+.tip-measure {
+  margin-top: 20px;
+  color: $dark-grey;
+  font-size: 12px;
+}
+
+
+@media (max-width: 767px) {
+  .athlete-measurements-charts-container {
+    flex-direction: column;
+  }
+
+  .athlete-measurements-charts-box {
+    width: 100%;
+  }
+
+  .athlete-measurements-add-button {
+    margin-right: 10px;
+    margin-top: -6px;
+    float: right;
+  }
+
+  .tip-measure {
+    text-align: center;
+  }
+}

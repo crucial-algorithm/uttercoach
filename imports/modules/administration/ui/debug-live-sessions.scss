@@ -1,0 +1,67 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.debug-live-sessions-select-coach {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: $new-blue;
+  color: $white
+}
+
+.debug-live-sessions-devices {
+  height: calc(var(--vh, 1vh) * 100 - 106px);
+  overflow: auto;
+}
+
+.debug-live-sessions-device {
+  width: 96vw;
+  background: white;
+  margin: 1vh 2vw;
+  position: relative;
+  border: 1px solid #D9D9D9;
+  height: 14vh;
+  text-align: center;
+  color: $primary-color;
+  font-weight: 800;
+  border-radius: 6px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+}
+
+.debug-live-sessions-device-name {
+  height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.debug-live-sessions-device-visible-info {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.debug-live-sessions-device-under-the-hood {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.debug-live-sessions-device-history {
+  height: 20vh;
+  width: 96vw;
+  margin: 1vh 2vw;
+  position: relative;
+  border: 1px solid #D9D9D9;
+  color: $primary-color;
+  border-radius: 6px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+  display: none;
+  overflow: auto;
+  padding: 0 20px;
+}
+
+.debug-live-sessions-device-hard-reset {
+  display: none;
+}

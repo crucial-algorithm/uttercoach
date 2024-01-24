@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot');
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf') format('truetype'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gopaddler';
+  src:  url('/fonts/gopaddler.eot?veomoo');
+  src:  url('/fonts/gopaddler.eot?veomoo#iefix') format('embedded-opentype'),
+  url('/fonts/gopaddler.ttf?veomoo') format('truetype'),
+  url('/fonts/gopaddler.woff?veomoo') format('woff'),
+  url('/fonts/gopaddler.svg?veomoo#gopaddler') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'gopaddler' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-calendar-grid:before {
+  content: "\2300";
+}
+.icon-calendar:before {
+  content: "\2301";
+}
+.icon-heart:before {
+  content: "\2302";
+}
+.icon-tshirt:before {
+  content: "\2303";
+}
+.icon-desktop:before {
+  content: "\2304";
+}
+.icon-download:before {
+  content: "\2305";
+}
+.icon-laptop:before {
+  content: "\2306";
+}
+.icon-mobile:before {
+  content: "\2307";
+}
+.icon-warning-sign:before {
+  content: "\2308";
+}
+.icon-wifi:before {
+  content: "\2309";
+}
+.icon-divide:before {
+  content: "\230a";
+}
+.icon-remove:before {
+  content: "\230b";
+}
+.icon-share:before {
+  content: "\230c";
+}
+.icon-upload:before {
+  content: "\230d";
+}
+.icon-user:before {
+  content: "\230e";
+}
+.icon-chevron-down:before {
+  content: "\230f";
+}
+.icon-chevron-left:before {
+  content: "\2310";
+}
+.icon-chevron-right:before {
+  content: "\2311";
+}
+.icon-chevron-up:before {
+  content: "\2312";
+}
+.icon-minus:before {
+  content: "\2313";
+}
+.icon-plus:before {
+  content: "\2314";
+}
+.icon-arrow-down:before {
+  content: "\2315";
+}
+.icon-arrow-left:before {
+  content: "\2316";
+}
+.icon-arrow-right:before {
+  content: "\2317";
+}
+.icon-arrow-up:before {
+  content: "\2318";
+}
+.icon-equal:before {
+  content: "\2319";
+}
+.icon-home:before {
+  content: "\231a";
+}
+.icon-hamburger:before {
+  content: "\231b";
+}
+.icon-zoom:before {
+  content: "\231c";
+}

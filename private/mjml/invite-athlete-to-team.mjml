@@ -1,0 +1,26 @@
+<mjml>
+    {{>head }}
+  <mj-body background-color="#d6d6d5">
+    {{> logo }}
+
+    <mj-section background-color="#ffffff" padding="60px 0">
+      <mj-column width="600px">
+        <mj-text padding-bottom="20px" mj-class="h2" align="left" color="#999999" text-transform="none">
+          {{greeting}}
+        </mj-text>
+        <mj-text mj-class="h3" align="left" color="#999999">
+          {{coach}}: <i>{{message}}</i>
+        </mj-text>
+
+        <mj-text mj-class="h3" align="left" color="#999999">
+          <span style="color:#5c5b5b;font-weight:bold">{{on_your_phone}}</span> {{instructions}}
+        </mj-text>
+      <mj-button background-color="#EF6155" color="#FFFFFF" height="40px" font-size="20px" text-transform="uppercase" href="{{link}}">
+        {{action}}
+      </mj-button>
+      </mj-column>
+    </mj-section>
+
+    {{> footer }}
+  </mj-body>
+</mjml>

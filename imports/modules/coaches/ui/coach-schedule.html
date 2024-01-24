@@ -1,0 +1,41 @@
+<template name="coachSchedule">
+
+    <div class="coach-schedule-week-view">
+        <div id="calendar"></div>
+    </div>
+
+    <div class="system-modal-container" id="create-session">
+        <div id="coach-schedule-session-container">
+            <div class="coach-schedule-day-label">&nbsp;</div>
+
+            <div class="coach-schedule-new-session-container">
+
+                <input type="text" id="new-expression" placeholder="{{translate "schedule_input_placeholder"}}">
+                <div id="new-expression-error" class="coach-schedule-error-text"><i class="fa fa-warning"></i>{{translate
+                        "schedule_invalid_expression"}}</div>
+                <p class="coach-schedule-session-tip" style="font-size: 12px">{{translate "schedule_expression_help_units"}}
+                    <br/> {{translate "schedule_expression_help_sample"}}</p>
+                <p class="coach-schedule-session-tap-to-copy-message">{{translate "schedule_tap_to_copy"}}</p>
+            </div>
+
+            <div id="visual-session-representation" class="content-box section">{{translate "schedule_expression_preview"}}</div>
+
+            <select class="coach-schedule-group-select" id="groups" title="{{translate "create_expression_assign_groups"}}" multiple>
+                {{#each getGroups}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+
+            <div id="fields-required-error" class="coach-schedule-error-text"><i class="fa fa-warning"></i>
+                {{translate "create_expression_required_fields"}}
+            </div>
+
+            <div class="button secondary coach-schedule-remove-session" data-cancel="{{translate "cancel"}}">
+                {{translate "schedule_delete"}}
+                <span class="progress-bar"></span>
+            </div>
+        </div>
+
+    </div>
+
+</template>

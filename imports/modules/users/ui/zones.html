@@ -1,0 +1,98 @@
+<template name="profileZones">
+    {{>profileGeneral}}
+
+    {{>profileTabs tab="zones" athleteId=athleteId}}
+
+    <div class="modal fade modal-fullscreen" id="zone-add-athletes-modal" tabindex="-1" role="dialog"
+         aria-labelledby="modalSmallLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content zones-replicate-content-desktop">
+                <div class="modal-header zones-header">
+                    <h5 class="modal-title" id="modalSmallLabel">{{translate "athlete_zone_add"}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="zones-athlete-list-replicate">{{#each replicateZone}}
+                        <div class="zones-replicate-to-athlete" data-id="{{this}}">
+                            {{> picture id=this shape="circle"}}
+                            <span class="athlete-name-zone-replicate athlete-name">{{athleteName this}}</span>
+                            <div class="zones-replicate-to-athlete-label zones-replicate-to-athlete">{{translate
+                                    "athlete_zone_replicate_selected"}}</div>
+                        </div>
+                    {{/each}}</div>
+                </div>
+                <div class="modal-footer zone-replicate-footer">
+                    <button type="button" id="discard" class="btn secondary">{{translate
+                            "schedule_expression_discard"}}</button>
+                    <button type="button" id="create" disabled class="btn primary">
+                        <span class="d-none d-md-inline">{{translate "athlete_zone_replicate_selected"}}</span>
+                        <span class="d-md-none">{{translate "athlete_zone_replicate_selected"}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <ul class="zones-tabs pagination zones-pagination" id="zones-tabs">
+            <li class="page-item" data-tab="heart-rate"><a class="page-link" href="javascript:;">{{translate "athlete_heart_rate_zone"}}</a></li>
+            <li class="page-item" data-tab="stroke-rate"><a class="page-link" href="javascript:;">{{translate "athlete_stroke_rate_zone"}}</a></li>
+            <li class="page-item" data-tab="speed"><a class="page-link" href="javascript:;">{{translate "athlete_speed_zone"}}</a></li>
+        </ul>
+    </nav>
+
+    <div class="btn-zone-desktop">
+        <button data-selector="add-athletes" class="button tertiary zones-save-btn">{{translate "athlete_zone_add"}}</button>
+        <button data-selector="reload-zones" class="button tertiary zones-reload-btn">{{translate "athlete_zone_reload"}}</button>
+        <button data-selector="add-row" class="button secondary zones-btn-add-row" disabled="{{#if isRowLimitReached}}true{{/if}}">{{translate "athlete_add_row_table_zones"}}</button>
+        <button data-selector="save-zones" {{saveButtonStatus}} class="button zones-save-btn">{{translate "athlete_physical_save"}}</button>
+    </div>
+
+    <div class="btn-zone-mobile">
+        <button data-selector="add-row" disabled="{{#if isRowLimitReached}}true{{/if}}" class="button zones-btn-add-row"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button data-selector="reload-zones" class="button zones-reload-btn"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <button data-selector="save-zones" {{saveButtonStatus}} class="button zones-save-btn">{{translate "athlete_physical_save"}}</button>
+        <button data-selector="add-athletes" class="button zones-save-btn">{{translate "athlete_zone_replicate_selected"}}</button>
+    </div>
+
+
+    <table class="table zones-table">
+        <thead class="thead-light">
+            <tr>
+                <th class="th-titles" scope="col">{{translate "athlete_first_value_table_zones"}}</th>
+                <th class="th-titles" scope="col">{{translate "athlete_last_value_table_zones"}}</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each zones}}
+                {{>zoneIntervalTemplate index=@index start=start end=end}}
+            {{/each}}
+        </tbody>
+    </table>
+    {{#if errorMsg}}
+        <div class="alert alert-danger" role="alert">
+            {{errorMsg}}
+        </div>
+    {{/if}}
+
+</template>
+
+<template name="zoneIntervalTemplate">
+    <tr data-index="{{index}}" class="{{#if isZoneInvalid}} zones-interval-invalid {{/if}}">
+        <td><input type="number"  step="any" class="input-zone-start" disabled name="start" min="1" value="{{start}}" required></td>
+        <td><input type="number" step="any" class="input-zone-end"  disabled="{{#if isLast}}true{{/if}}"  name="end" min="1"
+                   value="{{endValue}}" required>
+            <button class="button-icon zones-remove-row-btn" title="{{translate "team_remove_athlete" }}" tabindex="-1">
+            <i class="fa fa-trash"></i>
+        </button></td>
+        <td class="zone-label">({{zoneLabel}})</td>
+    </tr>
+
+</template>
+
+
+
+

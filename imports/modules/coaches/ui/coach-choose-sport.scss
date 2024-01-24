@@ -1,0 +1,25 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.coach-choose-sport-list {
+  li {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: $ncs-purple;
+    border-bottom: 1px solid;
+  }
+
+  li.selected, li.selected:nth-child(even) {
+    background-color: $ncs-purple;
+    color: $white;
+    cursor: pointer;
+  }
+
+  li:nth-child(even) {
+    background-color: unset;
+  }
+}

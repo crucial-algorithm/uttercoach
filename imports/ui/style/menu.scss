@@ -1,0 +1,92 @@
+@import '../style/colors.scss';
+
+.gopaddler-mobile-menu.modal-dialog {
+  width: 100vw;
+  left: 0;
+  top: 0;
+  margin: 0;
+  background-color: $ncs-light-black;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.modal.show {
+  .gopaddler-mobile-menu.modal-dialog {
+    transform: translate(0, 0);
+    padding: 30px 0 0 0;
+    align-items: baseline;
+  }
+}
+
+.gopaddler-mobile-menu.modal-content {
+  background-color: $ncs-light-black;
+  border: 0;
+
+  & .modal-header {
+    border: 0;
+    background-color: $ncs-light-black !important;
+  }
+
+  & .modal-body {
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    .nav-list.nav.navbar-nav {
+      width: 100%;
+
+      li {
+        height: unset;
+        line-height: unset;
+
+        &:nth-child(even) {
+          background-color: $ncs-light-black !important;
+        }
+      }
+    }
+  }
+}
+
+.gopaddler-mobile-menu-button {
+  font-family: gopaddler;
+  color: $medium-grey;
+  font-size: 40px;
+  margin: 0;
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
+  text-align: center;
+  line-height: 56px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  font-weight: normal;
+
+  &:hover, &:active, &:focus, &:visited {
+    background-color: transparent;
+    color: $medium-grey;
+  }
+}
+
+.gopaddler-mobile-menu-button:hover,  .gopaddler-mobile-menu-button:focus {
+  border: 0;
+  color: $medium-grey;
+  outline: none;
+}
+
+.gopaddler-mobile-menu-close-button {
+  font-family: gopaddler;
+  color: $white;
+  font-size: 40px;
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
+  text-align: center;
+  line-height: 56px;
+}
+
+.gopaddler-mobile-menu-close-button.close {
+  padding: 0;
+  opacity: 1;
+}

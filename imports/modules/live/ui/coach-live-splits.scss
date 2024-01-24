@@ -1,0 +1,255 @@
+@import '{}/imports/ui/style/colors.scss';
+
+.coach-live-splits-menu {
+    width: 100px;
+    text-align: center;
+    color: $white;
+    font-size: 12px;
+    font-weight: 500;
+    word-spacing: 2px;
+    padding-left: 8px;
+
+    & > i.fa {
+        color: #A7A7A7
+    }
+}
+
+
+.coach-live-splits-athletes {
+    display: flex;
+    width: 96vw;
+    align-content: center;
+    margin: 1vh 2vw 2vh 2vw;
+    position: fixed;
+    overflow: auto;
+    height: 60px;
+
+    & .avatar {
+        margin-right: 1vw;
+    }
+}
+
+.coach-live-splits-athletes-enabled-avatar {
+}
+.coach-live-splits-athletes-disabled-avatar {
+    opacity: .5;
+}
+
+.coach-live-splits-current-split {
+    text-transform: uppercase;
+    color: #A7A7A7;
+    font-size: 12px;
+    width: 100vw;
+    text-align: center;
+    margin: 66px 0 2vh 0;
+    position: fixed;
+}
+
+.coach-live-splits-current-split:first-child {
+    margin: 16px 0 2vh 0;
+}
+
+.coach-live-splits-current-split-no-data-found {
+    height: 86vh;
+    line-height: 86vh;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    color: #A7A7A7;
+    text-transform: uppercase;
+}
+
+.coach-live-splits-table {
+    width: 92vw;
+    margin: 100px 4vw 2vh 4vw;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.16);
+    background-color: #f6f7f7;
+    position: fixed;
+}
+
+.coach-live-splits-table:nth-child(2) {
+    margin: 56px 4vw 2vh 4vw;
+}
+
+.coach-live-splits-table-header {
+    height: 10vh;
+    background-color: #3B3D62;
+    color: $white;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.coach-live-splits-table-header-metric {
+    text-transform: uppercase;
+    color: $white;
+    font-weight: 500;
+    font-size: 20px;
+    border-right: 1px solid #505284;
+    width: 33.33vw;
+}
+
+.coach-live-splits-table-header-metric-label {
+    color: #A7A7A7;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+}
+
+.coach-live-splits-table-header-metric-value {
+}
+
+.coach-live-splits-table-body {
+    display: flex;
+    max-height: 60vh;
+    max-height: calc(100vh - 208px);
+    background-color: #505284;
+    border-radius: 0 0 0 6px;
+    overflow: auto;
+}
+.coach-live-splits-table-body-labels {
+    background-color: #505284;
+    width: 8vw;
+    border-radius: 0 0 0 6px;
+}
+
+.coach-live-splits-table-body-metrics {
+    background-color: $white;
+    width: 84vw;
+}
+
+.coach-live-splits-table-body-metrics-partial {
+    height: 80px;
+    text-align: right;
+    border-bottom: 1px solid #E2E2E2;
+    padding: 6px 0;
+    background-color: $white;
+}
+
+.coach-live-splits-table-body-speed {
+    float:left;
+    width: 24vw;
+    height: 90vh;
+}
+
+.coach-live-splits-table-body-labels-distance {
+    font-size: 12px;
+    color: $white;
+    text-align: center;
+    line-height: 0;
+    margin-top: 80px;
+    vertical-align: top;
+
+    &.last {
+        margin-top: 70px;
+    }
+}
+
+.coach-live-splits-table-body-metrics-partial-highlight-metric {
+    background-color: #EFEFEF;
+    display: flex;
+    border-radius: 20px;
+    width: 56vw;
+    height: 40px;
+    line-height: 40px;
+    align-content: center;
+    font-weight: 900;
+    color: #505050;
+    text-align: center;
+    justify-content: space-around;
+    justify-items: stretch;
+}
+
+.coach-live-splits-table-body-metrics-partial-highlight-metric-main {
+    font-size: 20px;
+}
+
+.coach-live-splits-table-body-metrics-partial-highlight-metric-label {
+    font-size: 12px;
+    font-weight: initial;
+    color: #A7A7A7;
+}
+
+.coach-live-splits-table-body-metrics-partial-highlight-metric-secondary {
+    font-size: 26px;
+}
+
+.coach-live-splits-table-body-metrics-partial-secondary-metric {
+    display: flex;
+    width: 56vw;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 0 0;
+    align-items: center;
+    justify-content: space-around;
+    color: #505050;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.coach-live-splits-table-body-metrics-partial-secondary-metric-label {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+
+.coach-live-splits-dialog-select-split {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin: 0;
+    height: 70vh;
+    font-family: 'Roboto', sans-serif;
+
+    .modal-content {
+        border: 0;
+        border-radius: 0;
+        box-shadow: inherit;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .modal-body {
+        padding: 0 ;
+    }
+
+    .modal-header {
+        text-transform: uppercase;
+        height: 10vh;
+        line-height: 10vh;
+        padding: 3vh;
+        border-radius: 0;
+
+        button.close {
+            opacity: 1;
+            color: $white;
+            font-size: 28px;
+            line-height: 28px;
+        }
+    }
+
+}
+
+.coach-live-splits-pick-split {
+    ul {
+        height: 88vh;
+        overflow: auto;
+        list-style-type: none;
+        width: 100vw;
+        padding: 0;
+
+        li {
+            width: 100vw;
+            text-align: center;
+            overflow: hidden;
+
+            & > label {
+                font-weight: 400;
+                margin: 0 4px 0 0;
+                text-transform: capitalize;
+            }
+        }
+    }
+}

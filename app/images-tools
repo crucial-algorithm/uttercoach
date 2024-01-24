@@ -1,0 +1,139 @@
+#!/usr/bin/env node
+const fs = require('fs');
+const gm = require('gm').subClass({imageMagick: true});
+
+module.exports = class ImageTools {
+
+    constructor() {
+    }
+
+    /**
+     *
+     * @param images
+     * @param {string|null} source
+     * @param description
+     * @return {Promise<void>}
+     */
+    async execute(images, source = null, description) {
+        console.log(`\nGenerating ${description} images`);
+        await this.generate(images, source);
+        console.log(`\n${description} finished`);
+    }
+
+    /**
+     * @private
+     * @param {Array<null|{width: number, height: number, file: string, [source]: string}>} sizes  List of image sizes we want to generate
+     * @param {string}      image                Image path
+     * @param {string|null} iosProjectFolder     ios project folder name
+     * @param {string|null} app                  app name for replace in case of override of image in setting
+     * @return {Promise<>}
+     */
+    generate(sizes, image, iosProjectFolder= null, app = null) {
+        const self = this;
+        return new Promise((resolve) => {
+            if (sizes.length === 0) return resolve();
+            (function loop(sizes) {
+                if (sizes.length === 0) return resolve();
+                let config = sizes.pop();
+                if (config === null) return loop(sizes);
+                let filename = config.file;
+                if (iosProjectFolder !== null) filename = filename.replace('{{ios_project_folder}}', iosProjectFolder);
+                if (config.source) {
+                    image = config.source.replace('{{app}}', app);
+                }
+                self.generateImage(image, config.width, config.height, filename).finally(() => {
+                    loop(sizes);
+                });
+            })(sizes);
+        });
+    }
+
+    /**
+     * @private
+     * @param {string} imagePath    Source file name
+     * @param {number} width        Target width
+     * @param {number} height       Target height
+     * @param {string} output       target file name
+     * @return {Promise}
+     */
+    generateImage(imagePath, width, height, output) {
+        const self = this;
+        return new Promise((resolve) => {
+            let image = gm(imagePath);
+            self.determineImageSize(image, width, height, output).then(self.resize).then(self.crop).then(() => {
+                resolve();
+            }).catch((err) => {
+                console.error(err);
+                resolve(err);
+            })
+        });
+    }
+
+    /**
+     * Calculate image size and pass that with all the required info to the resize function
+     *
+     * @private
+     * @param image
+     * @param width
+     * @param height
+     * @param output
+     * @return {Promise<{image: gm, width: number, target: {width: number, height: number, file: string}}>}
+     */
+    determineImageSize(image, width, height, output) {
+        return new Promise((resolve, reject) => {
+            image.size((err, value) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve({image: image, width: value.width, target: {width: width, height: height, file: output}});
+                }
+            });
+        });
+    }
+
+    /**
+     *
+     * @private
+     * @param {{image: gm, width: number, target: {width: number, height: number, file: string}}} options
+     * @return {Promise<{source: string, output: string, width: number, height: number}>}
+     */
+    resize(options) {
+        return new Promise((resolve, reject) => {
+            // calculate image size
+            let x = Math.floor(options.width / (options.target.width * .33));
+            options.image.gravity('Center');
+            let newWidthHeight = Math.max(Math.floor((options.width / x) / 0.33), Math.max(options.target.width, options.target.height));
+            let filename = `.inter@${options.target.width}x${options.target.height}.png`;
+            options.image.resize(newWidthHeight, newWidthHeight).write(filename, function (err) {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve({output: options.target.file, source: filename, width: options.target.width, height: options.target.height})
+                }
+            });
+        })
+    }
+
+
+    /**
+     *
+     * @private
+     * @param {{source: string, output: string, width: number, height: number}} options
+     * @return {Promise<string>}
+     */
+    crop(options) {
+        return new Promise((resolve, reject) => {
+            gm(options.source).gravity('Center')
+                .crop(options.width, options.height, 0, 0, null).write(options.output, function (err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    console.log(`Created ${options.width}x${options.height} @ ${options.output}`);
+                    fs.unlinkSync(options.source);
+                    resolve();
+                }
+            });
+        });
+    }
+}
+

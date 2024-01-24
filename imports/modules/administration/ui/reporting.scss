@@ -1,0 +1,34 @@
+.admin-reporting-row {
+    display: table;
+    width: 100%;
+}
+
+.admin-reporting-chart {
+    display: table-cell;
+    width: 50%;
+    margin: auto;
+    background-color: #fff;
+
+    &.three-columns {
+        width: 33.33%;
+        margin: auto
+    }
+
+    .highcharts-grid {
+        display: none;
+    }
+}
+
+.admin-report-chart-body {
+    margin: auto;
+}
+
+.admin-report-chart-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    background: #3B3D62;
+    color: #fff;
+    font-weight: 900;
+    border: 1px solid #f6f7f7;
+}

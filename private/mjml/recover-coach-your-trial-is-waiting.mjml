@@ -1,0 +1,69 @@
+<mjml>
+    {{>head }}
+  <mj-body background-color="#d6d6d5">
+    {{> logo }}
+
+       <mj-section background-color="#ffffff" padding="60px 0 0 0">
+          <mj-column width="600px">
+            <mj-text padding-bottom="40px" mj-class="h3" align="left" color="#999999">
+              {{greeting}}
+            </mj-text>
+
+            <mj-text mj-class="h3" align="left" color="#999999">
+              {{why_keep_using}}
+            </mj-text>
+
+            <mj-button background-color="#EF6155" color="#FFFFFF" height="40px" font-size="20px" text-transform="uppercase" href="{{link}}">
+              {{action}}
+            </mj-button>
+
+            <mj-text mj-class="h3" align="left" color="#999999" padding="40px 25px 0 25px">
+              {{features}}
+            </mj-text>
+          </mj-column>
+        </mj-section>
+        <mj-section background-color="#ffffff" padding="40px 0 0 0">
+          <mj-column width="300px">
+            <mj-text padding-bottom="40px" mj-class="h2" align="left" color="#999999">
+              {{highlight1_title}}
+            </mj-text>
+            <mj-text mj-class="h3" align="left" color="#999999">
+             {{highlight1_text}}
+            </mj-text>
+          </mj-column>
+          <mj-column width="300px">
+            <mj-image href="https://uttercoach.com/" align="left" src="https://uttercoach.com/images/cadence.png" />
+          </mj-column>
+        </mj-section>
+
+        <mj-section background-color="#ffffff" padding="60px 0">
+          <mj-column width="300px">
+            <mj-image href="https://uttercoach.com/" align="left" src="https://uttercoach.com/images/dashboard.png" />
+          </mj-column>
+          <mj-column width="300px">
+            <mj-text padding-bottom="40px" mj-class="h2" align="left" color="#999999">
+              {{highlight2_title}}
+            </mj-text>
+            <mj-text mj-class="h3" align="left" color="#999999">
+              {{highlight2_text}}
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-section background-color="#ffffff" padding="60px 0">
+          <mj-column width="300px">
+            <mj-text padding-bottom="40px" mj-class="h2" align="left" color="#999999">
+              {{highlight3_title}}
+            </mj-text>
+            <mj-text mj-class="h3" align="left" color="#999999">
+              {{highlight3_text}}
+            </mj-text>
+          </mj-column>
+          <mj-column width="300px">
+            <mj-image href="https://uttercoach.com/" align="left" src="https://uttercoach.com/images/live.gif" />
+          </mj-column>
+        </mj-section>
+
+    {{> footer }}
+  </mj-body>
+</mjml>

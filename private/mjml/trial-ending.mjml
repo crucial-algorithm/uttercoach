@@ -1,0 +1,16 @@
+<mjml>
+    {{>head }}
+  <mj-body background-color="#d6d6d5">
+      {{> logo }}
+      <mj-section background-color="#3C3B65" padding="60px 0">
+          <mj-column width="600px">
+              <mj-text padding-bottom="40px" mj-class="h1" align="left" color="#fff">{{hello}}</mj-text>
+              <mj-text mj-class="h3" align="left" color="#fff">{{callToAction}}</mj-text>
+              <mj-text mj-class="h3" align="left" color="#fff">
+                  <a class="links" href="https://my.uttercoach.com/coach-billing">https://my.uttercoach.com/coach-billing</a>
+              </mj-text>
+          </mj-column>
+      </mj-section>
+    {{> footer }}
+  </mj-body>
+</mjml>

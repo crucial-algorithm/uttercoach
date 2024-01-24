@@ -1,0 +1,1 @@
+import './coach-live-desktop.html';

@@ -1,0 +1,76 @@
+<template name="profileMeasurements">
+
+    {{>profileGeneral}}
+
+    {{>profileTabs tab="measurements" athleteId=athleteId}}
+
+
+    <div class="modal fade modal-fullscreen" id="add-physical-data-modal" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalSmallLabel">{{translate "athlete_physical_title"}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="form-measurements" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <div>
+                            <label for="weight-athlete" class="col-form-label">{{translate "athlete_physical_weight"}}</label>
+                            <input type="number" step="any" name="weight" required class="form-control" id="weight-athlete">
+                            <small id="weight-tip" class="form-text text-muted">{{translate "athlete_physical_weight_tip"}}</small>
+                        </div>
+                        <div>
+                            <label for="height-athlete" class="col-form-label">{{translate "athlete_physical_height"}}</label>
+                            <input type="number" step="any" name ="height" required class="form-control" id="height-athlete">
+                            <small id="height-tip" class="form-text text-muted">{{translate "athlete_physical_height_tip"}}</small>
+                        </div>
+                        <div>
+                            <label for="fat-athlete" class="col-form-label">{{translate "athlete_physical_fat"}}</label>
+                            <input type="number" step="any" name="fat" required class="form-control" id="fat-athlete">
+                            <small id="fat-tip" class="form-text text-muted">{{translate "athlete_physical_fat_tip"}}</small>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer athlete-physical-modal-footer">
+                    <button type="button" id="discard" class="btn secondary">{{translate "schedule_expression_discard"}}</button>
+                    <button type="button" id="create" class="btn primary">
+                        <span class="d-none d-md-inline">{{translate "athlete_physical_save"}}</span>
+                        <span class="d-md-none">{{translate "athlete_physical_save"}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row section">
+        <div class="col-sm-12">
+            <div id="add-physical-data" class="button athlete-measurements-add-button">{{translate "athlete_add_measurements_button"}}</div>
+        </div>
+    </div>
+
+    <div class="container-physical-charts">
+        <div class="athlete-measurements-charts-container">
+            <div class="athlete-measurements-charts-box">
+                <div id="weight-chart" class="athlete-trends-chart"></div>
+                <div class="athlete-trends-chart-label">{{translate "athlete_physical_weight"}}</div>
+            </div>
+            <div class="athlete-measurements-charts-box">
+                <div id="height-chart" class="athlete-trends-chart"></div>
+                <div class="athlete-trends-chart-label">{{translate "athlete_physical_height"}}</div>
+            </div>
+            <div class="athlete-measurements-charts-box">
+                <div id="fat-chart" class="athlete-trends-chart"></div>
+                <div class="athlete-trends-chart-label">{{translate "athlete_physical_fat"}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row section">
+        <div class="col-sm-12">
+            <p class="tip-measure">{{#if areThereMeasurements}} {{translate "athlete_edit_measurements_tip"}} {{else}} &nbsp; {{/if}}</p>
+        </div>
+    </div>
+
+</template>

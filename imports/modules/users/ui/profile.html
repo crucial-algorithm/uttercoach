@@ -1,0 +1,82 @@
+<template name="profile">
+    {{>profileGeneral}}
+
+    {{>profileTabs}}
+
+</template>
+
+<template name="profileGeneral">
+    <div class="container-fluid">
+        <div class="row section">
+            <div class="col-sm-2 athlete-info">
+                <div class="athlete-avatar">
+                    {{> picture id=athleteId shape="circle" size="large"}}
+                </div>
+                <div class="athlete">
+                    <span class="athlete-name">{{athleteName athleteId}}</span>
+                    <span class="profile-athlete-group">{{translate "profile_athlete"}}</span>
+                </div>
+            </div>
+            <div class="col-md profile-athlete-details">
+                <form class="needs-validation" id="form-profile" novalidate>
+                    <div class="form-row profile-form-row">
+                        <div class="col">
+                            <label class="profile-details-label">{{translate "athlete_profile_gender"}}</label>
+                            <select class="form-control" id="profile-select-gender">
+                                <option value="M" {{selected gender "M"}}>{{translate "athlete_profile_gender_male"}}</option>
+                                <option value="F" {{selected gender "F"}}>{{translate "athlete_profile_gender_female"}}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                                <label class="profile-details-label">{{translate "athlete_profile_birthdate"}}</label>
+                                <input type="text" id="profile-birthdate" name="bday"
+                                       min="1919-01-01" class="form-control" required value="{{birthdate}}">
+                            </div>
+                        <div class="col">
+                            <label class="profile-details-label">{{translate "athlete_profile_boat"}}</label>
+                            <select class="form-control" id="profile-select-boat">
+                                <option value="K" {{selected boat "K"}}>{{translate "athlete_profile_boat_kayak"}}</option>
+                                <option value="C" {{selected boat "C"}}>{{translate "athlete_profile_boat_canoe"}}</option>
+                            </select>
+                        </div>
+                        <div class="col profile-athlete-heart-rate">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="profile-details-label">{{translate "athlete_profile_resting_heart_rate"}}</label>
+                                    <input type="number" id="profile-resting-heart-rate-input" name="resting-hr"
+                                           required min="0" max="100" class="form-control" value="{{restingHeartRate}}" >
+                                    <small class="form-text text-muted">{{translate "athlete_profile_heart_rate_value_tip"}}</small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="profile-details-label">{{translate "athlete_profile_max_heart_rate"}}</label>
+                                    <input type="number" id="profile-max-heart-rate-input" name="max-hr"
+                                           required min="60" max="240" class="form-control" value="{{maxHeartRate}}">
+                                    <small class="form-text text-muted">{{translate "athlete_profile_heart_rate_value_tip"}}</small>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <button class="button profile-save-button" id="profile-details-submit" disabled>{{translate "athlete_profile_details_submit"}}</button>
+                    <button class="button secondary profile-discard-button" id="profile-details-reload">{{translate "athlete_profile_details_discard"}}</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<template name="profileTabs">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs nav-profile">
+            <li class="nav-item">
+                <a class="nav-link {{#if active "measurements"}} active {{/if}}" href="{{pathFor route='profile.measurements' id=athleteId}}">{{translate "athlete_physical_title"}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{#if active "zones"}} active {{/if}}" href="{{pathFor route='profile.zones' id=athleteId}}">{{translate "athlete_nav_zone"}}</a>
+            </li>
+        </ul>
+    </div>
+</template>
