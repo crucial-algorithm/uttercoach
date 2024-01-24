@@ -2,6 +2,10 @@
 
 Utter Coach web application for managing training sessions.
 
+### DevOps info, if wanting to "recover" GoPaddler in the future ###
+
+Check devops.md doc in root folder
+
 ### How do I get set up? ###
 
 #### Clone this repository
